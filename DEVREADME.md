@@ -44,6 +44,8 @@ Punktid:
     - Tulistamine: Space (näiteks), tulistab otse lendava kuuli
         - Kuuli despawn, kui see ekraanilt väjub tuleks see mingi hetk hiljem ka hävitada, et kusagile eetrisse ei jääks hunnikutes füüsika objekte hõljuma
     - Surm/Mäng läbi, kui mängija saab asteroidiga pihta peaks mäng läbi saama (avab mängu menüü)
+- Mängu ala, et mängija ei sõidaks ekraani vaatealast minema
+- Esmased assetid
 - Asteroid:
     - Liikumine otsejoones mingis suvalises suunas
         - Suuna määramine, kindlasti peaks see suund olema orienteeritud nähtava ekraani ala suunas, et asteroid kusagil ekraanist väljas ei tekiks ja suvaliselt minema ei lendaks
