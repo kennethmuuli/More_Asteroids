@@ -1,3 +1,5 @@
+# Marko V oli ka siin :)
+
 # Arendus README TODO: Teha korralik README hilisemas järgus.
 
 ## Arendusprojekti eesmärgid / koolitöö
