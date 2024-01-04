@@ -1,8 +1,9 @@
-<<<<<<< HEAD
+
 # Marko V oli ka siin :)
-=======
+
 Alvin oli siin!
->>>>>>> a92b9b142a58bc852e6c3513ed921443b83d236e
+
+Liidia oli siin
 
 # Arendus README TODO: Teha korralik README hilisemas järgus.
 
