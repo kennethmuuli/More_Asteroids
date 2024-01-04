@@ -1,4 +1,5 @@
 Alvin oli siin!
+Marko Kask oli siin!
 
 # Arendus README TODO: Teha korralik README hilisemas järgus.
 
