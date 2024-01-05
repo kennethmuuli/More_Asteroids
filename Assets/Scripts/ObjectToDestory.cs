@@ -1,22 +1,30 @@
 using System;
+using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ObjectToDestory : MonoBehaviour
+public class ObjectToDestory : BaseDestructibleObject
 {
-    [SerializeField] private int myScoreValue;
-    public static event Action<int> objectDestroyed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        /* 
-            TODO: The code below should be placed into some sort of general Die(), which all destructible objects need to have. Consider creating an interface for that purpose OR perhaps an abstract class instead. Currently in start method simply for testing purposes.
-        */
-
-        // syntax> ? Checking if anyone is subscribed to the objectDestoryed event to avoid a null reference error, IF yes then invoke the event (i.e. event happened) and pass along myScoreValue
-        objectDestroyed?.Invoke(myScoreValue);
-        Destroy(gameObject);
+        /* Inherited from abstract parent class, use wherever if you don't want to change the implementation OR if you have changed the base implementation, this will call out the implementation from this class */
+        Die();
+        /* Alternatively, even after changing the base implementation (see override below), you can call out the base implementation with the following line */
+        // base.Die();
     }
 
+    /* Use the code below if you want to add to (override) the base implementation, adding you logic before the base implementation is called out. TODO: >>>REMOVE IF UNUSED<<< */
+    /*
+
+        protected override void Die()
+        {
+            // any other logic... (example on following line)
+            myScoreValue = myScoreValue * 2;
+
+            base.Die();
+        }
+
+    */
 }
