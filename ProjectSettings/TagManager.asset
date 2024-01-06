@@ -11,7 +11,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - Stars
+  - 
   - Background
   - 
   - 
@@ -44,12 +44,6 @@ TagManager:
   - name: Background
     uniqueID: 826774079
     locked: 0
-  - name: Stars
-    uniqueID: 633821441
-    locked: 0
-  - name: Character
-    uniqueID: 1887165131
-    locked: 0
-  - name: Main Camera
-    uniqueID: 2654027841
+  - name: Player
+    uniqueID: 3756303347
     locked: 0

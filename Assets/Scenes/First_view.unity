@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 699347475}
   - component: {fileID: 699347474}
   - component: {fileID: 699347477}
-  - component: {fileID: 699347478}
   m_Layer: 3
   m_Name: Ship
   m_TagString: Player
@@ -193,8 +192,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -538663949
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 41bb006357b86594aa7dd6b01cc84351, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -249,18 +248,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!210 &699347478
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 699347473}
-  m_Enabled: 1
-  m_SortingLayerID: 1887165131
-  m_SortingLayer: 3
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!1 &885909327
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +260,7 @@ GameObject:
   - component: {fileID: 885909329}
   - component: {fileID: 885909328}
   - component: {fileID: 885909331}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,7 +1290,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 0.5
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5102,9 +5089,9 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885909327}
   m_Enabled: 1
-  m_SortingLayerID: 633821441
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 826774079
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_SortAtRoot: 0
 --- !u!1 &1706326868
 GameObject:
@@ -5117,7 +5104,6 @@ GameObject:
   - component: {fileID: 1706326871}
   - component: {fileID: 1706326870}
   - component: {fileID: 1706326869}
-  - component: {fileID: 1706326872}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5199,18 +5185,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &1706326872
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706326868}
-  m_Enabled: 1
-  m_SortingLayerID: -1640939455
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!1 &1730330432
 GameObject:
   m_ObjectHideFlags: 0
@@ -5221,7 +5195,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1730330434}
   - component: {fileID: 1730330433}
-  - component: {fileID: 1730330435}
   m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
@@ -5269,8 +5242,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 826774079
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ddcac1fac1f5c8943a30c2ef6b724062, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5298,18 +5271,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &1730330435
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730330432}
-  m_Enabled: 1
-  m_SortingLayerID: 826774079
-  m_SortingLayer: 1
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float rotationSpeed;
-    public float movementSpeed;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float movementSpeed;
 
     private Rigidbody2D rb;
 
@@ -20,6 +20,11 @@ public class Movement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        MoveShip();
+    }
+
+    void MoveShip()
     {
         // Move forward
         if (Input.GetKey(KeyCode.W))
