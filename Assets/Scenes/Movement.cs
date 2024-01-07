@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -11,6 +12,12 @@ public class Movement : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    Shooter shooter;
+
+    void Awake()
+    {
+        shooter = GetComponent<Shooter>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +29,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         MoveShip();
+        OnFire();
     }
 
     void MoveShip()
@@ -41,6 +49,18 @@ public class Movement : MonoBehaviour
         // Rotate right
         if (Input.GetKey(KeyCode.D))
             rb.rotation -= rotationSpeed * Time.deltaTime;
+    }
+
+    void OnFire()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            shooter.isFiring = Input.GetKey(KeyCode.Space);
+            Debug.Log("XXX");
+        }else
+        {
+            shooter.isFiring = false;
+        }
     }
 }
 
