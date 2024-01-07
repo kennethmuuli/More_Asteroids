@@ -56,7 +56,6 @@ public class Movement : MonoBehaviour
         if(Input.GetKey(KeyCode.Space))
         {
             shooter.isFiring = Input.GetKey(KeyCode.Space);
-            Debug.Log("XXX");
         }else
         {
             shooter.isFiring = false;
