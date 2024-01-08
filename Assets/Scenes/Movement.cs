@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-
 
 public class Movement : MonoBehaviour
 {
@@ -10,37 +7,56 @@ public class Movement : MonoBehaviour
     [SerializeField] private float movementSpeed;
 
     private Rigidbody2D rb;
+    private float minX, maxX, minY, maxY;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Get the Rigidbody2D component only once during initialization
         rb = GetComponent<Rigidbody2D>();
+        SetScreenBoundaries();
     }
 
-    // Update is called once per frame
+    // Update kutsutakse once per frame
     void Update()
     {
         MoveShip();
+        ClampPosition();
     }
 
     void MoveShip()
     {
-        // Move forward
-        if (Input.GetKey(KeyCode.W))
-            rb.AddForce(transform.up * movementSpeed * Time.deltaTime);
+        float verticalInput = Input.GetAxis("Vertical");
+        rb.AddForce(transform.up * verticalInput * movementSpeed * Time.deltaTime);
 
-        // Move backward
-        if (Input.GetKey(KeyCode.S))
-            rb.AddForce(-transform.up * movementSpeed * Time.deltaTime);
+        float horizontalInput = Input.GetAxis("Horizontal");
+        rb.rotation += -horizontalInput * rotationSpeed * Time.deltaTime;
+    }
 
-        // Rotate left
-        if (Input.GetKey(KeyCode.A))
-            rb.rotation += rotationSpeed * Time.deltaTime;
+    void ClampPosition()
+    {
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, minY, maxY);
+        transform.position = clampedPosition;
+    }
 
-        // Rotate right
-        if (Input.GetKey(KeyCode.D))
-            rb.rotation -= rotationSpeed * Time.deltaTime;
+    void SetScreenBoundaries()
+    {
+        Camera mainCamera = Camera.main;
+
+        if (mainCamera != null)
+        {
+            float screenAspect = mainCamera.aspect;
+            float cameraSize = mainCamera.orthographicSize;
+
+            minX = mainCamera.transform.position.x - cameraSize * screenAspect;
+            maxX = mainCamera.transform.position.x + cameraSize * screenAspect;
+            minY = mainCamera.transform.position.y - cameraSize;
+            maxY = mainCamera.transform.position.y + cameraSize;
+        }
+        else
+        {
+            Debug.LogError("Main camera not found. Ensure there is a camera tagged as 'MainCamera'.");
+        }
     }
 }
-
