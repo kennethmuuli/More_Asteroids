@@ -2,25 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidDestruction : BaseDestructibleObject
+
+public class AsteroidDestruction : ObjectToDestroy
 {
-    public AudioSource destructionSound; // Viide helile
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Bullet") // Kontrollime kokkupõrget "Bullet" tagiga
-        {
-            destructionSound.Play(); // Mängi hävitamise heli
-
-            // Siin kutsume välja ülekirjutatud Die() meetodi, mis hõlmab sündmuse saatmist ja objekti hävitamist
-            Die();
-        }
-    }
+    [SerializeField] private AudioSource destructionSound;
 
     protected override void Die()
     {
-        // Siin saadetakse sündmus ja hävitatakse objekt
-        base.Die(); // Kutsub välja BaseDestructibleObject klassi Die meetodi
-        gameObject.SetActive(false); // Selle asemel et objekti hävitada, deaktiveerime selle, et parandada jõudlust
+        if (iGotHit) {
+            destructionSound.Play();
+            base.Die();
+        }
     }
 }
