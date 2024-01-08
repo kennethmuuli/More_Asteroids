@@ -5,6 +5,8 @@ Alvin oli siin!
 
 Liidia oli siin
 
+Kaido oli siin
+
 # Arendus README TODO: Teha korralik README hilisemas järgus.
 
 ## Arendusprojekti eesmärgid / koolitöö
