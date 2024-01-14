@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
+
 
 
 public class Movement : MonoBehaviour
@@ -12,12 +14,8 @@ public class Movement : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    Shooter shooter;
+    public static event Action firing;
 
-    void Awake()
-    {
-        shooter = GetComponent<Shooter>();
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -52,13 +50,11 @@ public class Movement : MonoBehaviour
     }
 
     void OnFire()
-    {
+    {   
+        // Shoot projectiles pressing space
         if(Input.GetKey(KeyCode.Space))
         {
-            shooter.isFiring = Input.GetKey(KeyCode.Space);
-        }else
-        {
-            shooter.isFiring = false;
+            firing?.Invoke();
         }
     }
 }
