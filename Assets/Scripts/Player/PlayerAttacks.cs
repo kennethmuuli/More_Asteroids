@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class PlayerAttacks : MonoBehaviour
 {
     // Variable to store projectile prefab
     [SerializeField] private GameObject projectilePrefab;
@@ -20,13 +20,13 @@ public class Shooter : MonoBehaviour
     // This function is called when the object becomes enabled and active. 
     private void OnEnable() {
         // Subscribing to event
-        Movement.firing += Fire;
+        PlayerController.firing += Fire;
     }
 
     // This function is called when the behaviour becomes disabled or inactive.
     private void OnDisable() {
         // Unsubscribing to event
-        Movement.firing -= Fire;
+        PlayerController.firing -= Fire;
     }
     
     //FixedUpdate is called every fixed frame-rate frame.
