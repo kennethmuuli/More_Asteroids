@@ -1,4 +1,11 @@
+
+using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
+using System;
+
 
 public class Movement : MonoBehaviour
 {
@@ -6,6 +13,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float movementSpeed;
 
     private Rigidbody2D rb;
+
+
+    public static event Action firing;
 
     // Set these values to define the boundaries
     private float minX = -26f;
@@ -23,8 +33,14 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveShip();
+        OnFire();
         CheckBoundaries();
+    }
+    
+    // FixedUpdate is called every fixed frame-rate frame
+    void FixedUpdate()
+    {
+        MoveShip();
     }
 
     void MoveShip()
@@ -33,30 +49,40 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.up * movementSpeed * Time.deltaTime);
-            Debug.Log("Moving forward");
+            // Debug.Log("Moving forward");
         }
 
         // Move backward
         if (Input.GetKey(KeyCode.S))
         {
             rb.AddForce(-transform.up * movementSpeed * Time.deltaTime);
-            Debug.Log("Moving backward");
+            // Debug.Log("Moving backward");
         }
 
         // Rotate left
         if (Input.GetKey(KeyCode.A))
         {
             rb.rotation += rotationSpeed * Time.deltaTime;
-            Debug.Log("Rotating left");
+            // Debug.Log("Rotating left");
         }
 
         // Rotate right
         if (Input.GetKey(KeyCode.D))
         {
             rb.rotation -= rotationSpeed * Time.deltaTime;
-            Debug.Log("Rotating right");
+            // Debug.Log("Rotating right");
         }
     }
+    
+    void OnFire()
+    {   
+        // Shoot projectiles pressing space
+        if(Input.GetKey(KeyCode.Space))
+        {
+            firing?.Invoke();
+        }
+    }
+}
 
     void CheckBoundaries()
     {
