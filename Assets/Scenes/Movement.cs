@@ -1,7 +1,6 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
@@ -82,7 +81,6 @@ public class Movement : MonoBehaviour
             firing?.Invoke();
         }
     }
-}
 
     void CheckBoundaries()
     {
