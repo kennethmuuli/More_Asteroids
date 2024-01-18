@@ -6,14 +6,9 @@ using UnityEngine;
 
 public class Asteroid : BaseDestructibleObject
 {
-    private void FixedUpdate() 
+    void OnCollisionEnter2D(Collision2D other) 
     {
-        CheckForCollisions();
-    }
-
-    private void CheckForCollisions()
-    {
-        if (iGotHit)
+        if(other.collider.tag == "Projectile")
         {
             Die();
         }
