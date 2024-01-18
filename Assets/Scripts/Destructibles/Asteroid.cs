@@ -24,7 +24,8 @@ public class Asteroid : BaseDestructibleObject
             // Add asteroidPoints to score if asteroid is destroyed
             // Must make UpdateScore() public and remove ScoreTracker script
             // from gameObject (Asteroid prefab) 
-            //scoretracker.UpdateScore(pointValue);
+            // or make new public method AddToScore() to ScoreTracker class
+            //scoretracker.UpdateScore(pointValue); or scoreTracker.AddToScore(pointValue);
             Die();
         }
     }
