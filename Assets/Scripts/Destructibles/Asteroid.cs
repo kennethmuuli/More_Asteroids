@@ -22,7 +22,8 @@ public class Asteroid : BaseDestructibleObject
         if(other.collider.tag == "Projectile")
         {
             // Add asteroidPoints to score if asteroid is destroyed
-            // Must make UpdateScore() public
+            // Must make UpdateScore() public and remove ScoreTracker script
+            // from gameObject (Asteroid prefab) 
             //scoretracker.UpdateScore(pointValue);
             Die();
         }
