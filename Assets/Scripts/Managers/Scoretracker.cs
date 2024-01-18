@@ -10,13 +10,13 @@ public class Scoretracker : MonoBehaviour
     // This function is called when the object becomes enabled and active.
     private void OnEnable() {
         // Subscribing to event
-        ObjectToDestory.objectDestroyed += UpdateScore;
+        Asteroid.objectDestroyed += UpdateScore;
     }
 
     // This function is called when the behaviour becomes disabled or inactive.
     private void OnDisable() {
         // Unsubscribing to event
-        ObjectToDestory.objectDestroyed += UpdateScore;
+        Asteroid.objectDestroyed -= UpdateScore;
     }
 
     // Update is called every frame, if the MonoBehaviour is enabled.
