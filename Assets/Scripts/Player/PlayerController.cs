@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float movementSpeed;
-    [SerializeField] Animator shipAnimator;
+    private Animator shipAnimator;
 
     private Rigidbody2D rb;
 
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get the Rigidbody2D component only once during initialization
         rb = GetComponent<Rigidbody2D>();
-        shipAnimator = GetComponent<Animator>();
+        shipAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -92,6 +92,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             firing?.Invoke();
+        }
+    }
+
+    // Destroy player if it collides with asteroid
+   void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.collider.tag == "Asteroid")
+        {
+            //Implement player death logic here, e.g. show game over screen.
+           print("Player is dead, got hit by asteroid.");
         }
     }
 
