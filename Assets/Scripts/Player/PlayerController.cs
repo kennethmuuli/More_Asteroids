@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.collider.tag == "Asteroid")
         {
+            //Implement player death logic here, e.g. show game over screen.
            print("Player is dead, got hit by asteroid.");
         }
     }
