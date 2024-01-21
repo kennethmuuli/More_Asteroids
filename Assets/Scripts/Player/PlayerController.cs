@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float movementSpeed;
-    [SerializeField] Animator shipAnimator;
+    private Animator shipAnimator;
 
     private Rigidbody2D rb;
 
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get the Rigidbody2D component only once during initialization
         rb = GetComponent<Rigidbody2D>();
-        shipAnimator = GetComponent<Animator>();
+        shipAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
