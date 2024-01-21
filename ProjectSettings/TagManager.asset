@@ -46,12 +46,15 @@ TagManager:
   - name: Background
     uniqueID: 826774079
     locked: 0
+  - name: stars
+    uniqueID: 2422125175
+    locked: 0
+  - name: Destructibles
+    uniqueID: 3557622519
+    locked: 0
   - name: Player
     uniqueID: 3756303347
     locked: 0
   - name: UI
     uniqueID: 1556194373
-    locked: 0
-  - name: stars
-    uniqueID: 2422125175
     locked: 0
