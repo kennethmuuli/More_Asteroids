@@ -10,8 +10,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float movementSpeed;
+    [SerializeField] Animator shipAnimator;
 
     private Rigidbody2D rb;
+
 
 
     public static event Action firing;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get the Rigidbody2D component only once during initialization
         rb = GetComponent<Rigidbody2D>();
+        shipAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,7 +38,7 @@ public class PlayerController : MonoBehaviour
         OnFire();
         CheckBoundaries();
     }
-    
+
     // FixedUpdate is called every fixed frame-rate frame
     void FixedUpdate()
     {
@@ -62,21 +65,31 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             rb.rotation += rotationSpeed * Time.deltaTime;
+            shipAnimator.SetBool("turnLeft", true);
             // Debug.Log("Rotating left");
+        }
+        else
+        {
+            shipAnimator.SetBool("turnLeft", false);
         }
 
         // Rotate right
         if (Input.GetKey(KeyCode.D))
         {
             rb.rotation -= rotationSpeed * Time.deltaTime;
+            shipAnimator.SetBool("turnRight", true);
             // Debug.Log("Rotating right");
         }
+        else
+        {
+            shipAnimator.SetBool("turnRight", false);
+        }
     }
-    
+
     void OnFire()
-    {   
+    {
         // Shoot projectiles pressing space
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             firing?.Invoke();
         }
