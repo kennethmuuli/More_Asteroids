@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float movementSpeed;
+    [SerializeField] private float maxSpeed;
     private Animator shipAnimator;
 
     private Rigidbody2D rb;
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private float maxY = 13f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         // Get the Rigidbody2D component only once during initialization
         rb = GetComponent<Rigidbody2D>();
@@ -33,38 +34,44 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         OnFire();
         CheckBoundaries();
     }
 
     // FixedUpdate is called every fixed frame-rate frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         MoveShip();
     }
 
-    void MoveShip()
+    private void MoveShip()
     {
         // Move forward
         if (Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(transform.up * movementSpeed * Time.deltaTime);
+            rb.AddForce(transform.up * movementSpeed * Time.fixedDeltaTime);
             // Debug.Log("Moving forward");
+
+            // Limit speed
+            rb.velocity = UnityEngine.Vector2.ClampMagnitude(rb.velocity, maxSpeed);
         }
 
         // Move backward
         if (Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(-transform.up * movementSpeed * Time.deltaTime);
+            rb.AddForce(-transform.up * movementSpeed * Time.fixedDeltaTime);
             // Debug.Log("Moving backward");
+
+            // Limit speed
+            rb.velocity = UnityEngine.Vector2.ClampMagnitude(rb.velocity, maxSpeed);
         }
 
         // Rotate left
         if (Input.GetKey(KeyCode.A))
         {
-            rb.rotation += rotationSpeed * Time.deltaTime;
+            rb.rotation += rotationSpeed * Time.fixedDeltaTime;
             shipAnimator.SetBool("turnLeft", true);
             // Debug.Log("Rotating left");
         }
@@ -76,7 +83,7 @@ public class PlayerController : MonoBehaviour
         // Rotate right
         if (Input.GetKey(KeyCode.D))
         {
-            rb.rotation -= rotationSpeed * Time.deltaTime;
+            rb.rotation -= rotationSpeed * Time.fixedDeltaTime;
             shipAnimator.SetBool("turnRight", true);
             // Debug.Log("Rotating right");
         }
@@ -86,7 +93,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnFire()
+    private void OnFire()
     {
         // Shoot projectiles pressing space
         if (Input.GetKey(KeyCode.Space))
@@ -96,7 +103,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Destroy player if it collides with asteroid
-   void OnCollisionEnter2D(Collision2D other) 
+   private void OnCollisionEnter2D(Collision2D other) 
     {
         if(other.collider.tag == "Asteroid")
         {
@@ -105,7 +112,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void CheckBoundaries()
+    private void CheckBoundaries()
     {
         // Clamp the position to stay within the defined boundaries
         float clampedX = Mathf.Clamp(rb.position.x, minX, maxX);
