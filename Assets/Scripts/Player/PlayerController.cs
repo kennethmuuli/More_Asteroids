@@ -95,6 +95,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Destroy player if it collides with asteroid
+   void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.collider.tag == "Asteroid")
+        {
+           print("Player is dead, got hit by asteroid.");
+        }
+    }
+
     void CheckBoundaries()
     {
         // Clamp the position to stay within the defined boundaries
