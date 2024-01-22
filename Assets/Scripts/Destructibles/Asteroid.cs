@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour
+public class Asteroid : BaseDestructibleObject
 {
-    // Event to notify when an object is destroyed, with an associated score
-    public delegate void ObjectDestroyedHandler(int scoreToAdd);
-    public static event ObjectDestroyedHandler objectDestroyed;
-
     // Array of sprites for the asteroid
     public Sprite[] sprites;
 
@@ -47,6 +43,13 @@ public class Asteroid : MonoBehaviour
         _rigidbody.mass = this.size;
     }
 
+    private void Update() {
+        if (iGotHit)
+        {
+            Die();
+        }
+    }
+
     // Example method that may trigger the objectDestroyed event
     public void SetTrajectory(Vector2 direction)
     {
@@ -56,25 +59,4 @@ public class Asteroid : MonoBehaviour
         Destroy(this.gameObject, this.maxLifetime);
     }
 
-    // Destroy asteroid if it collides with projectile
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.collider.tag == "Projectile")
-        {
-            Die();
-        }
-    }
-
-    // Notify the destruction of the object and perform any necessary actions
-    private void Die()
-    {
-        // Notify subscribers that the object is destroyed and provide a score
-        if (objectDestroyed != null)
-        {
-            objectDestroyed.Invoke(10); // You can replace 10 with the appropriate score value
-        }
-
-        // Add any other cleanup or game logic here
-        Destroy(gameObject);
-    }
 }
