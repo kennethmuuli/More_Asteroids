@@ -23,7 +23,7 @@ public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
     private void Start()
     {
         // Invoke the Spawn method repeatedly based on the spawnRate
-        InvokeRepeating(nameof(Spawn), this.spawnRate, this.spawnRate);
+        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
     }
 
     // Method to spawn asteroids
@@ -32,17 +32,17 @@ public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
         for (int i = 0; i < spawnAmount; i++) // Removed 'This' and corrected capitalization
         {
             // Generate a random direction within a unit circle and normalize it
-            Vector3 spawnDirection = Random.insideUnitCircle.normalized * this.spawnDistance;
+            Vector3 spawnDirection = Random.insideUnitCircle.normalized * spawnDistance;
 
             // Calculate the spawn point based on the spawner's position and the spawn direction
             Vector3 spawnPoint = this.transform.position + spawnDirection;
 
             // Introduce some variance to the trajectory by rotating it
-            float variance = Random.Range(-this.trajectoryVariance, this.trajectoryVariance);
+            float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
 
             // Instantiate an asteroid at the calculated spawn point with the rotated trajectory
-            Asteroid asteroid = Instantiate(this.asteroidPrefab, spawnPoint, rotation);
+            Asteroid asteroid = Instantiate(asteroidPrefab, spawnPoint, rotation);
 
             // Set the size of the asteroid within the specified range
             asteroid.size = Random.Range(asteroid.minSize, asteroid.maxSize);
