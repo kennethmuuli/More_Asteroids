@@ -34,13 +34,13 @@ public class Asteroid : BaseDestructibleObject
         _spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
 
         // Set a random rotation to the asteroid
-        this.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.value * 360.0f);
+        transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.value * 360.0f);
 
         // Set the scale of the asteroid based on the 'size' variable
-        this.transform.localScale = Vector3.one * size;
+        transform.localScale = Vector3.one * size;
 
         // Set the mass of the Rigidbody2D based on the 'size' variable
-        _rigidbody.mass = this.size;
+        _rigidbody.mass = size;
     }
 
     private void Update() {
@@ -54,9 +54,9 @@ public class Asteroid : BaseDestructibleObject
     public void SetTrajectory(Vector2 direction)
     {
         // Add a force to the Rigidbody2D to set the asteroid in motion
-        _rigidbody.AddForce(direction * this.speed);
+        _rigidbody.AddForce(direction * speed);
         // Destroy the asteroid after a specified lifetime
-        Destroy(this.gameObject, this.maxLifetime);
+        Destroy(gameObject, maxLifetime);
     }
 
 }
