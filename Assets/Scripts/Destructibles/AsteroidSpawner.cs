@@ -5,7 +5,7 @@ using UnityEngine;
 public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
 {
     // Reference to the asteroid prefab to be spawned
-    public Asteroid asteroidPrefab;
+    public BaseDestructibleObject asteroidPrefab;
 
     // Variance in trajectory angle for spawned asteroids
     public float trajectoryVariance = 15.0f;
@@ -42,13 +42,8 @@ public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
 
             // Instantiate an asteroid at the calculated spawn point with the rotated trajectory
-            Asteroid asteroid = Instantiate(asteroidPrefab, spawnPoint, rotation);
+            Instantiate(asteroidPrefab, spawnPoint, rotation);
 
-            // Set the size of the asteroid within the specified range
-            asteroid.size = Random.Range(asteroid.minSize, asteroid.maxSize);
-
-            // Set the trajectory of the asteroid based on the rotated spawn direction
-            asteroid.SetTrajectory(rotation * -spawnDirection);
         }
     }
 
