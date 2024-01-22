@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
             // Debug.Log("Moving forward");
 
             // Limit speed
-            rb.velocity = UnityEngine.Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
         }
 
         // Move backward
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             // Debug.Log("Moving backward");
 
             // Limit speed
-            rb.velocity = UnityEngine.Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
         }
 
         // Rotate left
