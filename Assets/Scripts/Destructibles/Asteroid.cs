@@ -30,6 +30,8 @@ public class Asteroid : BaseDestructibleObject
 
         // Set the mass of the Rigidbody2D based on the 'size' variable
         _rigidbody.mass = size;
+
+        MoveAndSpin(transform.up);
     }
 
     private void Update() {
@@ -40,10 +42,12 @@ public class Asteroid : BaseDestructibleObject
     }
 
     // Example method that may trigger the objectDestroyed event
-    public void SetTrajectory(Vector2 direction)
+    public void MoveAndSpin(Vector2 direction, float torque = 2f)
     {
         // Add a force to the Rigidbody2D to set the asteroid in motion
         _rigidbody.AddForce(direction * speed);
+        // Add a spin force to the object, if not set then default value is used
+        _rigidbody.AddTorque(torque);
         // Destroy the asteroid after a specified lifetime
         Destroy(gameObject, maxLifetime);
     }
