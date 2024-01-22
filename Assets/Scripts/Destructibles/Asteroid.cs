@@ -2,12 +2,6 @@ using UnityEngine;
 
 public class Asteroid : BaseDestructibleObject
 {
-    // Array of sprites for the asteroid
-    public Sprite[] sprites;
-
-    // Reference to the SpriteRenderer component
-    private SpriteRenderer _spriteRenderer;
-
     // Public variables for asteroid properties
     public float size = 1.0f;
     public float minSize = 0.5f;
@@ -21,8 +15,6 @@ public class Asteroid : BaseDestructibleObject
     // Called when the script instance is being loaded
     private void Awake()
     {
-        // Get the SpriteRenderer component attached to this GameObject
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         // Get the Rigidbody2D component attached to this GameObject
         _rigidbody = GetComponent<Rigidbody2D>();
     }
@@ -30,9 +22,6 @@ public class Asteroid : BaseDestructibleObject
     // Called on the frame when a script is enabled
     private void Start()
     {
-        // Set a random sprite from the array to the SpriteRenderer
-        _spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-
         // Set a random rotation to the asteroid
         transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.value * 360.0f);
 
