@@ -38,6 +38,11 @@ public class Scoretracker : MonoBehaviour
         score.text = currentScore.ToString();
     }
 
+    public int GetCurrentScore()
+{
+    return currentScore;
+}
+
     // Used to track and set time ticks for updating the score based on how long the player has been alive for
     private void TimeScoreTicks()
     {
