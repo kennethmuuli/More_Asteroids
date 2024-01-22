@@ -35,7 +35,7 @@ public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
             Vector3 spawnDirection = Random.insideUnitCircle.normalized * spawnDistance;
 
             // Calculate the spawn point based on the spawner's position and the spawn direction
-            Vector3 spawnPoint = this.transform.position + spawnDirection;
+            Vector3 spawnPoint = transform.position + spawnDirection;
 
             // Introduce some variance to the trajectory by rotating it
             float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
