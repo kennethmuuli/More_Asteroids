@@ -29,7 +29,7 @@ public class GameOverManager : MonoBehaviour
         }
     }
 
-    private void GameOver()
+    public void GameOver()
     {
                 gameOverScreen.SetActive(true);
 
