@@ -28,9 +28,6 @@ public class Asteroid : BaseDestructibleObject
         // Set the scale of the asteroid based on the 'size' variable
         transform.localScale = Vector3.one * size;
 
-        // Set the mass of the Rigidbody2D based on the 'size' variable
-        _rigidbody.mass = size;
-
         MoveAndSpin(transform.up);
     }
 
