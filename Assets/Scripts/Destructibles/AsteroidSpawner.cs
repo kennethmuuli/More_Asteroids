@@ -57,7 +57,7 @@ public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
             float angle = Vector2.SignedAngle(Vector2.up, destPoint - spawnPoint);
 
             // Instantiate an asteroid at the calculated spawn point with the rotated trajectory
-            Instantiate(asteroidPrefab, spawnPoint, Quaternion.Euler(0,0,angle));
+            Instantiate(asteroidPrefab, spawnPoint, Quaternion.Euler(0,0,angle),transform);
         }
     }
 
