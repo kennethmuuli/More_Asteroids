@@ -5,24 +5,25 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
 {
-    // Reference to the asteroid prefab to be spawned
-    public BaseDestructibleObject asteroidPrefab;
 
-    // Variance in trajectory angle for spawned asteroids
-    public float trajectoryVariance = 15.0f;
+#region Variables
+    [SerializeField] private BaseDestructibleObject asteroidPrefab;
+    [Tooltip("Reference to the prefab to be spawned")]
 
-    // Rate at which asteroids are spawned (in seconds)
-    public float spawnRate = 2.0f;
+    [SerializeField] private int spawnAmount = 1;
+    [Tooltip("Number of objects to spawn in with each spawn")]
+    [SerializeField] private float spawnRate = 2.0f;
+    [Tooltip("Rate at which asteroids are spawned (in seconds)")]
 
-    // Distance from the spawner at which asteroids are spawned
-    public float spawnCircleRadius = 15.0f;
-    // Distance from the transform at which the destination point for a spawned object is calculated
-    [SerializeField] float destCircleRadius = 3f;
+    [SerializeField] private float spawnCircleRadius = 15.0f;
+    [Tooltip("Radius from the transform at which objects are spawned")]
 
-    // Number of asteroids to spawn in each wave
-    public int spawnAmount = 1; // Corrected syntax for defining an interface member
+    [SerializeField] private float destCircleRadius = 3f;
+    [Tooltip("Radius from the transform at which the destination point for a spawned object is calculated")]
+
     // Reference to main camera
     private Camera mainCamera;
+#endregion
 
     // Called when the script instance is being loaded
     private void Start()
