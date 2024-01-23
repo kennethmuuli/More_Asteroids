@@ -18,12 +18,21 @@ public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
 
     // Number of asteroids to spawn in each wave
     public int spawnAmount = 1; // Corrected syntax for defining an interface member
+    // Reference to main camera
+    private Camera mainCamera;
 
     // Called when the script instance is being loaded
     private void Start()
     {
+        CenterPosMainCameraXY();
+        
         // Invoke the Spawn method repeatedly based on the spawnRate
         InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
+    }
+
+    private void CenterPosMainCameraXY(){
+        mainCamera = Camera.main;
+        transform.position = new Vector2(mainCamera.transform.position.x,mainCamera.transform.position.y);
     }
 
     // Method to spawn asteroids
