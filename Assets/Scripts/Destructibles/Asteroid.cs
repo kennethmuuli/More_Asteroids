@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Asteroid : BaseDestructibleObject
 {
-    // Public variables for asteroid properties
-    public float minSize = 0.5f;
-    public float maxSize = 1.5f;
-    public float speed = 50.0f;
-
-    // Reference to the Rigidbody2D component
+    [Range(0.5f,1f)]
+    [SerializeField] private float minSize = 0.5f;
+    [Range(1f,3f)]
+    [SerializeField] private float maxSize = 1.5f;
+    [Range(10f,200f)]
+    [SerializeField] private float speed = 50.0f;
     private Rigidbody2D _rigidbody;
 
     // Called when the script instance is being loaded
@@ -45,7 +45,7 @@ public class Asteroid : BaseDestructibleObject
     }
 
     // Example method that may trigger the objectDestroyed event
-    public void MoveAndSpin(Vector2 direction, float torque = 2f)
+    private void MoveAndSpin(Vector2 direction, float torque = 2f)
     {
         // Add a force to the Rigidbody2D to set the asteroid in motion
         _rigidbody.AddForce(direction * speed);
