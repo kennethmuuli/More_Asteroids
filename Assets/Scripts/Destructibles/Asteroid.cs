@@ -6,7 +6,6 @@ public class Asteroid : BaseDestructibleObject
     public float minSize = 0.5f;
     public float maxSize = 1.5f;
     public float speed = 50.0f;
-    public float maxLifetime = 3.0f;
 
     // Reference to the Rigidbody2D component
     private Rigidbody2D _rigidbody;
@@ -31,6 +30,8 @@ public class Asteroid : BaseDestructibleObject
         {
             Die();
         }
+
+        DespawnIfInvisible();
     }
     private void RandomizeSizeAndRotation(){  
         // Set a random rotation to the asteroid
@@ -50,9 +51,13 @@ public class Asteroid : BaseDestructibleObject
         _rigidbody.AddForce(direction * speed);
         // Add a spin force to the object, if not set then default value is used
         _rigidbody.AddTorque(torque);
-        // Destroy the asteroid after a specified lifetime
-        Destroy(gameObject, maxLifetime);
     }
 
+    private void DespawnIfInvisible(){
+        if (!GetComponentInChildren<Renderer>().isVisible)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }
