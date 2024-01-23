@@ -4994,10 +4994,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 6623637298308764491, guid: 94ae593b226beba49916236ec713a386, type: 3}
-  trajectoryVariance: 15
-  spawnRate: 2
-  spawnDistance: 15
   spawnAmount: 1
+  spawnRate: 2
+  spawnCircleRadius: 15
+  destCircleRadius: 3
 --- !u!4 &1578237252
 Transform:
   m_ObjectHideFlags: 0
@@ -5074,7 +5074,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13.30882
+  orthographic size: 9.357983
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5191,69 +5191,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &9058728103131928420
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8280935935686920321, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
-      propertyPath: m_Name
-      value: Ship
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1706326871}
-  - {fileID: 9058728103131928420}
   - {fileID: 885909330}
   - {fileID: 1730330434}
   - {fileID: 1578237252}
