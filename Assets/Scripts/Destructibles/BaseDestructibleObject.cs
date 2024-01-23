@@ -14,7 +14,15 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     [SerializeField] protected float speed = 50.0f;
     protected Rigidbody2D _rigidbody;
     protected bool iGotHit = false;
+    protected Renderer objectRenderer;
+    private bool hasBeenInView;
     public static event Action<int> objectDestroyed;
+    
+    protected virtual void Awake() {
+        // Get the Rigidbody2D component attached to this GameObject
+        _rigidbody = GetComponent<Rigidbody2D>();
+        objectRenderer = GetComponentInChildren<Renderer>();
+    }
     
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -40,8 +48,14 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         _rigidbody.AddTorque(torque);
     }
 
-    protected virtual void DespawnIfInvisible(){
-        if (!GetComponentInChildren<Renderer>().isVisible)
+    protected virtual void OffScreenBehaviour(){
+        // Check whether the renderer is visible and if it hasn't been visible before, set hasBeenInView true
+        if(objectRenderer.isVisible && !hasBeenInView) {
+            hasBeenInView = true;
+        }
+
+        // Check whether the renderer is invisible and if it has been visible before, destroy gameObject
+        if (!objectRenderer.isVisible && hasBeenInView)
         {
             Destroy(gameObject);
         }
