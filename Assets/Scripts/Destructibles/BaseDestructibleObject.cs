@@ -24,10 +24,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         }
     }
 
-    protected virtual void RandomizeSizeAndRotation(){  
-        // Set a random rotation to the asteroid
-        transform.eulerAngles = new Vector3(0.0f, 0.0f, UnityEngine.Random.value * 360.0f);
-
+    protected virtual void RandomizeSize(){  
         // Get a random size between the max and min size
         float size = UnityEngine.Random.Range(minSize,maxSize);
         

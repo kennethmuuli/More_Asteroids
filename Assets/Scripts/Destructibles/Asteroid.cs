@@ -13,7 +13,7 @@ public class Asteroid : BaseDestructibleObject
     // Called on the frame when a script is enabled
     private void Start()
     {
-        RandomizeSizeAndRotation();        
+        RandomizeSize();        
 
         MoveAndSpin(transform.up);
     }
