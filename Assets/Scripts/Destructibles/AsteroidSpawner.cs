@@ -47,5 +47,11 @@ public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
         }
     }
 
-    // Update is called once per frame
+#if UNITY_EDITOR
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position,spawnDistance);
+    }
+#endif
+
 }
