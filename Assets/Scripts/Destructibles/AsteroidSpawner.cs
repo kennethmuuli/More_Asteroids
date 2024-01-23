@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
@@ -14,7 +15,9 @@ public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
     public float spawnRate = 2.0f;
 
     // Distance from the spawner at which asteroids are spawned
-    public float spawnDistance = 15.0f;
+    public float spawnCircleRadius = 15.0f;
+    // Distance from the transform at which the destination point for a spawned object is calculated
+    [SerializeField] float destCircleRadius = 3f;
 
     // Number of asteroids to spawn in each wave
     public int spawnAmount = 1; // Corrected syntax for defining an interface member
@@ -40,26 +43,29 @@ public class AsteroidSpawner : MonoBehaviour // Corrected capitalization
     {
         for (int i = 0; i < spawnAmount; i++) // Removed 'This' and corrected capitalization
         {
-            // Generate a random direction within a unit circle and normalize it
-            Vector3 spawnDirection = Random.insideUnitCircle.normalized * spawnDistance;
+            // Calculate spawnPoint on a circle's circumference
+            Vector2 spawnPoint = Random.insideUnitCircle.normalized * spawnCircleRadius + (Vector2)transform.position;
 
-            // Calculate the spawn point based on the spawner's position and the spawn direction
-            Vector3 spawnPoint = transform.position + spawnDirection;
+            /* 
+                Calculate a random point on a smaller circle's cricumference (inside first circle) to be used as 
+                the target destination for the spawned object. This will create variance in it's trajectory. 
+            */
+            Vector2 destPoint = Random.insideUnitCircle.normalized * destCircleRadius + (Vector2)transform.position;
 
-            // Introduce some variance to the trajectory by rotating it
-            float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
-            Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
+            // Calculate the angle between up direction and direction towards center
+            float angle = Vector2.SignedAngle(Vector2.up, destPoint - spawnPoint);
 
             // Instantiate an asteroid at the calculated spawn point with the rotated trajectory
-            Instantiate(asteroidPrefab, spawnPoint, rotation);
-
+            Instantiate(asteroidPrefab, spawnPoint, Quaternion.Euler(0,0,angle));
         }
     }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos() {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position,spawnDistance);
+        Gizmos.DrawWireSphere(transform.position,spawnCircleRadius);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position,destCircleRadius);
     }
 #endif
 
