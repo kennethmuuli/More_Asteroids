@@ -1,17 +1,24 @@
-
-using System;
-using Unity.IO.LowLevel.Unsafe;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Asteroid : BaseDestructibleObject
 {
-    // Destroy asteroid if it collides with projectile
-    void OnCollisionEnter2D(Collision2D other) 
+
+    // Called on the frame when a script is enabled
+    private void Start()
     {
-        if(other.collider.tag == "Projectile")
+        RandomizeSize();        
+
+        MoveAndSpin(transform.up);
+    }
+
+    private void Update() {
+        if (iGotHit)
         {
             Die();
         }
+
+        OffScreenBehaviour();
     }
+    
+
 }
