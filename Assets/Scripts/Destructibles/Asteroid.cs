@@ -2,23 +2,26 @@ using UnityEngine;
 
 public class Asteroid : BaseDestructibleObject
 {
+    private Animator asteroidAnimator;
+    private float t;
 
     // Called on the frame when a script is enabled
     private void Start()
     {
-        RandomizeSize();        
-
+        asteroidAnimator = GetComponentInChildren<Animator>();
+        RandomizeSize();
         MoveAndSpin(transform.up);
     }
 
-    private void Update() {
+    private void Update()
+    {
         if (iGotHit)
         {
-            Die();
+            asteroidAnimator.enabled = true;
+            t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
+            Die(t);
         }
 
         OffScreenBehaviour();
     }
-    
-
 }
