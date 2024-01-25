@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3122892375369643742}
   - component: {fileID: 6182476599455064180}
+  - component: {fileID: 8765554802647586646}
   m_Layer: 0
   m_Name: AsteroidGFX
   m_TagString: Untagged
@@ -86,6 +87,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8765554802647586646
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196169578716467239}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b14b420b9c6da8c40980d803d257bb62, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8257778097176506583
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,11 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myScoreValue: 10
-  size: 1
   minSize: 0.5
   maxSize: 1.5
   speed: 50
-  maxLifetime: 3
 --- !u!58 &6255730386572829374
 CircleCollider2D:
   m_ObjectHideFlags: 0
