@@ -17,7 +17,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     protected Renderer objectRenderer;
     private bool hasBeenInView;
     public static event Action<int> objectDestroyed;
-
+    
     protected virtual void Awake()
     {
         // Get the Rigidbody2D component attached to this GameObject
@@ -29,6 +29,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile")
         {
+            objectDestroyed?.Invoke(myScoreValue);
             iGotHit = true;
         }
     }
@@ -68,7 +69,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     protected virtual void Die(float destroyDelay = 0)
     {
         // Invoke objectDestroyed event sending in myScoreValue for all listeners
-        objectDestroyed?.Invoke(myScoreValue);
+        //objectDestroyed?.Invoke(myScoreValue);
 
         // any other logic...
 

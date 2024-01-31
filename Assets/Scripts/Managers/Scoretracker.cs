@@ -28,7 +28,6 @@ public class Scoretracker : MonoBehaviour
     private void Update()
     {
         TimeScoreTicks();
-
     }
 
     private void UpdateScore(int scoreToAdd)

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Asteroid : BaseDestructibleObject
@@ -23,5 +24,11 @@ public class Asteroid : BaseDestructibleObject
         }
 
         OffScreenBehaviour();
+    }
+
+    private IEnumerator DestroyDelay(float delay)
+    {       
+            yield return new WaitForSeconds(delay);
+            //Die();        
     }
 }
