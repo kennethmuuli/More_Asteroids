@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
         //  Debug.Log($"Clamped Position: ({clampedX}, {clampedY})");
     }
 
+# if UNITY_EDITOR
     private void OnDrawGizmos() {
         if (showGameArea)
         {
@@ -135,3 +136,5 @@ public class PlayerController : MonoBehaviour
         }   
     }
 }
+
+# endif
