@@ -8,12 +8,10 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Controls Settings")]
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float maxSpeed;
-    private Animator shipAnimator;
-    private Rigidbody2D rb;
-    public static event Action firing;
 
     // Set these values to define the boundaries
     [Header("Game Area")]
@@ -23,6 +21,10 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Game area bounding box height/2 in world units")]
     [SerializeField] private bool showGameArea;
     [Tooltip("Check to visualize game area in the scene view")]
+
+    private Animator shipAnimator;
+    private Rigidbody2D rb;
+    public static event Action firing;
 
     // Start is called before the first frame update
     private void Start()
