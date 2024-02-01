@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [SerializeField] private float maxSpeed;
     private Animator shipAnimator;
-
     private Rigidbody2D rb;
 
 
@@ -20,10 +19,13 @@ public class PlayerController : MonoBehaviour
     public static event Action firing;
 
     // Set these values to define the boundaries
-    private float minX = -26f;
-    private float maxX = 26f;
-    private float minY = -13f;
-    private float maxY = 13f;
+    [Header("Game Area")]
+    [SerializeField] private float gameAreaWidth = 26f;
+    [Tooltip("Game area bounding box width/2 in world units")]
+    [SerializeField] private float gameAreaHeight = 13f;
+    [Tooltip("Game area bounding box height/2 in world units")]
+    [SerializeField] private bool showGameArea;
+    [Tooltip("Check to visualize game area in the scene view")]
 
     // Start is called before the first frame update
     private void Start()
@@ -115,8 +117,8 @@ public class PlayerController : MonoBehaviour
     private void CheckBoundaries()
     {
         // Clamp the position to stay within the defined boundaries
-        float clampedX = Mathf.Clamp(rb.position.x, minX, maxX);
-        float clampedY = Mathf.Clamp(rb.position.y, minY, maxY);
+        float clampedX = Mathf.Clamp(rb.position.x, -gameAreaWidth, gameAreaWidth);
+        float clampedY = Mathf.Clamp(rb.position.y, -gameAreaHeight, gameAreaHeight);
 
         // Update the Rigidbody2D position
         rb.position = new Vector2(clampedX, clampedY);
