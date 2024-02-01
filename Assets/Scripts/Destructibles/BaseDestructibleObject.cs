@@ -30,6 +30,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             iGotHit = true;
+            objectDestroyed?.Invoke(myScoreValue);
         }
     }
 
@@ -68,7 +69,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     protected virtual void Die(float destroyDelay = 0)
     {
         // Invoke objectDestroyed event sending in myScoreValue for all listeners
-        objectDestroyed?.Invoke(myScoreValue);
+        //objectDestroyed?.Invoke(myScoreValue);
 
         // any other logic...
 
