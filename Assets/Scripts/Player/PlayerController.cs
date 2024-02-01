@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckBoundaries()
     {
+        /* TODO: Would make sense to calculate the boundaries from the main camera field of view */
         // Clamp the position to stay within the defined boundaries
         float clampedX = Mathf.Clamp(rb.position.x, -gameAreaWidth, gameAreaWidth);
         float clampedY = Mathf.Clamp(rb.position.y, -gameAreaHeight, gameAreaHeight);
