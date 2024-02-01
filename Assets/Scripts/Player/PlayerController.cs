@@ -13,9 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxSpeed;
     private Animator shipAnimator;
     private Rigidbody2D rb;
-
-
-
     public static event Action firing;
 
     // Set these values to define the boundaries
@@ -125,5 +122,13 @@ public class PlayerController : MonoBehaviour
 
         // Debug the clamped position if you want 
         //  Debug.Log($"Clamped Position: ({clampedX}, {clampedY})");
+    }
+
+    private void OnDrawGizmos() {
+        if (showGameArea)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(new Vector2(0,0),new Vector2(gameAreaWidth*2,gameAreaHeight*2)); 
+        }   
     }
 }
