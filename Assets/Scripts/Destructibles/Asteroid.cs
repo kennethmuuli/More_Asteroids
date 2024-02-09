@@ -15,13 +15,14 @@ public class Asteroid : BaseDestructibleObject
 
     private void Update()
     {
-        if (iGotHit)
-        {
+        OffScreenBehaviour();
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(IGotHit(other)) {
             asteroidAnimator.enabled = true;
             t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
             Die(t);
         }
-
-        OffScreenBehaviour();
     }
 }

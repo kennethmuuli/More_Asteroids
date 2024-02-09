@@ -13,7 +13,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     [Range(10f, 200f)]
     [SerializeField] protected float speed = 50.0f;
     protected Rigidbody2D _rigidbody;
-    protected bool iGotHit = false;
+
     protected Renderer objectRenderer;
     private bool hasBeenInView;
     public static event Action<int> objectDestroyed;
@@ -25,12 +25,11 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         objectRenderer = GetComponentInChildren<Renderer>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
+    protected virtual bool IGotHit(Collision2D collision) {
         if (collision.gameObject.tag == "Projectile")
         {
-            iGotHit = true;
-        }
+            return true;
+        } return false;
     }
 
     protected virtual void RandomizeSize()
