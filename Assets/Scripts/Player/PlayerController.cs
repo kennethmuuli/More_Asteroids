@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
 
     private Animator shipAnimator;
     private Rigidbody2D rb;
-    public static event Action firing;
 
     // Start is called before the first frame update
     private void Start()
@@ -37,7 +36,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        OnFire();
         CheckBoundaries();
     }
 
@@ -91,15 +89,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             shipAnimator.SetBool("turnRight", false);
-        }
-    }
-
-    private void OnFire()
-    {
-        // Shoot projectiles pressing space
-        if (Input.GetKey(KeyCode.Space))
-        {
-            firing?.Invoke();
         }
     }
 

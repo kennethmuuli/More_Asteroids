@@ -16,18 +16,6 @@ public class PlayerAttacks : MonoBehaviour
     private bool isFiring;
     // A routine that executes firing repeatedly
     Coroutine firingCoroutine;
-
-    // This function is called when the object becomes enabled and active. 
-    private void OnEnable() {
-        // Subscribing to event
-        PlayerController.firing += Fire;
-    }
-
-    // This function is called when the behaviour becomes disabled or inactive.
-    private void OnDisable() {
-        // Unsubscribing to event
-        PlayerController.firing -= Fire;
-    }
     
     //FixedUpdate is called every fixed frame-rate frame.
     void FixedUpdate()
