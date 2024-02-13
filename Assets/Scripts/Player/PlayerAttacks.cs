@@ -1,75 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerAttacks : MonoBehaviour
 {
     // Variable to store projectile prefab
     [SerializeField] private GameObject projectilePrefab;
-    // Projectile flight speed 
-    [SerializeField] float projectileSpeed = 10f;
-    // The time after which the object is destroyed 1f = 1s
-    [SerializeField] float projectileLifetime = 5f;
-    // Firing interval
-    [SerializeField] float firingRate = 0.2f;
-    // A variable that determines whether a shot is currently being fired, by default is false
-    private bool isFiring;
-    // A routine that executes firing repeatedly
-    Coroutine firingCoroutine;
+    [SerializeField] private float fireCooldown;
+    private float nextTimeToFire;
+    [SerializeField] private float rayLength = 60f;
+    [SerializeField] private LayerMask destructiblesLayer;
     
     //FixedUpdate is called every fixed frame-rate frame.
     void FixedUpdate()
     {
-        Fire();
+        // Fire();
+        FireRayWeapon();
     }
+
+    private bool IsFiring() => Input.GetKey(KeyCode.Space);
 
     // Fire one or multiple projectiles
     void Fire()
     {
-        // If space is pressed isFiring == true
-        isFiring = Input.GetKey(KeyCode.Space);
-
-        // if firing is true and firing coroutine is not assigned start shooting 
-        if(isFiring && firingCoroutine == null)
-        {
-            // Start firing coroutine
-            firingCoroutine = StartCoroutine(SpawnProjectile());
-        }
-        // if not firing and firing coroutine is still assigned stop shooting
-        else if(!isFiring && firingCoroutine != null)
-        {
-            // Stop firing coroutine
-            StopCoroutine(firingCoroutine);
-            firingCoroutine = null;
-        }
-        
-    }
-
-    // Method to spawn one projectile
-    IEnumerator SpawnProjectile()
-    {
-        while(true)
+        if (IsFiring() && Time.unscaledTime > nextTimeToFire)
         {
             // Instantiate new projectile
-            GameObject instance = Instantiate(projectilePrefab, transform.position, transform.rotation);
+            Instantiate(projectilePrefab, transform.position, transform.rotation);
 
-            // Access projectile`s rigidbody2D component
-            Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
+            nextTimeToFire = Time.unscaledTime + fireCooldown;
+        }  
+    }
 
-            // If rigidBody exists
-            if(rb != null)
+    private void FireRayWeapon(){
+
+        if (IsFiring())
+        {
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, rayLength, destructiblesLayer);
+    
+            foreach (var hit in hits)
             {
-                // Determine the direction and speed of the projectile
-                // transform.up = The green axis of the transform in world space
-                rb.velocity = transform.up * projectileSpeed;
+                hit.transform.gameObject.GetComponent<BaseDestructibleObject>().Die();
             }
+        }
 
-            // Destroy the projectile after the specified time
-            Destroy(instance, projectileLifetime);
-            // By default, Unity resumes a coroutine on the frame after a yield statement. 
-            //If you want to introduce a time delay, use WaitForSeconds
-            yield return new WaitForSeconds(firingRate);
-            //yield return new WaitForFixedUpdate();
+    }
+
+    private void OnDrawGizmos() {
+        if (IsFiring())
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawRay(transform.position, transform.up * rayLength);
         }
     }
 }

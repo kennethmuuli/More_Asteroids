@@ -64,7 +64,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         }
     }
 
-    protected virtual void Die(float destroyDelay = 0)
+    public virtual void Die(float destroyDelay = 0)
     {
         // Invoke objectDestroyed event sending in myScoreValue for all listeners
         objectDestroyed?.Invoke(myScoreValue);
