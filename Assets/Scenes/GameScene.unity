@@ -5522,6 +5522,14 @@ PrefabInstance:
       propertyPath: gameAreaHeight
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4680695248912631972, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: rayLength
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680695248912631972, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: destructiblesLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8280935935686920321, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
       propertyPath: m_Name
       value: Ship
