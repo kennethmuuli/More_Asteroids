@@ -6,8 +6,9 @@ public class Asteroid : BaseDestructibleObject
     private float t;
 
     // Called on the frame when a script is enabled
-    private void Start()
+    override protected void Start()
     {
+        base.Start();
         asteroidAnimator = GetComponentInChildren<Animator>();
         RandomizeSize();
         MoveAndSpin(transform.up);
@@ -16,10 +17,15 @@ public class Asteroid : BaseDestructibleObject
     private void Update()
     {
         OffScreenBehaviour();
+
+        print(currentHealth);
     }
-    
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(IGotHit(other)) {
+
+    public override void TakeDamage(int damageAmount)
+    {
+        base.TakeDamage(damageAmount);
+
+        if(currentHealth <= 0) {
             asteroidAnimator.enabled = true;
             t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
             Die(t);

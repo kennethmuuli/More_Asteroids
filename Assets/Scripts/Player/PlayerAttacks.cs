@@ -13,7 +13,7 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private LayerMask destructiblesLayer;
     
     //FixedUpdate is called every fixed frame-rate frame.
-    void FixedUpdate()
+    void Update()
     {
         // Fire();
         FireRayWeapon();
@@ -41,7 +41,7 @@ public class PlayerAttacks : MonoBehaviour
     
             foreach (var hit in hits)
             {
-                hit.transform.gameObject.GetComponent<BaseDestructibleObject>().Die();
+                hit.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(1);
             }
         }
 
