@@ -4,6 +4,7 @@ public class Asteroid : BaseDestructibleObject
 {
     private Animator asteroidAnimator;
     private float t;
+    private bool isDying;
 
     // Called on the frame when a script is enabled
     override protected void Start()
@@ -25,10 +26,11 @@ public class Asteroid : BaseDestructibleObject
     {
         base.TakeDamage(damageAmount);
 
-        if(currentHealth <= 0) {
+        if(currentHealth <= 0 && !isDying) {
+            isDying = true;
             asteroidAnimator.enabled = true;
             t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
             Die(t);
-        }
+        } return;
     }
 }
