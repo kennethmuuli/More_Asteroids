@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3d9439a3cbcde344b88a1e65093ac3dd
+guid: 0146ec1b3b297a641a37a656fbc62f4f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1430420660849019840
-    second: Laser_Ray_0
+      213: 1445063552380393988
+    second: LaserPickUpDespawn_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,9 +40,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,106 +100,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Laser_Ray_0
+      name: LaserPickUpDespawn_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 10
-        height: 10
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 044f6b6dcff162ce0800000000000000
-      internalID: -1430420660849019840
+      spriteID: 40a5f7505a5ed0410800000000000000
+      internalID: 1445063552380393988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Laser_Ray_1
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 0
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdde5a0c32b753e44a03a26ce5d026b4
-      internalID: -704740507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Laser_Ray_2
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 0
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8128c2fc96d5814aac427a6613ad569
-      internalID: -921227350
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Laser_Ray_3
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 0
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09e2e5b140e73724aa45a753a2ad174f
-      internalID: -1502910404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Laser_Ray_4
+      name: LaserPickUpDespawn_1
       rect:
         serializedVersion: 2
         x: 40
         y: 0
-        width: 10
-        height: 10
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36925f5ca1e640f44b193e51a0bc6d1e
-      internalID: 221035747
+      spriteID: 3f2a803a61746454c8013a18c92398cd
+      internalID: -1826687535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LaserPickUpDespawn_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493b0ea67f7e40449a07f6ad3ec60642
+      internalID: 171678213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LaserPickUpDespawn_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb960d9e31922842a3e7c070c9384de
+      internalID: 1641121696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LaserPickUpDespawn_4
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 0
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892b0a94d94d5844f9d0e5a098a4d868
+      internalID: 1362113135
       vertices: []
       indices: 
       edges: []
@@ -207,7 +207,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9200e122f7d7ef342a0452e1a9d05d01
+    spriteID: 4aac8f386f783c34b959b84b03af0dbb
     internalID: 0
     vertices: []
     indices: 
@@ -215,11 +215,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Laser_Ray_0: -1430420660849019840
-      Laser_Ray_1: -704740507
-      Laser_Ray_2: -921227350
-      Laser_Ray_3: -1502910404
-      Laser_Ray_4: 221035747
+      LaserPickUpDespawn_0: 1445063552380393988
+      LaserPickUpDespawn_1: -1826687535
+      LaserPickUpDespawn_2: 171678213
+      LaserPickUpDespawn_3: 1641121696
+      LaserPickUpDespawn_4: 1362113135
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

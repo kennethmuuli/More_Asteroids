@@ -203,6 +203,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameOverlay
       objectReference: {fileID: 0}
+    - target: {fileID: 7193911811519961556, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193911811519961556, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5462,6 +5470,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7910117468737336998, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
   m_PrefabInstance: {fileID: 2040769419}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7736666289381251125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2809434308649414481, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_Name
+      value: PickUp_Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
 --- !u!1001 &9058728103131928420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5534,3 +5599,4 @@ SceneRoots:
   - {fileID: 245245044}
   - {fileID: 1889061767}
   - {fileID: 1221591289}
+  - {fileID: 7736666289381251125}
