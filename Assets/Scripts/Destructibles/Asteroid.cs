@@ -18,8 +18,6 @@ public class Asteroid : BaseDestructibleObject
     private void Update()
     {
         OffScreenBehaviour();
-
-        print(currentHealth);
     }
 
     public override void TakeDamage(int damageAmount)
