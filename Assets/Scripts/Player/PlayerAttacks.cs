@@ -65,6 +65,6 @@ public class PlayerAttacks : MonoBehaviour
             nextTimeToFire = Time.unscaledTime + fireCooldown;
         }  
 
-    }
 }
+
 
