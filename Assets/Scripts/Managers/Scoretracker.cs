@@ -1,14 +1,14 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Scoretracker : MonoBehaviour
 {
-    // Reference to the Text component in the Canvas
-    public TextMeshProUGUI score;
     [SerializeField] private int currentScore = 0;
     [SerializeField] private int scorePlusAtTick;
     [SerializeField] private float secondsBetweenTicks;
     private float nextTickTime;
+    public static event Action<int> scoreUpdated;
 
     // This function is called when the object becomes enabled and active.
     private void OnEnable()
@@ -34,8 +34,7 @@ public class Scoretracker : MonoBehaviour
     private void UpdateScore(int scoreToAdd)
     {
         currentScore = currentScore + scoreToAdd;
-        // Or should it be in Update method?
-        score.text = currentScore.ToString();
+        scoreUpdated?.Invoke(currentScore);
     }
 
     // Used to track and set time ticks for updating the score based on how long the player has been alive for
