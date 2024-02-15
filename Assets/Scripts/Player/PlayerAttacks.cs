@@ -61,6 +61,10 @@ public class PlayerAttacks : MonoBehaviour
             Gizmos.color = Color.cyan;
             Gizmos.DrawRay(transform.position, transform.up * rayLength);
         }
+
+            nextTimeToFire = Time.unscaledTime + fireCooldown;
+        }  
+
     }
 }
 
