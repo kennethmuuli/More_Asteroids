@@ -12,11 +12,17 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     [SerializeField] protected float maxSize = 1.5f;
     [Range(10f, 200f)]
     [SerializeField] protected float speed = 50.0f;
+    [SerializeField] protected int health = 1;
+    protected int currentHealth;
     protected Rigidbody2D _rigidbody;
 
     protected Renderer objectRenderer;
     private bool hasBeenInView;
     public static event Action<int> objectDestroyed;
+
+    protected virtual void Start() {
+        currentHealth = health;
+    }
 
     protected virtual void Awake()
     {
@@ -25,14 +31,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         objectRenderer = GetComponentInChildren<Renderer>();
     }
 
-    protected virtual bool IGotHit(Collision2D collision) {
-        if (collision.gameObject.tag == "Projectile")
-        {
-            return true;
-        } return false;
-    }
-
-    protected virtual void RandomizeSize()
+    protected void RandomizeSize()
     {
         // Get a random size between the max and min size
         float size = UnityEngine.Random.Range(minSize, maxSize);
@@ -41,7 +40,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         transform.localScale = Vector2.one * size;
     }
 
-    protected virtual void MoveAndSpin(Vector2 direction, float torque = 2f)
+    protected void MoveAndSpin(Vector2 direction, float torque = 2f)
     {
         // Add a force to the Rigidbody2D to set the asteroid in motion
         _rigidbody.AddForce(direction * speed);
@@ -49,7 +48,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         _rigidbody.AddTorque(torque);
     }
 
-    protected virtual void OffScreenBehaviour()
+    protected void OffScreenBehaviour()
     {
         // Check whether the renderer is visible and if it hasn't been visible before, set hasBeenInView true
         if (objectRenderer.isVisible && !hasBeenInView)
@@ -64,12 +63,15 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         }
     }
 
-    protected virtual void Die(float destroyDelay = 0)
+    // This method serves as the external input for this class
+    public virtual void TakeDamage(int damageAmount){
+        currentHealth -= damageAmount;
+    }
+
+    protected void Die(float destroyDelay = 0)
     {
         // Invoke objectDestroyed event sending in myScoreValue for all listeners
         objectDestroyed?.Invoke(myScoreValue);
-
-        // any other logic...
 
         // Destroy this gameObject | should remain the last thing that's done, as the code won't run after this
         Destroy(gameObject, destroyDelay);

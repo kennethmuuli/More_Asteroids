@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+
+    [SerializeField] private int damageAmount = 1;
     // Projectile flight speed 
     [SerializeField] float projectileSpeed = 10f;
     // The time after which the object is destroyed 1f = 1s
@@ -24,6 +26,8 @@ public class Projectile : MonoBehaviour
     {
         if(other.collider.tag == "Asteroid")
         {
+            other.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(damageAmount);
+
             Destroy(gameObject);
         }
     }
