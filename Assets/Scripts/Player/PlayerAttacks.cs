@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
@@ -12,6 +14,8 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private float rayLength = 60f;
     [SerializeField] private LayerMask destructiblesLayer;
     [SerializeField] private GameObject laserGFX;
+    [SerializeField] private GameObject[] cannonPositions;
+    private int nextCannonIndex = 0;
     
     private void Start() {
 
@@ -20,8 +24,8 @@ public class PlayerAttacks : MonoBehaviour
     //FixedUpdate is called every fixed frame-rate frame.
     void Update()
     {
-        // Fire();
-        FireRayWeapon();
+        Fire();
+        // FireRayWeapon();
     }
 
     private bool IsFiring() => Input.GetKey(KeyCode.Space);
@@ -31,8 +35,18 @@ public class PlayerAttacks : MonoBehaviour
     {
         if (IsFiring() && Time.unscaledTime > nextTimeToFire)
         {
+            //Alternate cannons from which to fire from
+            nextCannonIndex++;
+
+            if (nextCannonIndex == cannonPositions.Length)
+            {
+                nextCannonIndex = 0;
+            }
+            
+            Vector2 nextFirePos = cannonPositions[nextCannonIndex].transform.position;
+            
             // Instantiate new projectile
-            Instantiate(projectilePrefab, transform.position, transform.rotation);
+            Instantiate(projectilePrefab, nextFirePos, transform.rotation);
 
             nextTimeToFire = Time.unscaledTime + fireCooldown;
         }  
@@ -62,8 +76,8 @@ public class PlayerAttacks : MonoBehaviour
             Gizmos.DrawRay(transform.position, transform.up * rayLength);
         }
 
-            nextTimeToFire = Time.unscaledTime + fireCooldown;
-        }  
+        // nextTimeToFire = Time.unscaledTime + fireCooldown;
+    }  
 
 }
 
