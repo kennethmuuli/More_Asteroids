@@ -11,6 +11,11 @@ public class PlayerAttacks : MonoBehaviour
     private float nextTimeToFire;
     [SerializeField] private float rayLength = 60f;
     [SerializeField] private LayerMask destructiblesLayer;
+    [SerializeField] private GameObject laserGFX;
+    
+    private void Start() {
+
+    }
     
     //FixedUpdate is called every fixed frame-rate frame.
     void Update()
@@ -35,16 +40,19 @@ public class PlayerAttacks : MonoBehaviour
 
     private void FireRayWeapon(){
 
+        laserGFX.SetActive(IsFiring());
+
         if (IsFiring())
         {
-            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.up, rayLength, destructiblesLayer);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, rayLength, destructiblesLayer);
     
-            foreach (var hit in hits)
-            {
+            if(hit == true) {
+                laserGFX.GetComponent<RayController>().SetUpLinePositions(transform.position, hit.point);      
                 hit.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(1);
+            } else {
+                laserGFX.GetComponent<RayController>().SetUpLinePositions(transform.position, transform.position + transform.up * rayLength);
             }
-        }
-
+        } 
     }
 
     private void OnDrawGizmos() {
