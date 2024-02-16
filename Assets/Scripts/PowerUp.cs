@@ -10,6 +10,7 @@ public class PowerUp : MonoBehaviour
     [Tooltip("Time in seconds the powerup lasts a player picks it up.")]
     [SerializeField] private float lifetimeDuration;
     [Tooltip("Time in seconds before the powerup despawns if not picked up.")]
+    [SerializeField] private SpriteRenderer iconRenderer;
     public static Action<PowerUpType, float> powerUpCollected;
     private Animator pickUpAnimator;
 
@@ -24,6 +25,7 @@ public class PowerUp : MonoBehaviour
 
             pickUpAnimator.SetTrigger("despawn");
             float t = pickUpAnimator.GetCurrentAnimatorStateInfo(0).length;
+            iconRenderer.enabled = false;
 
             Destroy(gameObject, t);
         }
