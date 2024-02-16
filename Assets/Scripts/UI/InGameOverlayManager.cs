@@ -10,9 +10,14 @@ public class InGameOverlayManager : MonoBehaviour
 
     // Reference to the Text component in the Canvas
     [SerializeField] private TextMeshProUGUI score;
-    [SerializeField] private GameObject laserPowerUpDisplay; 
+    [Header("Laser PU Display Components")]
+    [SerializeField] private GameObject laserPUDisplay; 
     [SerializeField] private Slider laserPUSlider;
-    [SerializeField] private float laserPURemainingDuration;
+    private float laserPURemainingDuration;
+    [Header("Shield PU Display Components")]
+    [SerializeField] private GameObject shieldPUDisplay; 
+    [SerializeField] private Slider shieldPUSlider;
+    private float shieldPURemainingDuration;
     
     private void OnEnable() {
         Scoretracker.scoreUpdated += OnScoreUpdated;
@@ -25,20 +30,45 @@ public class InGameOverlayManager : MonoBehaviour
     }
 
     private void Update() {
+        // FIXME: Dirty implementation here
         if (Time.time < laserPURemainingDuration)
         {
             UpdatePowerUpDurationDisplayBar();  
             
-        } else laserPowerUpDisplay.SetActive(false);
+        } else laserPUDisplay.SetActive(false);
+        
+        if (Time.time < shieldPURemainingDuration)
+        {
+            UpdatePowerUpDurationDisplayBar2();  
+            
+        } else shieldPUDisplay.SetActive(false);
     }
     private void OnPowerUpCollected(PowerUpType type, float duration)
     {
-        laserPowerUpDisplay.SetActive(true);
-        laserPURemainingDuration = Time.time + duration;
+        switch (type)
+        {
+            case PowerUpType.Laser:
+                laserPUDisplay.SetActive(true);
+                laserPURemainingDuration = Time.time + duration;
+                break;
+            case PowerUpType.Shield:
+                shieldPUDisplay.SetActive(true);
+                shieldPURemainingDuration = Time.time + duration;
+                break;
+            default:
+            break;
+        }
+        
+        
     }
 
+    // FIXME: Dirty implementation here
     private void UpdatePowerUpDurationDisplayBar () {
         laserPUSlider.value = Mathf.Abs(1 - Time.time / laserPURemainingDuration);
+    }
+    // FIXME: Dirty implementation here
+    private void UpdatePowerUpDurationDisplayBar2 () {
+        shieldPUSlider.value = Mathf.Abs(1 - Time.time / shieldPURemainingDuration);
     }
 
     private void OnScoreUpdated(int scoreToDisplay)

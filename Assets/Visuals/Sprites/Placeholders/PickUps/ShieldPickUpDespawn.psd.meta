@@ -1,10 +1,52 @@
 fileFormatVersion: 2
-guid: 41bb006357b86594aa7dd6b01cc84351
+guid: d4928f937c377314497b8a0cf6f5475a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8820715720815460284
-    second: Ship_0
+      213: 7807778863040523501
+    second: ShieldPickUpDespawn_0
+  - first:
+      213: 6969137492785830828
+    second: ShieldPickUpDespawn_1
+  - first:
+      213: 2152361239793622116
+    second: ShieldPickUpDespawn_2
+  - first:
+      213: 1733778622332596032
+    second: ShieldPickUpDespawn_3
+  - first:
+      213: -3421963814988865588
+    second: ShieldPickUpDespawn_4
+  - first:
+      213: -471983726573936005
+    second: ShieldPickUpDespawn_5
+  - first:
+      213: 1604813163790807043
+    second: ShieldPickUpDespawn_6
+  - first:
+      213: 8591658841991426198
+    second: ShieldPickUpDespawn_7
+  - first:
+      213: -91417400623801314
+    second: ShieldPickUpDespawn_8
+  - first:
+      213: -1591027139192552405
+    second: ShieldPickUpDespawn_9
+  - first:
+      213: -1712792728793145209
+    second: ShieldPickUpDespawn_10
+  - first:
+      213: -7920273585144687960
+    second: ShieldPickUpDespawn_11
+  - first:
+      213: 952075784936739672
+    second: ShieldPickUpDespawn_12
+  - first:
+      213: -6259905314466273348
+    second: ShieldPickUpDespawn_13
+  - first:
+      213: 7160950193576851039
+    second: ShieldPickUpDespawn_14
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,181 +142,97 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ship_0
+      name: ShieldPickUpDespawn_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 34
-        width: 36
-        height: 36
+        y: 0
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 440471c39c5869580800000000000000
-      internalID: -8820715720815460284
+      spriteID: dec6550328dca5c60800000000000000
+      internalID: 7807778863040523501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ship_1
+      name: ShieldPickUpDespawn_1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 34
-        width: 36
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e738b4a8fc23b84997d55f73b6a5e63
-      internalID: 1321829278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ship_2
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 34
-        width: 36
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9018d6c6a81ac0b478bef9318e3bce78
-      internalID: -933361652
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ship_3
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 34
-        width: 36
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 800769926473f64419bee4ba2c394845
-      internalID: 604266073
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ship_4
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 34
-        width: 36
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4a8ce7be4c8485b45ba95e5befaebcc5
-      internalID: -253563681
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ship_5
-      rect:
-        serializedVersion: 2
-        x: 36
+        x: 40
         y: 0
-        width: 36
-        height: 34
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a1dcb43c8bd46dc4eba0b2e624bf72de
-      internalID: 1415962962
+      spriteID: cab1b5820a957b060800000000000000
+      internalID: 6969137492785830828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ship_6
+      name: ShieldPickUpDespawn_2
       rect:
         serializedVersion: 2
-        x: 72
+        x: 80
         y: 0
-        width: 36
-        height: 34
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4c72ed271156323499e74d99457519e9
-      internalID: 1527845375
+      spriteID: 46cd736d429bedd10800000000000000
+      internalID: 2152361239793622116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ship_7
+      name: ShieldPickUpDespawn_3
       rect:
         serializedVersion: 2
-        x: 108
+        x: 120
         y: 0
-        width: 36
-        height: 34
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d3f36ff70dc99ab439cc7cb11c1f1913
-      internalID: -242322112
+      spriteID: 04fec47987e9f0810800000000000000
+      internalID: 1733778622332596032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ship_8
+      name: ShieldPickUpDespawn_4
       rect:
         serializedVersion: 2
-        x: 144
+        x: 161
         y: 0
-        width: 36
-        height: 34
+        width: 39
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,8 +240,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2098bef4dbd8c374fa4de2ff6eed6d4e
-      internalID: 549238184
+      spriteID: bbd22436637df5c4c9015ba89ddf8ca6
+      internalID: -1070857652
       vertices: []
       indices: 
       edges: []
@@ -291,7 +249,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 809dd56794c36074da0006c87ede6a1f
     internalID: 0
     vertices: []
     indices: 
@@ -299,15 +257,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ship_0: -8820715720815460284
-      Ship_1: 1321829278
-      Ship_2: -933361652
-      Ship_3: 604266073
-      Ship_4: -253563681
-      Ship_5: 1415962962
-      Ship_6: 1527845375
-      Ship_7: -242322112
-      Ship_8: 549238184
+      ShieldPickUpDespawn_0: 7807778863040523501
+      ShieldPickUpDespawn_1: 6969137492785830828
+      ShieldPickUpDespawn_2: 2152361239793622116
+      ShieldPickUpDespawn_3: 1733778622332596032
+      ShieldPickUpDespawn_4: -1070857652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

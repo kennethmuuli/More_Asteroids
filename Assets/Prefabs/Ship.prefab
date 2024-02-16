@@ -314,7 +314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7966411039111228532
 Transform:
   m_ObjectHideFlags: 0
@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3803fd2e27adc5e4cb3ca3d8e97acf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPowerUpType: 0
   projectilePrefab: {fileID: 900457663056723938, guid: 516471dc47cd0fa4a93bb4d2051aa30d, type: 3}
   fireCooldown: 0.2
   rayLength: 60
@@ -589,6 +590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc13c03477792d40afdf6756e69f45f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPowerUpType: 1
+  shieldCollider: {fileID: 418920971337503030}
+  shieldGFX: {fileID: 6704023876395197288}
 --- !u!58 &418920971337503030
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -596,7 +600,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8280935935686920321}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

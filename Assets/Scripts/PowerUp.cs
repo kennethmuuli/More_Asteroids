@@ -19,15 +19,29 @@ public class PowerUp : MonoBehaviour
         Destroy(gameObject, lifetimeDuration);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other) { 
         if (other.CompareTag("Player")) {
             powerUpCollected?.Invoke(powerUpType, duration);
 
-            pickUpAnimator.SetTrigger("despawn");
+            ChooseDespawnAnimation();
             float t = pickUpAnimator.GetCurrentAnimatorStateInfo(0).length;
             iconRenderer.enabled = false;
 
             Destroy(gameObject, t);
+        }
+    }
+
+    private void ChooseDespawnAnimation(){
+        switch (powerUpType)
+        {
+            case PowerUpType.Laser:
+                pickUpAnimator.SetTrigger("despawn_laser");
+                break;
+            case PowerUpType.Shield:
+                pickUpAnimator.SetTrigger("despawn_shield");
+                break;
+            default:
+                break;
         }
     }
 }
