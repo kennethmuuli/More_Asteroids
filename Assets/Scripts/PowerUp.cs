@@ -7,11 +7,15 @@ public class PowerUp : MonoBehaviour
 {
     [SerializeField] private PowerUpType powerUpType;
     [SerializeField] private float duration;
+    [Tooltip("Time in seconds the powerup lasts a player picks it up.")]
+    [SerializeField] private float lifetimeDuration;
+    [Tooltip("Time in seconds before the powerup despawns if not picked up.")]
     public static Action<PowerUpType, float> powerUpCollected;
     private Animator pickUpAnimator;
 
     private void Start() {
         pickUpAnimator = GetComponentInChildren<Animator>();
+        Destroy(gameObject, lifetimeDuration);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

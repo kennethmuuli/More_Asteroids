@@ -5629,6 +5629,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUp_Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 3033732149177562149, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: lifetimeDuration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
