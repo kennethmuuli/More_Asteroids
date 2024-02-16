@@ -38,9 +38,7 @@ public class InGameOverlayManager : MonoBehaviour
     }
 
     private void UpdatePowerUpDurationDisplayBar () {
-        print(Mathf.Abs(1 - Time.time / laserPURemainingDuration));
         laserPUSlider.value = Mathf.Abs(1 - Time.time / laserPURemainingDuration);
-
     }
 
     private void OnScoreUpdated(int scoreToDisplay)
