@@ -337,6 +337,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7783997322146599152, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
   m_PrefabInstance: {fileID: 247672847}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &635325764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6704023876395197288, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+  m_PrefabInstance: {fileID: 9058728103131928420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &774616873 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5522094381183958543, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
@@ -5629,6 +5634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUp_Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 3033732149177562149, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+      propertyPath: powerUpType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8670601518384548779, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5682,6 +5691,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 245245044}
     m_Modifications:
+    - target: {fileID: 418920971337503030, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668649697375780840, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: shieldGFX
+      value: 
+      objectReference: {fileID: 635325764}
+    - target: {fileID: 2668649697375780840, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: myPowerUpType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668649697375780840, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: shieldCollider
+      value: 
+      objectReference: {fileID: 9058728103131928426}
     - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.03
@@ -5722,6 +5747,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4680695248912631972, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: showRaycast
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704023876395197288, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8280935935686920321, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
       propertyPath: m_Name
       value: Ship
@@ -5734,6 +5767,11 @@ PrefabInstance:
 --- !u!4 &9058728103131928421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+  m_PrefabInstance: {fileID: 9058728103131928420}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &9058728103131928426 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 418920971337503030, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
   m_PrefabInstance: {fileID: 9058728103131928420}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

@@ -92,16 +92,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Destroy player if it collides with asteroid
-   private void OnCollisionEnter2D(Collision2D other) 
-    {
-        if(other.collider.tag == "Asteroid")
-        {
-            //Implement player death logic here, e.g. show game over screen.
-           print("Player is dead, got hit by asteroid.");
-        }
-    }
-
     private void CheckBoundaries()
     {
         /* TODO: Would make sense to calculate the boundaries from the main camera field of view */

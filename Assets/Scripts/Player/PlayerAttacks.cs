@@ -6,10 +6,8 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class PlayerAttacks : MonoBehaviour
+public class PlayerAttacks : PowerUpComponent
 {
-    private bool powerUpEngaged;
-    private float powerUpDuration;
     
     // Variable to store projectile prefab
     [Header("Cannon attack")]
@@ -24,16 +22,8 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private GameObject[] cannonPositions;
     [SerializeField] private bool showRaycast;
     
-    
-    private void OnEnable() {
-        PowerUp.powerUpCollected += OnPowerUpCollected;
-    }
-    private void OnDisable() {
-        PowerUp.powerUpCollected -= OnPowerUpCollected;
-    }
-    
     //FixedUpdate is called every fixed frame-rate frame.
-    void Update()
+    override protected void Update()
     {
         if (IsFiring() && powerUpEngaged)
         {
@@ -44,9 +34,7 @@ public class PlayerAttacks : MonoBehaviour
 
         laserGFX.SetActive(IsFiring() && powerUpEngaged);
 
-        if(Time.time > powerUpDuration) {
-            powerUpEngaged = false;
-        }
+        base.Update();
     }
 
     private bool IsFiring() => Input.GetKey(KeyCode.Space);
@@ -84,14 +72,6 @@ public class PlayerAttacks : MonoBehaviour
             laserGFX.GetComponent<RayController>().SetUpLinePositions(transform.position, transform.position + transform.up * rayLength);
         }
 
-    }
-
-    private void OnPowerUpCollected (PowerUpType powerUpType, float duration) {
-        if (powerUpType == PowerUpType.Laser)
-        {
-            powerUpEngaged = true;
-            powerUpDuration = Time.time + duration;
-        } return;
     }
 
 #if UNITY_EDITOR
