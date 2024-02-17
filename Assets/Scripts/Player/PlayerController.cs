@@ -6,12 +6,16 @@ using UnityEngine;
 using System;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : PowerUpComponent
 {
-    [Header("Controls Settings")]
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float maxSpeed;
+    [Header("Movement Settings")]
+    [SerializeField] private float baseRotationSpeed;
+    [SerializeField] private float baseMovementSpeed;
+    [SerializeField] private float baseMaxSpeed;
+    [Header("Power Up Movement Settings")]
+    [SerializeField] private float PURotationSpeed;
+    [SerializeField] private float PUMovementSpeed;
+    [SerializeField] private float PUMaxSpeed;
 
     // Set these values to define the boundaries
     [Header("Game Area")]
@@ -34,18 +38,20 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    override protected void Update()
     {
         CheckBoundaries();
+
+        base.Update();
     }
 
-    // FixedUpdate is called every fixed frame-rate frame
-    private void FixedUpdate()
-    {
-        MoveShip();
+    private void FixedUpdate() {
+        if(powerUpEngaged) {
+                MoveShip(PUMovementSpeed, PUMaxSpeed, PURotationSpeed);
+        } else {MoveShip(baseMovementSpeed, baseMaxSpeed, baseRotationSpeed);}  
     }
 
-    private void MoveShip()
+    private void MoveShip(float movementSpeed, float maxSpeed, float rotationSpeed)
     {
         // Move forward
         if (Input.GetKey(KeyCode.W))
