@@ -308,7 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7966411039111228532}
   - component: {fileID: 5672149261017444782}
-  - component: {fileID: 7059903710857877476}
+  - component: {fileID: 990330534587214457}
   m_Layer: 0
   m_Name: ShieldGFX
   m_TagString: Untagged
@@ -385,7 +385,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7059903710857877476
+--- !u!95 &990330534587214457
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -571,9 +571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7882cb2d3114294ba6dfb927afc5b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 90
-  movementSpeed: 200
-  maxSpeed: 250
+  rotationSpeed: 110
+  movementSpeed: 250
+  maxSpeed: 300
   gameAreaWidth: 26
   gameAreaHeight: 9
   showGameArea: 1
