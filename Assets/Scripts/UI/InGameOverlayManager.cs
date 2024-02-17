@@ -16,6 +16,9 @@ public class InGameOverlayManager : MonoBehaviour
     [Header("Shield PU Display Components")]
     [SerializeField] private GameObject shieldPUDisplay; 
     [SerializeField] private Slider shieldPUSlider;
+    [Header("Speed PU Display Components")]
+    [SerializeField] private GameObject speedPUDisplay; 
+    [SerializeField] private Slider speedPUSlider;
     
     private void OnEnable() {
         Scoretracker.scoreUpdated += OnScoreUpdated;
@@ -36,6 +39,9 @@ public class InGameOverlayManager : MonoBehaviour
                 break;
             case PowerUpType.Shield:
                 StartCoroutine(UpdatePowerUpBar(PUDuration, shieldPUSlider, shieldPUDisplay));
+                break;
+            case PowerUpType.Speed:
+                StartCoroutine(UpdatePowerUpBar(PUDuration, speedPUSlider, speedPUDisplay));
                 break;
             default:
             break;
