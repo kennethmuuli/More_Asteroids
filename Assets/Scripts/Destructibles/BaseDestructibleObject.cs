@@ -1,10 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class BaseDestructibleObject : MonoBehaviour
 {
+    [Header("Object Stats")]
     [SerializeField] protected int myScoreValue;
     [Range(0.5f, 1f)]
     [SerializeField] protected float minSize = 0.5f;
@@ -13,6 +13,12 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     [Range(10f, 200f)]
     [SerializeField] protected float speed = 50.0f;
     [SerializeField] protected int health = 1;
+    [Header("Object Drops")]
+    [SerializeField] protected GameObject[] powerUpsDropList;
+    
+    [Range(0,100)]
+    [SerializeField] protected float dropChance;
+    [Tooltip("How likely, in percentages the destruction of this object is will drop something from the power ups drop list.")]
     protected int currentHealth;
     protected Rigidbody2D _rigidbody;
 
@@ -73,7 +79,19 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         // Invoke objectDestroyed event sending in myScoreValue for all listeners
         objectDestroyed?.Invoke(myScoreValue);
 
+        DropPowerUp();
+
         // Destroy this gameObject | should remain the last thing that's done, as the code won't run after this
         Destroy(gameObject, destroyDelay);
+    }
+
+    protected void DropPowerUp() {
+        float dropRoll = Random.Range(0,100);
+
+        if (dropChance > dropRoll)
+        {
+            int randomPUIndex = Random.Range(0,powerUpsDropList.Length);
+            Instantiate(powerUpsDropList[randomPUIndex],transform.position,Quaternion.identity);
+        }
     }
 }

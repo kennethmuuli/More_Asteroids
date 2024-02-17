@@ -49,11 +49,11 @@ TagManager:
   - name: stars
     uniqueID: 2422125175
     locked: 0
-  - name: Destructibles
-    uniqueID: 3557622519
-    locked: 0
   - name: Pickups
     uniqueID: 2989768841
+    locked: 0
+  - name: Destructibles
+    uniqueID: 3557622519
     locked: 0
   - name: Player
     uniqueID: 3756303347

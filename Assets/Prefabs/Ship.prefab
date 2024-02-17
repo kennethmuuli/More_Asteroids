@@ -571,9 +571,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7882cb2d3114294ba6dfb927afc5b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 110
-  movementSpeed: 250
-  maxSpeed: 300
+  myPowerUpType: 2
+  baseRotationSpeed: 110
+  baseMovementSpeed: 200
+  baseMaxSpeed: 250
+  PURotationSpeed: 150
+  PUMovementSpeed: 400
+  PUMaxSpeed: 500
   gameAreaWidth: 26
   gameAreaHeight: 9
   showGameArea: 1
