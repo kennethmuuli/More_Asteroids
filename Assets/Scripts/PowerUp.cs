@@ -40,6 +40,9 @@ public class PowerUp : MonoBehaviour
             case PowerUpType.Shield:
                 pickUpAnimator.SetTrigger("despawn_shield");
                 break;
+            case PowerUpType.Speed:
+                pickUpAnimator.SetTrigger("despawn_speed");
+                break;
             default:
                 break;
         }

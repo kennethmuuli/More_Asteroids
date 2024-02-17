@@ -349,10 +349,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUp_Speed
       objectReference: {fileID: 0}
-    - target: {fileID: 3033732149177562149, guid: cca8b5f773d28a446910254c2e163236, type: 3}
-      propertyPath: powerUpType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8670601518384548779, guid: cca8b5f773d28a446910254c2e163236, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.32
