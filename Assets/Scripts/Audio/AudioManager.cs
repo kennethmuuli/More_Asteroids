@@ -4,51 +4,16 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] sounds;
-    public static AudioManager instance;
+    [Header("Audio Source")]
+    [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource SFXSource;
 
-    // Use this for initialization
-    void Awake()
+    [Header("Audio Clip")]
+    public AudioClip background;
+
+    private void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DontDestroyOnLoad(gameObject);
-
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-        }
-    }
-
-    void Start()
-    {
-        // Where to put it???
-        //FindFirstObjectByType<AudioManager>().Play("Theme");
-        Play("Theme");
-    }
-
-    // Update is called once per frame
-    public void Play(string name)
-    {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
-
-        if (s == null)
-        {
-            Debug.LogWarning("Sound  + name" + " not found!");
-            return;
-        }
+        musicSource.clip = background;
+        musicSource.Play();
     }
 }
