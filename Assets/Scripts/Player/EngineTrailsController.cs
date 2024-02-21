@@ -27,7 +27,6 @@ public class EngineTrailsController : MonoBehaviour
         
         float shipMagnitude = shipRb.velocity.magnitude;
 
-        print(shipMagnitude);
         if(shipMagnitude > normalMagnitudeCap) {
             float t = shipMagnitude / boostMagnitudeCap;
             currentTrailColor = Color.Lerp(highSpeedColor,maxSpeedColor,t);

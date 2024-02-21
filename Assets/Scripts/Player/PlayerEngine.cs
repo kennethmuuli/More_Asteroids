@@ -6,16 +6,19 @@ using UnityEngine;
 using System;
 
 
-public class PlayerController : PowerUpComponent
+public class PlayerEngine : PowerUpComponent
 {
     [Header("Movement Settings")]
     [SerializeField] private float baseRotationSpeed;
     [SerializeField] private float baseMovementSpeed;
-    [SerializeField] private float baseMaxSpeed;
+    [SerializeField] private float shipMaxSpeed;
     [Header("Power Up Movement Settings")]
     [SerializeField] private float PURotationSpeed;
     [SerializeField] private float PUMovementSpeed;
-    [SerializeField] private float PUMaxSpeed;
+    [Header("Boost Settings")]
+    [SerializeField] private float boostForce;
+    [SerializeField] private float boostCooldown;
+    private float nextBoostTime;
 
     // Set these values to define the boundaries
     [Header("Game Area")]
@@ -47,8 +50,8 @@ public class PlayerController : PowerUpComponent
 
     private void FixedUpdate() {
         if(powerUpEngaged) {
-                MoveShip(PUMovementSpeed, PUMaxSpeed, PURotationSpeed);
-        } else {MoveShip(baseMovementSpeed, baseMaxSpeed, baseRotationSpeed);}  
+                MoveShip(PUMovementSpeed, shipMaxSpeed, PURotationSpeed);
+        } else {MoveShip(baseMovementSpeed, shipMaxSpeed, baseRotationSpeed);}  
     }
 
     private void MoveShip(float movementSpeed, float maxSpeed, float rotationSpeed)
@@ -57,10 +60,6 @@ public class PlayerController : PowerUpComponent
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.up * movementSpeed * Time.fixedDeltaTime);
-            // Debug.Log("Moving forward");
-
-            // Limit speed
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
         }
 
         // Move backward
@@ -68,9 +67,6 @@ public class PlayerController : PowerUpComponent
         {
             rb.AddForce(-transform.up * movementSpeed * Time.fixedDeltaTime);
             // Debug.Log("Moving backward");
-
-            // Limit speed
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
         }
 
         // Rotate left
@@ -95,6 +91,24 @@ public class PlayerController : PowerUpComponent
         else
         {
             shipAnimator.SetBool("turnRight", false);
+        }
+
+        Boost(boostForce);
+
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+    }
+
+    private void Boost(float boostForce) {
+        
+        if (Time.time > nextBoostTime)
+        {
+
+            if (Input.GetKey(KeyCode.I))
+            {
+                rb.AddForce(transform.up * boostForce, ForceMode2D.Impulse);
+                nextBoostTime = Time.time + boostCooldown;
+            }
+
         }
     }
 
