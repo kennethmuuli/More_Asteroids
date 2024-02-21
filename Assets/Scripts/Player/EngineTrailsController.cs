@@ -11,6 +11,15 @@ public class EngineTrailsController : MonoBehaviour
     [SerializeField] private Color currentTrailColor;
     [SerializeField] private float normalMagnitudeCap = 5, boostMagnitudeCap;
     private Rigidbody2D shipRb;
+    private bool isPoweredUp;
+    private float poweredUpTime;
+    
+    private void OnEnable() {
+        PowerUp.powerUpCollected += IsPoweredUp;
+    }
+    private void OnDisable() {
+        PowerUp.powerUpCollected -= IsPoweredUp;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +30,17 @@ public class EngineTrailsController : MonoBehaviour
     void Update()
     {
         ChangeEngineTrailColor();
+
+        if(Time.time > poweredUpTime) {
+            isPoweredUp = false;
+        }
     }
 
     private void ChangeEngineTrailColor() {
         
         float shipMagnitude = shipRb.velocity.magnitude;
 
-        if(shipMagnitude > normalMagnitudeCap) {
+        if(isPoweredUp) {
             float t = shipMagnitude / boostMagnitudeCap;
             currentTrailColor = Color.Lerp(highSpeedColor,maxSpeedColor,t);
         } else {
@@ -39,6 +52,14 @@ public class EngineTrailsController : MonoBehaviour
         {
             var main = engineTrail.main;
             main.startColor = currentTrailColor;
+        }
+    }
+
+    private void IsPoweredUp(PowerUpType powerUpType, float duration){
+        if (powerUpType == PowerUpType.Speed)
+        {
+            isPoweredUp = true;
+            poweredUpTime = Time.time + duration;
         }
     }
 }
