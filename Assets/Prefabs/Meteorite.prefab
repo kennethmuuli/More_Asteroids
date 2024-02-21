@@ -222,7 +222,7 @@ MonoBehaviour:
   myScoreValue: 40
   minSize: 0.5
   maxSize: 1
-  speed: 120
+  speed: 150
   health: 1
   dropsPowerUps: 1
   powerUpsDropList: []

@@ -7,8 +7,10 @@ public class Spawner : MonoBehaviour
 {
 
 #region Variables
-    [SerializeField] private BaseDestructibleObject asteroidPrefab;
+    [SerializeField] private GameObject[] spawnPrefabs;
     [Tooltip("Reference to the prefab to be spawned")]
+
+    private GameObject nextObjectToSpawn;
 
     [SerializeField] private int spawnAmount = 1;
     [Tooltip("Number of objects to spawn in with each spawn")]
@@ -32,6 +34,8 @@ public class Spawner : MonoBehaviour
         
         // Invoke the Spawn method repeatedly based on the spawnRate
         InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
+
+        nextObjectToSpawn = spawnPrefabs[0];
     }
 
     private void CenterPosMainCameraXY(){
@@ -57,9 +61,22 @@ public class Spawner : MonoBehaviour
             float angle = Vector2.SignedAngle(Vector2.up, destPoint - spawnPoint);
 
             // Instantiate an asteroid at the calculated spawn point with the rotated trajectory
-            Instantiate(asteroidPrefab, spawnPoint, Quaternion.Euler(0,0,angle),transform);
+            Instantiate(nextObjectToSpawn, spawnPoint, Quaternion.Euler(0,0,angle),transform);
+
+            ChooseNextObjectToSpawn();
         }
     }
+
+    private void ChooseNextObjectToSpawn() {
+
+        float spawnRoll = Random.Range(0,100);
+    
+            if (spawnRoll <= 90)
+            {
+                nextObjectToSpawn = spawnPrefabs[0];
+            } else nextObjectToSpawn = spawnPrefabs[1];
+    }
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmos() {

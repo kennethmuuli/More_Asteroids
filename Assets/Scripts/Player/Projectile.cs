@@ -22,13 +22,16 @@ public class Projectile : MonoBehaviour
     }
     
     // Destroy projectile if it collides with asteroid
-    private void OnCollisionEnter2D(Collision2D other) 
+    private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.collider.tag == "Asteroid")
+        if(other.tag == "Asteroid")
         {
             other.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(damageAmount);
 
             Destroy(gameObject);
+        } else if (other.tag == "Meteorite") {
+            Destroy(gameObject);
         }
     }
+    
 }
