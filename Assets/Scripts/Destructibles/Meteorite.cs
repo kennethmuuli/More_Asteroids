@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid : BaseDestructibleObject
+public class Meteorite : BaseDestructibleObject
 {
-    private Animator asteroidAnimator;
+    // private Animator meteoriteAnimator;
     private float t;
     private bool isDying;
 
@@ -10,7 +12,7 @@ public class Asteroid : BaseDestructibleObject
     override protected void Start()
     {
         base.Start();
-        asteroidAnimator = GetComponentInChildren<Animator>();
+        // meteoriteAnimator = GetComponentInChildren<Animator>();
         RandomizeSize();
         MoveAndSpin(transform.up);
     }
@@ -21,8 +23,8 @@ public class Asteroid : BaseDestructibleObject
 
         if(currentHealth <= 0 && !isDying) {
             isDying = true;
-            asteroidAnimator.enabled = true;
-            t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
+            // meteoriteAnimator.enabled = true;
+            // t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
             Die(t);
         } return;
     }

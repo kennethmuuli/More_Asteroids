@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +15,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     [SerializeField] protected float speed = 50.0f;
     [SerializeField] protected int health = 1;
     [Header("Object Drops")]
+    [SerializeField] private bool dropsPowerUps = false;
     [SerializeField] protected GameObject[] powerUpsDropList;
     
     [Range(0,100)]
@@ -26,16 +28,19 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     private bool hasBeenInView;
     public static event Action<int> objectDestroyed;
 
-    protected virtual void Start() {
-        currentHealth = health;
-    }
-
     protected virtual void Awake()
     {
         // Get the Rigidbody2D component attached to this GameObject
         _rigidbody = GetComponent<Rigidbody2D>();
         objectRenderer = GetComponentInChildren<Renderer>();
     }
+    protected virtual void Start() {
+        currentHealth = health;
+    }
+    protected virtual void Update() {
+        OffScreenBehaviour();
+    }
+
 
     protected void RandomizeSize()
     {
@@ -86,12 +91,15 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     }
 
     protected void DropPowerUp() {
-        float dropRoll = Random.Range(0,100);
-
-        if (dropChance > dropRoll)
+        if (dropsPowerUps)
         {
-            int randomPUIndex = Random.Range(0,powerUpsDropList.Length);
-            Instantiate(powerUpsDropList[randomPUIndex],transform.position,Quaternion.identity);
-        }
+            float dropRoll = Random.Range(0,100);
+    
+            if (dropChance > dropRoll)
+            {
+                int randomPUIndex = Random.Range(0,powerUpsDropList.Length);
+                Instantiate(powerUpsDropList[randomPUIndex],transform.position,Quaternion.identity);
+            }
+        } else return;
     }
 }

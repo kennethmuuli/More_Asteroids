@@ -5458,6 +5458,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 245245044}
     m_Modifications:
+    - target: {fileID: 130582648162100109, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: boostMagnitudeCap
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 130582648162100109, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: normalMagnitudeCap
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.14
@@ -5497,6 +5505,30 @@ PrefabInstance:
     - target: {fileID: 3718084172147983674, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654203944727808809, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: PUMaxSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654203944727808809, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: boostForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654203944727808809, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: baseMaxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654203944727808809, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: shipMaxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654203944727808809, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: boostCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4654203944727808809, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
+      propertyPath: baseMovementSpeed
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8280935935686920321, guid: 8554e2a18e247f04aa9d8c4411f6084a, type: 3}
       propertyPath: m_Name

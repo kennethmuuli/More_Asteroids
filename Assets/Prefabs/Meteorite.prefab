@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -737344777
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1a247f8c4dd39894c8711f3c137bf467, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a8bf10e719d3eb84d89c147b0c9675b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,10 +120,10 @@ GameObject:
   - component: {fileID: 4862097072001494396}
   - component: {fileID: 6255730386572829374}
   - component: {fileID: 7555123824345577230}
-  - component: {fileID: 6623637298308764491}
+  - component: {fileID: 7912019039534263673}
   m_Layer: 6
-  m_Name: Asteroid
-  m_TagString: Asteroid
+  m_Name: Meteorite
+  m_TagString: Meteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,7 +207,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6623637298308764491
+--- !u!114 &7912019039534263673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,17 +216,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8257778097176506583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a70f3067dff2a404ead76d42b3d8083a, type: 3}
+  m_Script: {fileID: 11500000, guid: ce2d2f755797ae54eb25b6c2c3bad70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myScoreValue: 10
+  myScoreValue: 40
   minSize: 0.5
-  maxSize: 1.5
-  speed: 50
+  maxSize: 1
+  speed: 120
   health: 1
   dropsPowerUps: 1
-  powerUpsDropList:
-  - {fileID: 2809434308649414481, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
-  - {fileID: 2809434308649414481, guid: bf01d6e25429a3d4b823ee60de643acf, type: 3}
-  - {fileID: 2809434308649414481, guid: cca8b5f773d28a446910254c2e163236, type: 3}
-  dropChance: 5
+  powerUpsDropList: []
+  dropChance: 0
