@@ -3,6 +3,7 @@ using UnityEngine;
 public class Asteroid : BaseDestructibleObject
 {
     private Animator asteroidAnimator;
+    private CircleCollider2D circleCollider2D;
     private float t;
     private bool isDying;
 
@@ -11,6 +12,7 @@ public class Asteroid : BaseDestructibleObject
     {
         base.Start();
         asteroidAnimator = GetComponentInChildren<Animator>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
         RandomizeSize();
         MoveAndSpin(transform.up);
     }
@@ -21,6 +23,7 @@ public class Asteroid : BaseDestructibleObject
 
         if(currentHealth <= 0 && !isDying) {
             isDying = true;
+            circleCollider2D.enabled = false;
             asteroidAnimator.enabled = true;
             t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
             Die(t);

@@ -19,7 +19,7 @@ public class PlayerShield : PowerUpComponent
     // Destroy player if it collides with asteroid
     private void OnCollisionEnter2D(Collision2D other) 
     { 
-       if (other.collider.tag == "Asteroid")
+       if (other.collider.tag == "Asteroid" || other.collider.tag == "Meteorite")
        {
             if(!powerUpEngaged)
             {

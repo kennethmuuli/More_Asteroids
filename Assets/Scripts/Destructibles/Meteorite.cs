@@ -5,7 +5,11 @@ using UnityEngine;
 public class Meteorite : BaseDestructibleObject
 {
     // private Animator meteoriteAnimator;
-    private float t;
+
+    private ParticleSystem debrisParticles;
+    private SpriteRenderer spriteRenderer;
+    private CircleCollider2D circleCollider2D;
+    private float t = 2;
     private bool isDying;
 
     // Called on the frame when a script is enabled
@@ -13,6 +17,10 @@ public class Meteorite : BaseDestructibleObject
     {
         base.Start();
         // meteoriteAnimator = GetComponentInChildren<Animator>();
+        debrisParticles = GetComponentInChildren<ParticleSystem>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
+
         RandomizeSize();
         MoveAndSpin(transform.up);
     }
@@ -23,8 +31,10 @@ public class Meteorite : BaseDestructibleObject
 
         if(currentHealth <= 0 && !isDying) {
             isDying = true;
-            // meteoriteAnimator.enabled = true;
-            // t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
+            debrisParticles.Play();
+            spriteRenderer.sprite = null;
+            circleCollider2D.enabled = false;
+
             Die(t);
         } return;
     }
