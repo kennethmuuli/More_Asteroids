@@ -10,10 +10,12 @@ public class PlayerEngine : PowerUpComponent
 {
     [Header("Movement Settings")]
     [SerializeField] private float baseRotationSpeed;
+    [SerializeField] private float baseTurnSpeed;
     [SerializeField] private float baseMovementSpeed;
     [SerializeField] private float shipMaxSpeed;
     [Header("Power Up Movement Settings")]
     [SerializeField] private float PURotationSpeed;
+    [SerializeField] private float PUTurnSpeed;
     [SerializeField] private float PUMovementSpeed;
     [Header("Boost Settings")]
     [SerializeField] private float boostForce;
@@ -50,48 +52,47 @@ public class PlayerEngine : PowerUpComponent
 
     private void FixedUpdate() {
         if(powerUpEngaged) {
-                MoveShip(PUMovementSpeed, shipMaxSpeed, PURotationSpeed);
-        } else {MoveShip(baseMovementSpeed, shipMaxSpeed, baseRotationSpeed);}  
+                MoveShip(PUMovementSpeed, shipMaxSpeed, PURotationSpeed, PUTurnSpeed);
+        } else {MoveShip(baseMovementSpeed, shipMaxSpeed, baseRotationSpeed, baseTurnSpeed);}  
     }
 
-    private void MoveShip(float movementSpeed, float maxSpeed, float rotationSpeed)
+    private void MoveShip(float movementSpeed, float maxSpeed, float rotationSpeed, float turnSpeed)
     {
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        
         // Move forward
-        if (Input.GetKey(KeyCode.W))
+        if (verticalInput != 0)
         {
-            rb.AddForce(transform.up * movementSpeed * Time.fixedDeltaTime);
-        }
-
-        // Move backward
-        if (Input.GetKey(KeyCode.S))
-        {
-            rb.AddForce(-transform.up * movementSpeed * Time.fixedDeltaTime);
-            // Debug.Log("Moving backward");
+            rb.AddForce(verticalInput * transform.up * movementSpeed * Time.fixedDeltaTime);
         }
 
         // Rotate left
         if (Input.GetKey(KeyCode.A))
         {
-            rb.rotation += rotationSpeed * Time.fixedDeltaTime;
             shipAnimator.SetBool("turnLeft", true);
-            // Debug.Log("Rotating left");
-        }
-        else
-        {
-            shipAnimator.SetBool("turnLeft", false);
-        }
 
-        // Rotate right
+            if (verticalInput < 0)
+            {
+                rb.rotation += rotationSpeed * Time.fixedDeltaTime;
+                rb.AddForce(-transform.right * turnSpeed * Time.fixedDeltaTime);
+            } else {
+                rb.rotation += rotationSpeed * Time.fixedDeltaTime;
+            }
+        } else shipAnimator.SetBool("turnLeft", false);
+        
         if (Input.GetKey(KeyCode.D))
         {
-            rb.rotation -= rotationSpeed * Time.fixedDeltaTime;
             shipAnimator.SetBool("turnRight", true);
-            // Debug.Log("Rotating right");
-        }
-        else
-        {
-            shipAnimator.SetBool("turnRight", false);
-        }
+
+            if (verticalInput > 0)
+            {
+                rb.rotation -= rotationSpeed * Time.fixedDeltaTime;
+                rb.AddForce(transform.right * turnSpeed * Time.fixedDeltaTime);
+            } else {
+                rb.rotation -= rotationSpeed * Time.fixedDeltaTime;
+            }
+        } else shipAnimator.SetBool("turnRight", false);
+        
 
         Boost(boostForce);
 
