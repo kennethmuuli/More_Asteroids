@@ -11,7 +11,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private float lifetimeDuration;
     [Tooltip("Time in seconds before the powerup despawns if not picked up.")]
     [SerializeField] private SpriteRenderer iconRenderer;
-    public static Action<PowerUpType, float> powerUpCollected;
+    public static Action<PowerUpType, float, int> powerUpCollected;
     private Animator pickUpAnimator;
 
     private void Start() {
@@ -21,7 +21,8 @@ public class PowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) { 
         if (other.CompareTag("Player")) {
-            powerUpCollected?.Invoke(powerUpType, duration);
+            
+            powerUpCollected?.Invoke(powerUpType, duration, other.transform.GetInstanceID());
 
             ChooseDespawnAnimation();
             float t = pickUpAnimator.GetCurrentAnimatorStateInfo(0).length;

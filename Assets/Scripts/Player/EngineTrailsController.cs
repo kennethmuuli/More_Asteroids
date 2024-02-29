@@ -13,6 +13,7 @@ public class EngineTrailsController : MonoBehaviour
     private Rigidbody2D shipRb;
     private bool isPoweredUp;
     private float poweredUpTime;
+    private int instanceID;
     
     private void OnEnable() {
         PowerUp.powerUpCollected += IsPoweredUp;
@@ -20,7 +21,11 @@ public class EngineTrailsController : MonoBehaviour
     private void OnDisable() {
         PowerUp.powerUpCollected -= IsPoweredUp;
     }
-    // Start is called before the first frame update
+    
+    private void Awake() {
+        instanceID = transform.GetInstanceID();
+    }
+
     void Start()
     {
         shipRb = GetComponentInParent<Rigidbody2D>();
@@ -55,8 +60,8 @@ public class EngineTrailsController : MonoBehaviour
         }
     }
 
-    private void IsPoweredUp(PowerUpType powerUpType, float duration){
-        if (powerUpType == PowerUpType.Speed)
+    private void IsPoweredUp(PowerUpType powerUpType, float duration, int instanceIDToCheck){
+        if (powerUpType == PowerUpType.Speed && instanceID == instanceIDToCheck)
         {
             isPoweredUp = true;
             poweredUpTime = Time.time + duration;

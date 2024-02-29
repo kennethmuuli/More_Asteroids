@@ -30,7 +30,7 @@ public class InGameOverlayManager : MonoBehaviour
         PowerUp.powerUpCollected -= OnPowerUpCollected;
     }
 
-    private void OnPowerUpCollected(PowerUpType type, float PUDuration)
+    private void OnPowerUpCollected(PowerUpType type, float PUDuration, int instanceIDToCheck)
     {
         switch (type)
         {
