@@ -5139,8 +5139,8 @@ MonoBehaviour:
   highSpeedColor: {r: 0.8083642, g: 0.14509803, b: 1, a: 1}
   maxSpeedColor: {r: 1, g: 0.73170865, b: 0, a: 1}
   currentTrailColor: {r: 0.22352941, g: 0.22352941, b: 0.22352941, a: 1}
-  normalMagnitudeCap: 6
-  boostMagnitudeCap: 10
+  normalMagnitudeCap: 4
+  boostMagnitudeCap: 6
 --- !u!1 &5294424050551809671
 GameObject:
   m_ObjectHideFlags: 0
@@ -5323,6 +5323,8 @@ GameObject:
   - component: {fileID: 3718084172147983674}
   - component: {fileID: 84573996091420504}
   - component: {fileID: 1255810813333516955}
+  - component: {fileID: 3104544839154198307}
+  - component: {fileID: 481773668871730886}
   - component: {fileID: 4654203944727808809}
   - component: {fileID: 4680695248912631972}
   - component: {fileID: 2668649697375780840}
@@ -5433,6 +5435,116 @@ PolygonCollider2D:
       - {x: 0.38651067, y: -0.4140627}
       - {x: 0.63585263, y: 0.020396858}
   m_UseDelaunayMesh: 0
+--- !u!114 &3104544839154198307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280935935686920321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 3280a9bf9c123a642aa52a47776eb319, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 481773668871730886}
+        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
+        m_MethodName: OnMovementUpdated
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 50a2039b-f712-4de8-ae41-8ac7754461f7
+    m_ActionName: 'Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 481773668871730886}
+        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
+        m_MethodName: OnBoostUpdated
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: be1a6ded-0a57-4d8b-a0cc-31b451114302
+    m_ActionName: 'Player/Boost[/Keyboard/i]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 481773668871730886}
+        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
+        m_MethodName: OnShootUpdated
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 74577170-b756-4dc1-af7c-bab66b8323c6
+    m_ActionName: 'Player/Shoot[/Keyboard/o]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0b5612e1-ba48-4fef-afaa-825f7deeded0
+    m_ActionName: 'Player/Quit[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0cebb26e-113d-49db-83b5-2a6553f36363
+    m_ActionName: 'Player/Join[/Keyboard/numpadPlus]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3ee35d56-f7a8-4c8a-956f-ad5604606422
+    m_ActionName: 'UI/MenuMovement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2c2c2a31-cd97-4def-8ebe-fec10fafb7bd
+    m_ActionName: 'UI/Confirm[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2cef77c3-571f-4c39-b20c-da5ec69b2042
+    m_ActionName: 'UI/Back/Cancel[/Keyboard/escape]'
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &481773668871730886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280935935686920321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d61f7f331e5a04d901d924fb9869d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4654203944727808809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5447,11 +5559,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPowerUpType: 2
   baseRotationSpeed: 110
-  baseMovementSpeed: 200
-  baseMaxSpeed: 250
-  PURotationSpeed: 150
-  PUMovementSpeed: 400
-  PUMaxSpeed: 500
+  baseTurnSpeed: 50
+  baseMovementSpeed: 150
+  shipMaxSpeed: 10
+  PURotationSpeed: 180
+  PUTurnSpeed: 100
+  PUMovementSpeed: 300
+  boostForce: 10
+  boostCooldown: 0.5
   gameAreaWidth: 26
   gameAreaHeight: 9
   showGameArea: 1
