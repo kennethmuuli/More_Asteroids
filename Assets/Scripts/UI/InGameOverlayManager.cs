@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class InGameOverlayManager : MonoBehaviour
@@ -10,19 +11,27 @@ public class InGameOverlayManager : MonoBehaviour
 
     // Reference to the Text component in the Canvas
     [SerializeField] private TextMeshProUGUI score;
-    [Header("Laser PU Display Components")]
-    [SerializeField] private GameObject laserPUDisplay; 
-    [SerializeField] private Slider laserPUSlider;
-    [Header("Shield PU Display Components")]
-    [SerializeField] private GameObject shieldPUDisplay; 
-    [SerializeField] private Slider shieldPUSlider;
-    [Header("Speed PU Display Components")]
-    [SerializeField] private GameObject speedPUDisplay; 
-    [SerializeField] private Slider speedPUSlider;
+    [Header("Player One Components")]
+    [SerializeField] private GameObject laserPUDisplay1; 
+    [SerializeField] private Slider laserPUSlider1;
+    [SerializeField] private GameObject shieldPUDisplay1; 
+    [SerializeField] private Slider shieldPUSlider1;
+    [SerializeField] private GameObject speedPUDisplay1; 
+    [SerializeField] private Slider speedPUSlider1;
+    [Header("Player Two Components")]
+    [SerializeField] private GameObject playerHealth2;
+    [SerializeField] private GameObject laserPUDisplay2; 
+    [SerializeField] private Slider laserPUSlider2;
+    [SerializeField] private GameObject shieldPUDisplay2; 
+    [SerializeField] private Slider shieldPUSlider2;
+    [SerializeField] private GameObject speedPUDisplay2; 
+    [SerializeField] private Slider speedPUSlider2;
+    private int playerOneID;
     
     private void OnEnable() {
         Scoretracker.scoreUpdated += OnScoreUpdated;
         PowerUp.powerUpCollected += OnPowerUpCollected;
+        GameManager.OnPublishPlayerID += AssignOverlaySide;
     }
 
     private void OnDisable() {
@@ -30,21 +39,63 @@ public class InGameOverlayManager : MonoBehaviour
         PowerUp.powerUpCollected -= OnPowerUpCollected;
     }
 
+    private void AssignOverlaySide(int playerIndex) {
+        if (playerOneID == 0)
+        {
+            playerOneID = playerIndex;
+        } else {
+            playerHealth2.SetActive(true);
+        }
+    }
+
+
     private void OnPowerUpCollected(PowerUpType type, float PUDuration, int instanceIDToCheck)
     {
+        var components = SelectOverlayComponents(type, instanceIDToCheck); 
+        
+        StartCoroutine(UpdatePowerUpBar(PUDuration, components.slider, components.display));
+
+    }
+
+        private (Slider slider, GameObject display) SelectOverlayComponents(PowerUpType type, int instanceIDToCheck) {
+        Slider selectedSlider;
+        GameObject selectedGameObject;
+        
         switch (type)
         {
             case PowerUpType.Laser:
-                StartCoroutine(UpdatePowerUpBar(PUDuration, laserPUSlider, laserPUDisplay));
-                break;
+                if (instanceIDToCheck == playerOneID)
+                {
+                    selectedSlider = laserPUSlider1;
+                    selectedGameObject = laserPUDisplay1;
+                } else {
+                    selectedSlider = laserPUSlider2;
+                    selectedGameObject = laserPUDisplay2;
+                }
+                return (selectedSlider, selectedGameObject);
             case PowerUpType.Shield:
-                StartCoroutine(UpdatePowerUpBar(PUDuration, shieldPUSlider, shieldPUDisplay));
-                break;
+                if (instanceIDToCheck == playerOneID)
+                {
+                    selectedSlider = shieldPUSlider1;
+                    selectedGameObject = shieldPUDisplay1;
+                } else {
+                    selectedSlider = shieldPUSlider2;
+                    selectedGameObject = shieldPUDisplay2;
+                }
+                return (selectedSlider, selectedGameObject);
             case PowerUpType.Speed:
-                StartCoroutine(UpdatePowerUpBar(PUDuration, speedPUSlider, speedPUDisplay));
-                break;
+                if (instanceIDToCheck == playerOneID)
+                {
+                    selectedSlider = speedPUSlider1;
+                    selectedGameObject = speedPUDisplay1;
+                } else {
+                    selectedSlider = speedPUSlider2;
+                    selectedGameObject = speedPUDisplay2;
+                }
+                return (selectedSlider, selectedGameObject);
             default:
-            break;
+            Debug.LogError("No matching overlay components found.");
+            return (selectedSlider = null, selectedGameObject = null);
         }
     }
 
@@ -63,8 +114,7 @@ public class InGameOverlayManager : MonoBehaviour
 
         powerupSlider.value = 0;
 
-        powerupDisplay.SetActive(false);
-        
+        powerupDisplay.SetActive(false); 
     }
 
     private void OnScoreUpdated(int scoreToDisplay)

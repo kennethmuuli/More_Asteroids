@@ -7,9 +7,8 @@ public class PlayerInputReader : MonoBehaviour
     private Vector2 _movementVector;
     private bool _isBoosting, _isFiring, _isAskedToJoin;
 
-    private void Update() {
-        // print(_isBoosting);
-       
+    private void Start(){
+        GameManager.instance.PublishPlayerID(transform.GetInstanceID());
     }
 
     public void OnMovementUpdated(InputAction.CallbackContext context) {
