@@ -23,7 +23,7 @@ public class EngineTrailsController : MonoBehaviour
     }
     
     private void Awake() {
-        instanceID = transform.GetInstanceID();
+        instanceID = transform.root.GetInstanceID();
     }
 
     void Start()
