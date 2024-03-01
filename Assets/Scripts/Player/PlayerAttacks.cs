@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerInputReader))]
 public class PlayerAttacks : PowerUpComponent
 {
     
@@ -21,7 +22,12 @@ public class PlayerAttacks : PowerUpComponent
     [SerializeField] private GameObject laserGFX;
     [SerializeField] private GameObject[] cannonPositions;
     [SerializeField] private bool showRaycast;
+    private PlayerInputReader attackInput;
     
+    private void Start() {
+        attackInput = GetComponent<PlayerInputReader>();
+    }
+
     //FixedUpdate is called every fixed frame-rate frame.
     override protected void Update()
     {
@@ -37,7 +43,7 @@ public class PlayerAttacks : PowerUpComponent
         base.Update();
     }
 
-    private bool IsFiring() => Input.GetKey(KeyCode.Space);
+    private bool IsFiring() => attackInput.IsFiring;
 
     // Fire one or multiple projectiles
     void Fire()
@@ -75,13 +81,13 @@ public class PlayerAttacks : PowerUpComponent
     }
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos() {
-        if (IsFiring() && powerUpEngaged && showRaycast)
-        {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawRay(transform.position, transform.up * rayLength);
-        }
-    }  
+    // private void OnDrawGizmos() {
+    //     if (powerUpEngaged && showRaycast)
+    //     {
+    //         Gizmos.color = Color.cyan;
+    //         Gizmos.DrawRay(transform.position, transform.up * rayLength);
+    //     }
+    // }  
 #endif
 
 }

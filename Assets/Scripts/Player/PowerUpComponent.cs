@@ -8,7 +8,11 @@ public abstract class PowerUpComponent : MonoBehaviour
     [Tooltip("Designate, which type of power up this is.")]
     protected bool powerUpEngaged;
     protected float powerUpDuration;
+    private int instanceID;
 
+    private void Awake() {
+        instanceID = transform.GetInstanceID();
+    }
     private void OnEnable() {
         PowerUp.powerUpCollected += OnPowerUpCollected;
     }
@@ -24,8 +28,8 @@ public abstract class PowerUpComponent : MonoBehaviour
         }
     }
 
-    private void OnPowerUpCollected (PowerUpType powerUpType, float duration) {
-        if (powerUpType == myPowerUpType)
+    private void OnPowerUpCollected (PowerUpType powerUpType, float duration, int instanceIDToCheck) {
+        if (powerUpType == myPowerUpType && instanceID == instanceIDToCheck)
         {
             powerUpEngaged = true;
             powerUpDuration = Time.time + duration;

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 
-
+[RequireComponent(typeof(PlayerInputReader))]
 public class PlayerEngine : PowerUpComponent
 {
     [Header("Movement Settings")]
@@ -33,6 +33,7 @@ public class PlayerEngine : PowerUpComponent
 
     private Animator shipAnimator;
     private Rigidbody2D rb;
+    private PlayerInputReader movementInput;
 
     // Start is called before the first frame update
     private void Start()
@@ -40,6 +41,7 @@ public class PlayerEngine : PowerUpComponent
         // Get the Rigidbody2D component only once during initialization
         rb = GetComponent<Rigidbody2D>();
         shipAnimator = GetComponentInChildren<Animator>();
+        movementInput = GetComponent<PlayerInputReader>();
     }
 
     // Update is called once per frame
@@ -54,11 +56,17 @@ public class PlayerEngine : PowerUpComponent
         if(powerUpEngaged) {
                 MoveShip(PUMovementSpeed, shipMaxSpeed, PURotationSpeed, PUTurnSpeed);
         } else {MoveShip(baseMovementSpeed, shipMaxSpeed, baseRotationSpeed, baseTurnSpeed);}  
+
+        if (movementInput.IsBoosting)
+        {
+           Boost(boostForce);    
+        }
     }
 
     private void MoveShip(float movementSpeed, float maxSpeed, float rotationSpeed, float turnSpeed)
     {
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        float verticalInput = movementInput.MovementVector.y;
+        float horizontalInput = movementInput.MovementVector.x;
         
         // Move forward
         if (verticalInput != 0)
@@ -67,7 +75,7 @@ public class PlayerEngine : PowerUpComponent
         }
 
         // Rotate left
-        if (Input.GetKey(KeyCode.A))
+        if (horizontalInput < 0)
         {
             shipAnimator.SetBool("turnLeft", true);
 
@@ -80,7 +88,7 @@ public class PlayerEngine : PowerUpComponent
             }
         } else shipAnimator.SetBool("turnLeft", false);
         
-        if (Input.GetKey(KeyCode.D))
+        if (horizontalInput > 0)
         {
             shipAnimator.SetBool("turnRight", true);
 
@@ -92,9 +100,6 @@ public class PlayerEngine : PowerUpComponent
                 rb.rotation -= rotationSpeed * Time.fixedDeltaTime;
             }
         } else shipAnimator.SetBool("turnRight", false);
-        
-
-        Boost(boostForce);
 
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
     }
@@ -103,12 +108,8 @@ public class PlayerEngine : PowerUpComponent
         
         if (Time.time > nextBoostTime)
         {
-
-            if (Input.GetKey(KeyCode.I))
-            {
-                rb.AddForce(transform.up * boostForce, ForceMode2D.Impulse);
-                nextBoostTime = Time.time + boostCooldown;
-            }
+            rb.AddForce(transform.up * boostForce, ForceMode2D.Impulse);
+            nextBoostTime = Time.time + boostCooldown;
 
         }
     }
