@@ -11,6 +11,7 @@ public class InGameOverlayManager : MonoBehaviour
 
     // Reference to the Text component in the Canvas
     [SerializeField] private TextMeshProUGUI score;
+    [SerializeField] private GameObject inGameOverlay;
     [Header("Player One Components")]
     [SerializeField] private GameObject laserPUDisplay1; 
     [SerializeField] private Slider laserPUSlider1;
@@ -32,11 +33,23 @@ public class InGameOverlayManager : MonoBehaviour
         Scoretracker.scoreUpdated += OnScoreUpdated;
         PowerUp.powerUpCollected += OnPowerUpCollected;
         GameManager.OnPublishPlayerID += AssignOverlaySide;
+        GameManager.OnUpdateGameState += ToggleInGameOverlay;
     }
 
     private void OnDisable() {
         Scoretracker.scoreUpdated -= OnScoreUpdated;
         PowerUp.powerUpCollected -= OnPowerUpCollected;
+        GameManager.OnPublishPlayerID -= AssignOverlaySide;
+        GameManager.OnUpdateGameState -= ToggleInGameOverlay;
+    }
+
+    private void ToggleInGameOverlay(GameState stateToCheck) {
+        if (stateToCheck == GameState.Pause)
+        {
+            inGameOverlay.GetComponent<Canvas>().enabled = false;
+        } else if (stateToCheck == GameState.Play) {
+            inGameOverlay.GetComponent<Canvas>().enabled = true;
+        }
     }
 
     private void AssignOverlaySide(int playerIndex) {
@@ -47,7 +60,6 @@ public class InGameOverlayManager : MonoBehaviour
             playerHealth2.SetActive(true);
         }
     }
-
 
     private void OnPowerUpCollected(PowerUpType type, float PUDuration, int instanceIDToCheck)
     {

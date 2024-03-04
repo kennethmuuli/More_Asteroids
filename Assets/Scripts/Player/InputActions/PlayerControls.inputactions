@@ -33,7 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Quit",
+                    "name": "Quit/Pause",
                     "type": "Button",
                     "id": "0b5612e1-ba48-4fef-afaa-825f7deeded0",
                     "expectedControlType": "Button",
@@ -108,17 +108,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Arrows",
-                    "id": "beed3d87-6d25-46e4-bb89-51d54f5cccc2",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "",
                     "id": "06e464fd-96b2-4545-b78c-1673eab39483",
                     "path": "<Keyboard>/i",
@@ -147,7 +136,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard_1",
-                    "action": "Quit",
+                    "action": "Quit/Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

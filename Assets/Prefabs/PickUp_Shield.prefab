@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1305198455
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7819247541327997625, guid: 83dca1fe5ca237d42958404a1501f2ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpType: 1
-  duration: 5
+  duration: 10
   lifetimeDuration: 10
   iconRenderer: {fileID: 8296384201647164127}
 --- !u!61 &3329609173485385944
@@ -279,7 +279,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1305198455
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cfb732a90f7460343aef6a2e0b879ade, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
