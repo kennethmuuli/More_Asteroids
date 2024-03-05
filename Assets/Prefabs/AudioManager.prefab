@@ -177,7 +177,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1364147086979524663}
   SFXSource: {fileID: 4379319249553505223}
-  background: {fileID: 8300000, guid: 560f82af28254944683b79f6f3f37f4b, type: 3}
+  _backgroundMusic: {fileID: 8300000, guid: 560f82af28254944683b79f6f3f37f4b, type: 3}
+  _projectileSound: {fileID: 0}
+  _laserSound: {fileID: 0}
+  _asteroidDestructionSound: {fileID: 0}
 --- !u!1 &8676547444566472896
 GameObject:
   m_ObjectHideFlags: 0
