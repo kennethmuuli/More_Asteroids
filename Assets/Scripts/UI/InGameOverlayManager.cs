@@ -28,6 +28,9 @@ public class InGameOverlayManager : MonoBehaviour
     [SerializeField] private GameObject speedPUDisplay2; 
     [SerializeField] private Slider speedPUSlider2;
     private int playerOneID;
+    private int playerTwoID;
+    // Set up a nested dictionary, where the first level maps playerId to second level which maps powerUpTypeToCoroutine
+    private Dictionary<int, Dictionary<PowerUpType, Coroutine>> activeCoroutines = new Dictionary<int, Dictionary<PowerUpType, Coroutine>>();
     
     private void OnEnable() {
         Scoretracker.scoreUpdated += OnScoreUpdated;
@@ -57,21 +60,38 @@ public class InGameOverlayManager : MonoBehaviour
         {
             playerOneID = playerIndex;
         } else {
+            playerTwoID = playerIndex;
             playerHealth2.SetActive(true);
         }
     }
 
     private void OnPowerUpCollected(PowerUpType type, float PUDuration, int instanceIDToCheck)
     {
+
         var components = SelectOverlayComponents(type, instanceIDToCheck); 
         
-        StartCoroutine(UpdatePowerUpBar(PUDuration, components.slider, components.display));
+        // check which player the passed in ID corresponds to
+        int playerID = instanceIDToCheck == playerOneID ? playerOneID : playerTwoID;
 
+        // check if a player has any coroutines running, if not start a new dict for them
+        if (!activeCoroutines.ContainsKey(playerID))
+        {
+            activeCoroutines[playerID] = new Dictionary<PowerUpType, Coroutine>();
+        }
+
+        // check if a player already has a coroutine for a certain type of power up running, if so, stop said coroutine
+        if (activeCoroutines[playerID].ContainsKey(type))
+        {
+            StopCoroutine(activeCoroutines[playerID][type]);
+        }
+
+        // start a new coroutine and register it's id and type in the activeCoroutine dictionary
+        activeCoroutines[playerID][type] = StartCoroutine(UpdatePowerUpBar(PUDuration, components.slider, components.display));
     }
 
-        private (Slider slider, GameObject display) SelectOverlayComponents(PowerUpType type, int instanceIDToCheck) {
-        Slider selectedSlider;
-        GameObject selectedGameObject;
+    private (Slider slider, GameObject display) SelectOverlayComponents(PowerUpType type, int instanceIDToCheck) {
+    Slider selectedSlider;
+    GameObject selectedGameObject;
         
         switch (type)
         {
