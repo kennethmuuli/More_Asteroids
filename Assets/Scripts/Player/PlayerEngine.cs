@@ -1,9 +1,4 @@
-
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using System;
 
 [RequireComponent(typeof(PlayerInputReader))]
 public class PlayerEngine : PowerUpComponent
@@ -22,14 +17,13 @@ public class PlayerEngine : PowerUpComponent
     [SerializeField] private float boostCooldown;
     private float nextBoostTime;
 
-    // Set these values to define the boundaries
     [Header("Game Area")]
-    [SerializeField] private float gameAreaWidth = 26f;
-    [Tooltip("Game area bounding box width/2 in world units")]
-    [SerializeField] private float gameAreaHeight = 13f;
-    [Tooltip("Game area bounding box height/2 in world units")]
+    [SerializeField] private float gameAreaPadding;
+    [Tooltip("Distance from view port edge in world units to bring the game area inside the view port and not allow a part of the ship to fly off screen.")]
     [SerializeField] private bool showGameArea;
     [Tooltip("Check to visualize game area in the scene view")]
+    float gameAreaWidth;
+    float gameAreaHeight;
 
     private Animator shipAnimator;
     private Rigidbody2D rb;
@@ -116,16 +110,30 @@ public class PlayerEngine : PowerUpComponent
 
     private void CheckBoundaries()
     {
-        /* TODO: Would make sense to calculate the boundaries from the main camera field of view */
-        // Clamp the position to stay within the defined boundaries
-        float clampedX = Mathf.Clamp(rb.position.x, -gameAreaWidth, gameAreaWidth);
-        float clampedY = Mathf.Clamp(rb.position.y, -gameAreaHeight, gameAreaHeight);
+        // Get the main camera
+        Camera mainCamera = Camera.main;
 
-        // Update the Rigidbody2D position
-        rb.position = new Vector2(clampedX, clampedY);
+        if (mainCamera != null)
+        {
+            // Calculate the orthographic size of the camera
+            float cameraOrthographicSize = mainCamera.orthographicSize;
+            float cameraAspect = mainCamera.aspect;
 
-        // Debug the clamped position if you want 
-        //  Debug.Log($"Clamped Position: ({clampedX}, {clampedY})");
+            // Calculate the boundaries based on camera view
+            gameAreaWidth = cameraOrthographicSize * cameraAspect - gameAreaPadding;
+            gameAreaHeight = cameraOrthographicSize - gameAreaPadding;
+
+            // Clamp the position to stay within the calculated boundaries
+            float clampedX = Mathf.Clamp(rb.position.x, -gameAreaWidth, gameAreaWidth);
+            float clampedY = Mathf.Clamp(rb.position.y, -gameAreaHeight, gameAreaHeight);
+
+            // Update the Rigidbody2D position
+            rb.position = new Vector2(clampedX, clampedY);
+        }
+        else
+        {
+            Debug.LogWarning("Main camera not found.");
+        }
     }
 
 # if UNITY_EDITOR

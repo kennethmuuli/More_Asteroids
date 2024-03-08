@@ -5346,7 +5346,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.07, y: -1.39, z: 0}
-  m_LocalScale: {x: 1.0619, y: 1.0619, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4538448095211942081}
@@ -5540,7 +5540,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2cef77c3-571f-4c39-b20c-da5ec69b2042
     m_ActionName: 'UI/Back/Cancel[/Keyboard/escape]'
-  m_NeverAutoSwitchControlSchemes: 1
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -5579,8 +5579,7 @@ MonoBehaviour:
   PUMovementSpeed: 300
   boostForce: 10
   boostCooldown: 3
-  gameAreaWidth: 18
-  gameAreaHeight: 9
+  gameAreaPadding: 0.5
   showGameArea: 1
 --- !u!114 &4680695248912631972
 MonoBehaviour:
