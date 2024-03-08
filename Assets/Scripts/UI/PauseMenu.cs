@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private Button pauseMenuInitial;
     // Start is called before the first frame update
     private void OnEnable() {
         GameManager.OnUpdateGameState += TogglePauseMenu;
@@ -18,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     private void TogglePauseMenu(GameState stateToCheck) {
         if (stateToCheck == GameState.Pause) {
             pauseMenu.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(pauseMenuInitial.gameObject);
         }
     }
 

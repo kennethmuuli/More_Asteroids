@@ -30,6 +30,15 @@ public class GameManager : MonoBehaviour
         OnPublishPlayerID?.Invoke(playerInstanceID);
     }
 
+    public void PlayerDied() {
+        _currentPlayerCount--;
+        print(_currentPlayerCount);
+        if (_currentPlayerCount == 0)
+        {
+            UpdateGameState(GameState.GameOver);
+        }
+    }
+
     public void UpdateGameState (GameState newState) {
         currentGameState = newState;
 
@@ -39,6 +48,9 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1f;
             break;
             case GameState.Pause:
+                Time.timeScale = 0f;
+            break;
+            case GameState.GameOver:
                 Time.timeScale = 0f;
             break;
             default:
@@ -55,5 +67,6 @@ public class GameManager : MonoBehaviour
 
 public enum GameState {
     Play,
-    Pause
+    Pause,
+    GameOver
 }

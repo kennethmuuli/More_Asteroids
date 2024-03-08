@@ -27,6 +27,7 @@ public class PlayerShield : PowerUpComponent
                 shieldGFX.SetActive(false);
                 //Implement player death logic here, e.g. show game over screen.
                 print("Player is dead, got hit by asteroid.");
+                GameManager.instance.PlayerDied();
             } else if (powerUpEngaged) {
                 
                 other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(1);
