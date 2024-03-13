@@ -35,14 +35,14 @@ public class InGameOverlayManager : MonoBehaviour
     private void OnEnable() {
         Scoretracker.scoreUpdated += OnScoreUpdated;
         PowerUp.powerUpCollected += OnPowerUpCollected;
-        GameManager.OnPublishPlayerID += AssignOverlaySide;
+        GameManager.OnPublishPlayer += AssignOverlaySide;
         GameManager.OnUpdateGameState += ToggleInGameOverlay;
     }
 
     private void OnDisable() {
         Scoretracker.scoreUpdated -= OnScoreUpdated;
         PowerUp.powerUpCollected -= OnPowerUpCollected;
-        GameManager.OnPublishPlayerID -= AssignOverlaySide;
+        GameManager.OnPublishPlayer -= AssignOverlaySide;
         GameManager.OnUpdateGameState -= ToggleInGameOverlay;
     }
 
@@ -55,7 +55,9 @@ public class InGameOverlayManager : MonoBehaviour
         }
     }
 
-    private void AssignOverlaySide(int playerIndex) {
+    private void AssignOverlaySide(int playerIndex, GameObject player) {
+        _ = player;
+        
         if (playerOneID == 0)
         {
             playerOneID = playerIndex;

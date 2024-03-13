@@ -5405,6 +5405,7 @@ GameObject:
   - component: {fileID: 1787111898}
   - component: {fileID: 1787111899}
   - component: {fileID: 1787111900}
+  - component: {fileID: 1787111902}
   m_Layer: 0
   m_Name: '- - - MANAGERS - - -'
   m_TagString: Untagged
@@ -5551,6 +5552,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd62e11b4ad5b1546884c5ec0a9638f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1787111902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787111896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64550a0b7959fc949a96c46565bfdc3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1867564902
 GameObject:
   m_ObjectHideFlags: 0
@@ -5675,11 +5688,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: spawnRate
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: spawnAmount
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: spawnCircleRadius
+      value: 22.2
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: spawnPrefabs.Array.size

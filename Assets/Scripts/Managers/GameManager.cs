@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public static Action<int> OnPublishPlayerID;
+    public static Action<int, GameObject> OnPublishPlayer;
     public static Action<GameState> OnUpdateGameState;
     private static GameState currentGameState;
     private int _currentPlayerCount = 0;
@@ -24,15 +24,22 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.Play);
     }
 
+    private void Update() {
+        print(_currentPlayerCount);
+    }
+
     // Update is called once per frame
-    public void PublishPlayerID (int playerInstanceID) {
+    public void PublishPlayerID (int playerInstanceID, GameObject player) {
         _currentPlayerCount++;
-        OnPublishPlayerID?.Invoke(playerInstanceID);
+        OnPublishPlayer?.Invoke(playerInstanceID, player);
+    }
+
+    public void UpdatePlayerCount() {
+        _currentPlayerCount++;
     }
 
     public void PlayerDied() {
         _currentPlayerCount--;
-        print(_currentPlayerCount);
         if (_currentPlayerCount == 0)
         {
             UpdateGameState(GameState.GameOver);

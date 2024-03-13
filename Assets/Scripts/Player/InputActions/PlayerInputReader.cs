@@ -18,7 +18,7 @@ public class PlayerInputReader : MonoBehaviour
         GameManager.OnUpdateGameState -= ToggleInputMap;
     }
     private void Start(){
-        GameManager.instance.PublishPlayerID(transform.GetInstanceID());
+        GameManager.instance.PublishPlayerID(transform.GetInstanceID(), gameObject);
         playerInput = GetComponent<PlayerInput>();
     }
 
