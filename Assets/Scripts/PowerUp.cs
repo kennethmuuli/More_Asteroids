@@ -48,7 +48,7 @@ public class PowerUp : MonoBehaviour
                 pickUpAnimator.SetTrigger("despawn_speed");
                 break;
             case PowerUpType.Revive:
-                pickUpAnimator.SetTrigger("despawn_speed");
+                pickUpAnimator.SetTrigger("despawn_revive");
                 break;
             default:
                 break;
