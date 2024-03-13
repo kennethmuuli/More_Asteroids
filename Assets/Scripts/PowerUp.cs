@@ -44,6 +44,12 @@ public class PowerUp : MonoBehaviour
             case PowerUpType.Speed:
                 pickUpAnimator.SetTrigger("despawn_speed");
                 break;
+            case PowerUpType.Health:
+                pickUpAnimator.SetTrigger("despawn_speed");
+                break;
+            case PowerUpType.Revive:
+                pickUpAnimator.SetTrigger("despawn_speed");
+                break;
             default:
                 break;
         }
@@ -54,5 +60,6 @@ public enum PowerUpType {
     Laser,
     Shield,
     Speed,
-    Health
+    Health,
+    Revive
 }

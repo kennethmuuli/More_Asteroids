@@ -4,19 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerReviver : MonoBehaviour
+public class PlayerReviver : PowerUpComponent
 {
     public static Action<int> playerRevived;
     private Dictionary<int, GameObject> playerDict = new Dictionary<int, GameObject>();
     private int _joinedPlayerCount;
     private PlayerInputManager playerInputManager;
-    // Start is called before the first frame update
-    private int secondPlayerID;
     
-    private void OnEnable() {
+    protected override void OnEnable() {
+        base.OnEnable();
         GameManager.OnPublishPlayer += LimitPlayerJoin;
     }
-    private void OnDisable() {
+    protected override void OnDisable() {
+        base.OnDisable();
         GameManager.OnPublishPlayer -= LimitPlayerJoin;
     }
 
@@ -30,25 +30,38 @@ public class PlayerReviver : MonoBehaviour
         _joinedPlayerCount++;
         
         if(_joinedPlayerCount == 2) {
-            secondPlayerID = playerID;
             playerInputManager.DisableJoining();
         }
 
         playerDict.Add(playerID,player);
     }
 
+    protected override void OnPowerUpCollected(PowerUpType powerUpType, float duration, int instanceIDToCheck)
+    {
+        if (powerUpType == myPowerUpType)
+        {
+            powerUpEngaged = true;
+            powerUpDuration = Time.time + duration;
+            OnPlayerRevived(instanceIDToCheck);
+        } return;
+
+    }
+
     private void OnPlayerRevived(int playerID) {
-        
         foreach (KeyValuePair<int, GameObject> entry in playerDict)
         {
-            if (playerID != entry.Key) {
+            //return if id matches the id of triggering player, i.e. don't trigger revive on self
+            if (playerID == entry.Key) {
                 continue;
             }
             
-            GameManager.instance.UpdatePlayerCount();
-            entry.Value.transform.position = Vector2.zero;
-            entry.Value.transform.rotation = Quaternion.identity;
-            entry.Value.SetActive(true);
+            //check if isActive to avoid resetting an active player
+            if(entry.Value.activeSelf == false) {
+                GameManager.instance.UpdatePlayerCount();
+                entry.Value.transform.position = Vector2.zero;
+                entry.Value.transform.rotation = Quaternion.identity;
+                entry.Value.SetActive(true);
+            }
 
         }
     }

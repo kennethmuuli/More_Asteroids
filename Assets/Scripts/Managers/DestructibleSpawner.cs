@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class DestructibleSpawner : MonoBehaviour
 {
 
 #region Variables

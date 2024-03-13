@@ -71,6 +71,10 @@ public class InGameOverlayManager : MonoBehaviour
     {
 
         var components = SelectOverlayComponents(type, instanceIDToCheck); 
+
+        if (components.slider == null || components.display == null) {
+            return;
+        }
         
         // check which player the passed in ID corresponds to
         int playerID = instanceIDToCheck == playerOneID ? playerOneID : playerTwoID;
@@ -127,6 +131,8 @@ public class InGameOverlayManager : MonoBehaviour
                     selectedGameObject = speedPUDisplay2;
                 }
                 return (selectedSlider, selectedGameObject);
+            case PowerUpType.Revive:
+                return (selectedSlider = null, selectedGameObject = null);
             default:
             Debug.LogError("No matching overlay components found.");
             return (selectedSlider = null, selectedGameObject = null);

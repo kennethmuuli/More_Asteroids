@@ -24,10 +24,6 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.Play);
     }
 
-    private void Update() {
-        print(_currentPlayerCount);
-    }
-
     // Update is called once per frame
     public void PublishPlayerID (int playerInstanceID, GameObject player) {
         _currentPlayerCount++;

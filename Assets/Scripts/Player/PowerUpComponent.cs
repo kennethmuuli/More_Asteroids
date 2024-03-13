@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PowerUpComponent : MonoBehaviour
 {
-    [SerializeField] private PowerUpType myPowerUpType;
+    [SerializeField] protected PowerUpType myPowerUpType;
     [Tooltip("Designate, which type of power up this is.")]
     protected bool powerUpEngaged;
     protected float powerUpDuration;
@@ -13,10 +13,10 @@ public abstract class PowerUpComponent : MonoBehaviour
     private void Awake() {
         instanceID = transform.GetInstanceID();
     }
-    private void OnEnable() {
+    protected virtual void OnEnable() {
         PowerUp.powerUpCollected += OnPowerUpCollected;
     }
-    private void OnDisable() {
+    protected virtual void OnDisable() {
         PowerUp.powerUpCollected -= OnPowerUpCollected;
     }
 
@@ -28,7 +28,7 @@ public abstract class PowerUpComponent : MonoBehaviour
         }
     }
 
-    private void OnPowerUpCollected (PowerUpType powerUpType, float duration, int instanceIDToCheck) {
+    protected virtual void OnPowerUpCollected (PowerUpType powerUpType, float duration, int instanceIDToCheck) {
         if (powerUpType == myPowerUpType && instanceID == instanceIDToCheck)
         {
             powerUpEngaged = true;
