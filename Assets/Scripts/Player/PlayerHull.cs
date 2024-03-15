@@ -7,12 +7,12 @@ using Unity.VisualScripting;
 public class PlayerHull : PowerUpComponent
 {
     [SerializeField] private PolygonCollider2D hullCollider;
-    [SerializeField] private int hullHealth = 3;
+    [SerializeField] private int maxHullHealth = 3;
     public static Action<int, int> OnPlayerHealthUpdated;
     private int currentHullHealth;
 
     private void Start() {
-        currentHullHealth = hullHealth;
+        currentHullHealth = maxHullHealth;
     }
 
     protected override void Update()
@@ -38,7 +38,10 @@ public class PlayerHull : PowerUpComponent
     }
 
     private void UpdatePlayerHealth(int changeAmount) {
-        currentHullHealth = currentHullHealth + changeAmount;
+
+        if (currentHullHealth + changeAmount > maxHullHealth) {
+            currentHullHealth = maxHullHealth;
+        } else currentHullHealth = currentHullHealth + changeAmount;
 
         OnPlayerHealthUpdated?.Invoke(instanceID, currentHullHealth);
 
