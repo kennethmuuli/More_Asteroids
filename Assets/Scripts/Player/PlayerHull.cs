@@ -1,11 +1,19 @@
+using System;
 using UnityEngine;
 
-public class PlayerShield : PowerUpComponent
+public class PlayerHull : PowerUpComponent
 {
     [SerializeField] private CircleCollider2D shieldCollider;
     [SerializeField] private GameObject shieldGFX;
+    [SerializeField] private int hullHealth = 3;
+    public static Action<int, int> PlayerHealthUpdated;
+    private int currentHullHealth;
     private bool componentsOnOff;
-    
+
+    private void Start() {
+        currentHullHealth = hullHealth;
+    }
+
     override protected void Update() {
         if (!powerUpEngaged && componentsOnOff == true) {
             OnOffComponents(false);
@@ -23,14 +31,12 @@ public class PlayerShield : PowerUpComponent
        {
             if(!powerUpEngaged)
             {
-                shieldCollider.enabled = false;
-                shieldGFX.SetActive(false);
-                //Implement player death logic here, e.g. show game over screen.
-                GameManager.instance.PlayerDied();
-                gameObject.SetActive(false);
-            } else if (powerUpEngaged) {
+                other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(10);
+                UpdatePlayerHealth(-1);
                 
-                other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(1);
+            } else if (powerUpEngaged) {
+                other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(10);
+                
             }
        }
     }
@@ -39,6 +45,20 @@ public class PlayerShield : PowerUpComponent
         shieldCollider.enabled = onOff;
         shieldGFX.SetActive(onOff);
         componentsOnOff = onOff;
+    }
+
+    private void UpdatePlayerHealth(int changeAmount) {
+        currentHullHealth = currentHullHealth + changeAmount;
+
+        PlayerHealthUpdated?.Invoke(instanceID, currentHullHealth);
+
+        if (currentHullHealth <= 0)
+        {
+            shieldCollider.enabled = false;
+            shieldGFX.SetActive(false);
+            GameManager.instance.PlayerDied();
+            gameObject.SetActive(false);
+        }
     }
 
 }

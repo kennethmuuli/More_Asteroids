@@ -34,14 +34,14 @@ public class InGameOverlayManager : MonoBehaviour
     
     private void OnEnable() {
         Scoretracker.scoreUpdated += OnScoreUpdated;
-        PowerUp.powerUpCollected += OnPowerUpCollected;
+        PowerUp.PowerUpCollected += OnPowerUpCollected;
         GameManager.OnPublishPlayer += AssignOverlaySide;
         GameManager.OnUpdateGameState += ToggleInGameOverlay;
     }
 
     private void OnDisable() {
         Scoretracker.scoreUpdated -= OnScoreUpdated;
-        PowerUp.powerUpCollected -= OnPowerUpCollected;
+        PowerUp.PowerUpCollected -= OnPowerUpCollected;
         GameManager.OnPublishPlayer -= AssignOverlaySide;
         GameManager.OnUpdateGameState -= ToggleInGameOverlay;
     }

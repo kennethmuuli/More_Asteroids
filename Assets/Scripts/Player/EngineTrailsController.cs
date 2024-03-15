@@ -16,10 +16,10 @@ public class EngineTrailsController : MonoBehaviour
     private int instanceID;
     
     private void OnEnable() {
-        PowerUp.powerUpCollected += IsPoweredUp;
+        PowerUp.PowerUpCollected += IsPoweredUp;
     }
     private void OnDisable() {
-        PowerUp.powerUpCollected -= IsPoweredUp;
+        PowerUp.PowerUpCollected -= IsPoweredUp;
     }
     
     private void Awake() {

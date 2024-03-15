@@ -8,16 +8,16 @@ public abstract class PowerUpComponent : MonoBehaviour
     [Tooltip("Designate, which type of power up this is.")]
     protected bool powerUpEngaged;
     protected float powerUpDuration;
-    private int instanceID;
+    protected int instanceID;
 
     private void Awake() {
         instanceID = transform.GetInstanceID();
     }
     protected virtual void OnEnable() {
-        PowerUp.powerUpCollected += OnPowerUpCollected;
+        PowerUp.PowerUpCollected += OnPowerUpCollected;
     }
     protected virtual void OnDisable() {
-        PowerUp.powerUpCollected -= OnPowerUpCollected;
+        PowerUp.PowerUpCollected -= OnPowerUpCollected;
     }
 
     // Update is called once per frame
