@@ -5327,6 +5327,7 @@ GameObject:
   - component: {fileID: 481773668871730886}
   - component: {fileID: 4654203944727808809}
   - component: {fileID: 4680695248912631972}
+  - component: {fileID: 4833372582010059902}
   - component: {fileID: 2668649697375780840}
   - component: {fileID: 418920971337503030}
   m_Layer: 3
@@ -5605,6 +5606,21 @@ MonoBehaviour:
   - {fileID: 5294424050551809671}
   - {fileID: 8247471794298843121}
   showRaycast: 0
+--- !u!114 &4833372582010059902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280935935686920321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca8035af942fd549882425e7c520048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPowerUpType: 3
+  hullCollider: {fileID: 1255810813333516955}
+  hullHealth: 3
 --- !u!114 &2668649697375780840
 MonoBehaviour:
   m_ObjectHideFlags: 0
