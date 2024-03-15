@@ -41,9 +41,9 @@ public class Scoretracker : MonoBehaviour
     private void TimeScoreTicks()
     {
         // Comparing if current time is later than nextTickTime, if yes, set nextTickTime and call UpdateScore
-        if (Time.unscaledTime > nextTickTime)
+        if (Time.time > nextTickTime)
         {
-            nextTickTime = Time.unscaledTime + secondsBetweenTicks;
+            nextTickTime = Time.time + secondsBetweenTicks;
             UpdateScore(scorePlusAtTick);
         }
     }
