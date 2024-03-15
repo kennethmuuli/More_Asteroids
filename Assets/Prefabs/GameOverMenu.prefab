@@ -267,7 +267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1795977013593373101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -584,6 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 2593745499732237540}
+  gameOverMenuInitial: {fileID: 3961394325745977004}
 --- !u!1 &3500227248905617474
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,9 +842,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 5545912902675386452}
+        m_TargetAssemblyTypeName: GameOverMenu, Assembly-CSharp
+        m_MethodName: ContinueToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1257,15 +1257,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cbc13b43867324ab64bba7a742db88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 5511039911855846579}
+  scoreText: {fileID: 5511039911855846579}
   inGameOverlay: {fileID: 8402765488571482253}
+  healthText1: {fileID: 4055914716141908755}
   laserPUDisplay1: {fileID: 7783997322146599152}
   laserPUSlider1: {fileID: 5522094381183958543}
   shieldPUDisplay1: {fileID: 2129334285488413701}
   shieldPUSlider1: {fileID: 5953629876741534925}
   speedPUDisplay1: {fileID: 554010731399835236}
   speedPUSlider1: {fileID: 5485704242556201879}
-  playerHealth2: {fileID: 1028951225264813780}
+  playerHealth2Display: {fileID: 1028951225264813780}
+  healthText2: {fileID: 3703853538122697707}
   laserPUDisplay2: {fileID: 4725529533076596692}
   laserPUSlider2: {fileID: 8569875374981019384}
   shieldPUDisplay2: {fileID: 7836268652579111396}
@@ -1838,7 +1840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19e8e2428fb49774598784f774d5b632, type: 2}
   m_sharedMaterial: {fileID: -5059152150947828469, guid: 19e8e2428fb49774598784f774d5b632, type: 2}
@@ -2299,7 +2301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19e8e2428fb49774598784f774d5b632, type: 2}
   m_sharedMaterial: {fileID: -5059152150947828469, guid: 19e8e2428fb49774598784f774d5b632, type: 2}

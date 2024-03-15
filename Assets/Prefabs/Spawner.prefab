@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c77da6ee74d8241975105c0cbe2308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidPrefab: {fileID: 6623637298308764491, guid: 94ae593b226beba49916236ec713a386, type: 3}
+  spawnPrefabs:
+  - {fileID: 8257778097176506583, guid: 94ae593b226beba49916236ec713a386, type: 3}
+  - {fileID: 8257778097176506583, guid: 0539266be01cc4c4397399552b7435bb, type: 3}
   spawnAmount: 1
-  spawnRate: 2
-  spawnCircleRadius: 30
+  spawnRate: 1
+  spawnCircleRadius: 22.2
   destCircleRadius: 18
