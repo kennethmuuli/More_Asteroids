@@ -1,18 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class InGameOverlayManager : MonoBehaviour
 {
 
     // Reference to the Text component in the Canvas
-    [SerializeField] private TextMeshProUGUI score;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject inGameOverlay;
     [Header("Player One Components")]
+    [SerializeField] private TextMeshProUGUI healthText1;
     [SerializeField] private GameObject laserPUDisplay1; 
     [SerializeField] private Slider laserPUSlider1;
     [SerializeField] private GameObject shieldPUDisplay1; 
@@ -20,7 +19,8 @@ public class InGameOverlayManager : MonoBehaviour
     [SerializeField] private GameObject speedPUDisplay1; 
     [SerializeField] private Slider speedPUSlider1;
     [Header("Player Two Components")]
-    [SerializeField] private GameObject playerHealth2;
+    [SerializeField] private GameObject playerHealth2Display;
+    [SerializeField] private TextMeshProUGUI healthText2;
     [SerializeField] private GameObject laserPUDisplay2; 
     [SerializeField] private Slider laserPUSlider2;
     [SerializeField] private GameObject shieldPUDisplay2; 
@@ -37,6 +37,7 @@ public class InGameOverlayManager : MonoBehaviour
         PowerUp.PowerUpCollected += OnPowerUpCollected;
         GameManager.OnPublishPlayer += AssignOverlaySide;
         GameManager.OnUpdateGameState += ToggleInGameOverlay;
+        PlayerHull.OnPlayerHealthUpdated += OnPlayerHealthUpdated;
     }
 
     private void OnDisable() {
@@ -44,7 +45,19 @@ public class InGameOverlayManager : MonoBehaviour
         PowerUp.PowerUpCollected -= OnPowerUpCollected;
         GameManager.OnPublishPlayer -= AssignOverlaySide;
         GameManager.OnUpdateGameState -= ToggleInGameOverlay;
+        PlayerHull.OnPlayerHealthUpdated += OnPlayerHealthUpdated;
     }
+
+    private void OnPlayerHealthUpdated(int instanceIDToCheck, int newHealth)
+    {
+        if (instanceIDToCheck == playerOneID)
+        {
+            healthText1.text = newHealth.ToString();
+        } else if (instanceIDToCheck == playerTwoID) {
+            healthText2.text = newHealth.ToString();
+        }
+    }
+
 
     private void ToggleInGameOverlay(GameState stateToCheck) {
         if (stateToCheck == GameState.Pause)
@@ -63,7 +76,7 @@ public class InGameOverlayManager : MonoBehaviour
             playerOneID = playerIndex;
         } else {
             playerTwoID = playerIndex;
-            playerHealth2.SetActive(true);
+            playerHealth2Display.SetActive(true);
         }
     }
 
@@ -159,6 +172,6 @@ public class InGameOverlayManager : MonoBehaviour
 
     private void OnScoreUpdated(int scoreToDisplay)
     {
-        score.text = scoreToDisplay.ToString();
+        scoreText.text = scoreToDisplay.ToString();
     }
 }

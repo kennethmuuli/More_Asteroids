@@ -6,7 +6,7 @@ public class PlayerHull : PowerUpComponent
     [SerializeField] private CircleCollider2D shieldCollider;
     [SerializeField] private GameObject shieldGFX;
     [SerializeField] private int hullHealth = 3;
-    public static Action<int, int> PlayerHealthUpdated;
+    public static Action<int, int> OnPlayerHealthUpdated;
     private int currentHullHealth;
     private bool componentsOnOff;
 
@@ -50,7 +50,7 @@ public class PlayerHull : PowerUpComponent
     private void UpdatePlayerHealth(int changeAmount) {
         currentHullHealth = currentHullHealth + changeAmount;
 
-        PlayerHealthUpdated?.Invoke(instanceID, currentHullHealth);
+        OnPlayerHealthUpdated?.Invoke(instanceID, currentHullHealth);
 
         if (currentHullHealth <= 0)
         {
@@ -58,6 +58,7 @@ public class PlayerHull : PowerUpComponent
             shieldGFX.SetActive(false);
             GameManager.instance.PlayerDied();
             gameObject.SetActive(false);
+            currentHullHealth = 0;
         }
     }
 
