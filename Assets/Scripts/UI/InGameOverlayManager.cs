@@ -144,6 +144,8 @@ public class InGameOverlayManager : MonoBehaviour
                     selectedGameObject = speedPUDisplay2;
                 }
                 return (selectedSlider, selectedGameObject);
+            case PowerUpType.Health:
+                return (selectedSlider = null, selectedGameObject = null);
             case PowerUpType.Revive:
                 return (selectedSlider = null, selectedGameObject = null);
             default:

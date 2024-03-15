@@ -61,6 +61,7 @@ public class PlayerReviver : PowerUpComponent
                 entry.Value.transform.position = Vector2.zero;
                 entry.Value.transform.rotation = Quaternion.identity;
                 entry.Value.SetActive(true);
+                PowerUp.PowerUpCollected?.Invoke(PowerUpType.Health, 0f, entry.Key);
             }
 
         }

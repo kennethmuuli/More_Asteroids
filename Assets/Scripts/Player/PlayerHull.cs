@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class PlayerHull : PowerUpComponent
 {
@@ -12,6 +13,15 @@ public class PlayerHull : PowerUpComponent
 
     private void Start() {
         currentHullHealth = hullHealth;
+    }
+
+    protected override void Update()
+    {
+        if(powerUpEngaged) {
+            UpdatePlayerHealth(1);
+            powerUpEngaged = false;
+        }
+        base.Update();
     }
 
     private void OnCollisionEnter2D(Collision2D other) 
@@ -25,9 +35,7 @@ public class PlayerHull : PowerUpComponent
                     UpdatePlayerHealth(-1);
             }
         } return;
-
     }
-
 
     private void UpdatePlayerHealth(int changeAmount) {
         currentHullHealth = currentHullHealth + changeAmount;
