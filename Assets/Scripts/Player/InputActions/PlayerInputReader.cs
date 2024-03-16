@@ -10,6 +10,7 @@ public class PlayerInputReader : MonoBehaviour
     private Vector2 _movementVector;
     private bool _isBoosting, _isFiring, _isAskedToJoin;
     private PlayerInput playerInput;
+    private bool readInput = true;
 
     private void OnEnable() {
         GameManager.OnUpdateGameState += ToggleInputMap;
@@ -23,13 +24,22 @@ public class PlayerInputReader : MonoBehaviour
     }
 
     public void OnMovementUpdated(InputAction.CallbackContext context) {
-        _movementVector = context.ReadValue<Vector2>();
+        if (readInput)
+        {
+            _movementVector = context.ReadValue<Vector2>();
+        }
     }
     public void OnBoostUpdated(InputAction.CallbackContext context) {
-        _isBoosting = context.ReadValue<float>() > 0.5f;
+        if (readInput)
+        {
+            _isBoosting = context.ReadValue<float>() > 0.5f;
+        }
     }
     public void OnShootUpdated(InputAction.CallbackContext context) {
-        _isFiring = context.ReadValue<float>() > 0.5f;
+        if (readInput)
+        {
+            _isFiring = context.ReadValue<float>() > 0.5f;
+        }
     }
     public void OnPauseUpdated(InputAction.CallbackContext context) {
         if (context.started)
@@ -38,21 +48,17 @@ public class PlayerInputReader : MonoBehaviour
         }
     }
     public void OnConfirmUpdated(InputAction.CallbackContext context) {
-        // if(context.started) {
-        //     Button button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-        //     button.onClick.Invoke();
-        // }
+
     }
 
     private void ToggleInputMap(GameState gameState) {
-        // if (gameState == GameState.Play)
-        // {
-        //     playerInput.SwitchCurrentActionMap("Player");
-        //     print("inputmap = " + playerInput.currentActionMap.name);
-        // } else if (gameState == GameState.Pause) {
-        //     playerInput.SwitchCurrentActionMap("UI");
-        //     print("inputmap = " + playerInput.currentActionMap.name);
-        // }
+        if(gameState == GameState.Play) {
+            readInput = true;
+        } else if (gameState == GameState.Pause)
+            readInput = false;
+        {
+            
+        }
     }
 
     public Vector2 MovementVector{

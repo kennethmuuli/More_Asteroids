@@ -13,6 +13,7 @@ public class PlayerHull : PowerUpComponent
 
     private void Start() {
         currentHullHealth = maxHullHealth;
+        SetStartPosition();
     }
 
     protected override void Update()
@@ -22,6 +23,11 @@ public class PlayerHull : PowerUpComponent
             powerUpEngaged = false;
         }
         base.Update();
+    }
+
+    private void SetStartPosition() {
+        transform.position = Vector2.zero;
+        transform.rotation = Quaternion.identity;
     }
 
     private void OnCollisionEnter2D(Collision2D other) 
