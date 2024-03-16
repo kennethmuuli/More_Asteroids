@@ -7,12 +7,10 @@ public abstract class BaseDestructibleObject : MonoBehaviour
 {
     [Header("Object Stats")]
     [SerializeField] protected int myScoreValue;
-    [Range(0.5f, 1f)]
-    [SerializeField] protected float minSize = 0.5f;
-    [Range(1f, 3f)]
-    [SerializeField] protected float maxSize = 1.5f;
-    [Range(10f, 200f)]
-    [SerializeField] protected float speed = 50.0f;
+    [SerializeField] protected bool randomizeSizeOn;
+    [SerializeField, Range(0.5f, 1f)] protected float minSize = 0.5f;
+    [SerializeField, Range(1f, 3f)] protected float maxSize = 1.5f;
+    [SerializeField, Range(10f, 200f)] protected float speed = 50.0f;
     [SerializeField] protected int health = 1;
     [Header("Object Drops")]
     [SerializeField] private bool dropsPowerUps = false;
@@ -44,11 +42,14 @@ public abstract class BaseDestructibleObject : MonoBehaviour
 
     protected void RandomizeSize()
     {
-        // Get a random size between the max and min size
-        float size = UnityEngine.Random.Range(minSize, maxSize);
-
-        // Set the scale of the asteroid based on the 'size' variable
-        transform.localScale = Vector2.one * size;
+        if (randomizeSizeOn)
+        {
+            // Get a random size between the max and min size
+            float size = UnityEngine.Random.Range(minSize, maxSize);
+    
+            // Set the scale of the asteroid based on the 'size' variable
+            transform.localScale = Vector2.one * size;
+        }
     }
 
     protected void MoveAndSpin(Vector2 direction, float torque = 2f)

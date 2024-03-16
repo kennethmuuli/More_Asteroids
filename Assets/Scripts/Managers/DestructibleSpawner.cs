@@ -7,21 +7,14 @@ public class DestructibleSpawner : MonoBehaviour
 {
 
 #region Variables
-    [SerializeField] private GameObject[] spawnPrefabs;
-    [Tooltip("Reference to the prefab to be spawned")]
+    [SerializeField, Tooltip("Reference to the prefab to be spawned")] private GameObject[] spawnPrefabs;
 
     private GameObject nextObjectToSpawn;
 
-    [SerializeField] private int spawnAmount = 1;
-    [Tooltip("Number of objects to spawn in with each spawn")]
-    [SerializeField] private float spawnRate = 2.0f;
-    [Tooltip("Rate at which asteroids are spawned (in seconds)")]
-
-    [SerializeField] private float spawnCircleRadius = 15.0f;
-    [Tooltip("Radius from the transform at which objects are spawned")]
-
-    [SerializeField] private float destCircleRadius = 3f;
-    [Tooltip("Radius from the transform at which the destination point for a spawned object is calculated")]
+    [SerializeField, Tooltip("Number of objects to spawn in with each spawn")] private int spawnAmount = 1;
+    [SerializeField, Tooltip("Rate at which asteroids are spawned (in seconds)")] private float spawnRate = 2.0f;
+    [SerializeField, Tooltip("Radius from the transform at which objects are spawned")] private float spawnCircleRadius = 15.0f;
+    [SerializeField, Tooltip("Radius from the transform at which the destination point for a spawned object is calculated")] private float destCircleRadius = 3f;
 
     // Reference to main camera
     private Camera mainCamera;

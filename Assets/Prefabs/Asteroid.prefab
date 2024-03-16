@@ -219,7 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70f3067dff2a404ead76d42b3d8083a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myScoreValue: 10
+  myScoreValue: 1
+  randomizeSizeOn: 1
   minSize: 0.5
   maxSize: 1.5
   speed: 50
