@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
-        UpdateGameState(GameState.Play);
+        UpdateGameState(GameState.Keybind);
     }
 
     // Update is called once per frame
@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
 
         switch (newState)
         {
+            case GameState.Keybind:
+                Time.timeScale = 0f;
+            break;
             case GameState.Play:
                 Time.timeScale = 1f;
             break;
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
 }
 
 public enum GameState {
+    Keybind,
     Play,
     Pause,
     GameOver

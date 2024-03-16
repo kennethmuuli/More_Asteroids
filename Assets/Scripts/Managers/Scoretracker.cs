@@ -24,6 +24,10 @@ public class Scoretracker : MonoBehaviour
         Asteroid.objectDestroyed -= UpdateScore;
     }
 
+    private void Start() {
+        nextTickTime = Time.time + secondsBetweenTicks;
+    }
+
     // Update is called every frame, if the MonoBehaviour is enabled.
     private void Update()
     {

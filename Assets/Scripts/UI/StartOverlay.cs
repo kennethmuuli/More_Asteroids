@@ -17,6 +17,7 @@ public class StartOverlay : MonoBehaviour
     private void DisableKeyBindOverlay(int playerInstanceID, GameObject gameObject) {
         startOverlay.SetActive(false);
         Destroy(fakeShip);
+        GameManager.instance.UpdateGameState(GameState.Play);
         return;
     }
 

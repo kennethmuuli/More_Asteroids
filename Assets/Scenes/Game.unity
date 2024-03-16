@@ -5363,8 +5363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
-  scorePlusAtTick: 1
-  secondsBetweenTicks: 1
+  scorePlusAtTick: 100
+  secondsBetweenTicks: 10
 --- !u!114 &1787111899
 MonoBehaviour:
   m_ObjectHideFlags: 0
