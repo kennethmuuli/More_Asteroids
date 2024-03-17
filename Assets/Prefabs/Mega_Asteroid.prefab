@@ -516,14 +516,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55f4d4dca49fe145b2a1333cc5611b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myScoreValue: 100
+  myScoreValue: 1000
   randomizeSizeOn: 0
   minSize: 1
   maxSize: 1
   speed: 20
   health: 10
-  dropsPowerUps: 0
-  powerUpsDropList: []
-  dropChance: 0
+  dropsPowerUps: 1
+  powerUpsDropList:
+  - {fileID: 2809434308649414481, guid: bf01d6e25429a3d4b823ee60de643acf, type: 3}
+  - {fileID: 2809434308649414481, guid: cca8b5f773d28a446910254c2e163236, type: 3}
+  - {fileID: 2809434308649414481, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+  - {fileID: 2809434308649414481, guid: ee5d6bfe5d1dc8842a7e99c31a088320, type: 3}
+  - {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
+  dropChance: 80
   circleCollider2D: {fileID: 6255730386572829374}
   metalColliders: {fileID: 2135777578501319835}

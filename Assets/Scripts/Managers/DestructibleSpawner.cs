@@ -9,25 +9,20 @@ public class DestructibleSpawner : MonoBehaviour
     private GameObject nextObjectToSpawn;
 
     [SerializeField, Tooltip("Number of objects to spawn in with each spawn")] private int spawnAmount = 1;
-    [SerializeField, Tooltip("Rate at which asteroids are spawned (in seconds)")] private float spawnRate = 2.0f;
+    [SerializeField, Tooltip("Rate at which asteroids are spawned (in seconds)")] private float spawnRate = 2f;
     [SerializeField, Tooltip("Radius from the transform at which objects are spawned")] private float spawnCircleRadius = 15.0f;
     [SerializeField, Tooltip("Radius from the transform at which the destination point for a spawned object is calculated")] private float destCircleRadius = 3f;
 
     // Reference to main camera
     private Camera mainCamera;
     [Header("Difficulty scaling")]
-    [SerializeField, Tooltip("Time in seconds between spawn amount increases, i.e. how many objects are spawned at each spawn")] private float timeToIncreaseSpawnAmount;
-    private float nextTimeToIncreaseSpawnAmount;
-    [SerializeField] private float timeToIncreaseSpawnRate;
-    [SerializeField] private float spawnRateDecreaseIncrement = 0.05f;
-    [SerializeField] private float minSpawnRate = 0.75f;
-    private float nextTimeToIncreaseSpawnRate;
+    [SerializeField] private int difficultyCallStep;
+    [SerializeField] private int spawnAmountIncrement;
     #endregion
 
-    // Called when the script instance is being loaded
-
-
-
+    private void OnEnable() {
+        GameManager.IncreaseDifficulty += OnIncreaseDifficulty;
+    }
 
     private void Start()
     {
@@ -37,8 +32,6 @@ public class DestructibleSpawner : MonoBehaviour
         InvokeRepeating(nameof(Spawn), 0f, spawnRate);
 
         nextObjectToSpawn = spawnPrefabs[0];
-        nextTimeToIncreaseSpawnAmount = Time.time + timeToIncreaseSpawnAmount;
-        nextTimeToIncreaseSpawnRate = Time.time + timeToIncreaseSpawnRate;
     }
 
     private void CenterPosMainCameraXY(){
@@ -67,7 +60,6 @@ public class DestructibleSpawner : MonoBehaviour
             Instantiate(nextObjectToSpawn, spawnPoint, Quaternion.Euler(0,0,angle),transform);
 
             ChooseNextObjectToSpawn();
-            ScaleDifficulty();
         }
     }
 
@@ -75,32 +67,19 @@ public class DestructibleSpawner : MonoBehaviour
 
         float spawnRoll = Random.Range(0,100);
      
-        if (spawnRoll <= 90) // Asteroid
+        if (spawnRoll <= 80) // Asteroid
         {
             nextObjectToSpawn = spawnPrefabs[0];
-        } else if (spawnRoll <= 99) // Meteorite
+        } else if (spawnRoll <= 95) // Meteorite
         {
             nextObjectToSpawn = spawnPrefabs[1];
         } else nextObjectToSpawn = spawnPrefabs[2]; // MegaAsteroid
     }
 
-    private void ScaleDifficulty(){
-        if (Time.time > nextTimeToIncreaseSpawnAmount)
+    private void OnIncreaseDifficulty(int difficultyCallNum){
+        if (RespondToCall.ShouldRespondToCall(difficultyCallStep, difficultyCallNum))
         {
-            spawnAmount++;
-            nextTimeToIncreaseSpawnAmount = Time.time + timeToIncreaseSpawnAmount;
-        }
-
-        if (spawnRate <= minSpawnRate)
-        {
-            spawnRate = minSpawnRate;
-            return;
-        } else {
-            if(Time.time > nextTimeToIncreaseSpawnRate) {
-                spawnRate = spawnRate - spawnRateDecreaseIncrement;
-                nextTimeToIncreaseSpawnRate = Time.time + timeToIncreaseSpawnRate;
-            
-            }
+            spawnAmount += spawnAmountIncrement;
         }
     }
 

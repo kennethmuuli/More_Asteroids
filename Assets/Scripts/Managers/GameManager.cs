@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     public static Action<GameState> OnUpdateGameState;
     private static GameState currentGameState;
     private int _currentPlayerCount = 0;
+    private bool isCoopGame;
+    public static Action AnnounceCoopGame;
+    // How many difficulty increase calls have been made
+    private int difficultyCallNum;
+    private float timeToIncreaseDifficulty;
+    public static Action<int> IncreaseDifficulty;
 
     private void Awake() {
         if (instance == null)
@@ -21,13 +27,32 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
-        UpdateGameState(GameState.Keybind);
+        UpdateGameState(GameState.Play);
+    }
+
+    private void Update() {
+        ScaleDifficulty();
     }
 
     // Update is called once per frame
     public void PublishPlayerID (int playerInstanceID, GameObject player) {
         _currentPlayerCount++;
         OnPublishPlayer?.Invoke(playerInstanceID, player);
+
+        if(_currentPlayerCount > 1 && !isCoopGame) {
+            isCoopGame = true;
+            AnnounceCoopGame?.Invoke();
+        }
+    }
+
+    public void ScaleDifficulty(){
+        if (Time.time > timeToIncreaseDifficulty)
+        {
+            difficultyCallNum++;
+            IncreaseDifficulty?.Invoke(difficultyCallNum);
+            timeToIncreaseDifficulty = Time.time + 10f;
+            print(timeToIncreaseDifficulty);
+        }
     }
 
     public void UpdatePlayerCount() {

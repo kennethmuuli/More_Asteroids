@@ -11,6 +11,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     [SerializeField, Range(0.5f, 1f)] protected float minSize = 0.5f;
     [SerializeField, Range(1f, 3f)] protected float maxSize = 1.5f;
     [SerializeField, Range(10f, 200f)] protected float speed = 50.0f;
+    [SerializeField] protected float speedIncrement = 5f;
     [SerializeField] protected int health = 1;
     [Header("Object Drops")]
     [SerializeField] private bool dropsPowerUps = false;
@@ -25,6 +26,10 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     protected Renderer objectRenderer;
     private bool hasBeenInView;
     public static event Action<int> objectDestroyed;
+    // Keep track of difficulty increase calls
+    [SerializeField, 
+    Tooltip("Respond to each X difficulty call, a difficulty call is made every 10 seconds.")] 
+    private int difficultyCallStep;
 
     protected virtual void Awake()
     {
@@ -77,7 +82,11 @@ public abstract class BaseDestructibleObject : MonoBehaviour
 
     // This method serves as the external input for this class
     public virtual void TakeDamage(int damageAmount){
-        currentHealth -= damageAmount;
+       // Avoid taking damage before appearing on screen
+       if (hasBeenInView)
+       {
+         currentHealth -= damageAmount;
+       }
     }
 
     protected void Die(float destroyDelay = 0)
