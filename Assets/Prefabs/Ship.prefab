@@ -5620,7 +5620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPowerUpType: 3
   hullCollider: {fileID: 1255810813333516955}
-  hullHealth: 3
+  maxHullHealth: 3
 --- !u!114 &2668649697375780840
 MonoBehaviour:
   m_ObjectHideFlags: 0

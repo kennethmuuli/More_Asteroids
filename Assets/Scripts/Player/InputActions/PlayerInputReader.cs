@@ -1,8 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerInputReader : MonoBehaviour
@@ -54,10 +51,9 @@ public class PlayerInputReader : MonoBehaviour
     private void ToggleInputMap(GameState gameState) {
         if(gameState == GameState.Play) {
             readInput = true;
-        } else if (gameState == GameState.Pause)
+        } else if (gameState == GameState.Pause) {
+
             readInput = false;
-        {
-            
         }
     }
 

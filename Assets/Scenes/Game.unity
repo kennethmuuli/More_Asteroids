@@ -5697,7 +5697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: spawnRate
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: destCircleRadius
@@ -5705,10 +5705,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: timeToIncreaseSpawnRate
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: timeToIncreaseSpawnAmount
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: 'spawnPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8257778097176506583, guid: 94ae593b226beba49916236ec713a386, type: 3}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: 'spawnPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8257778097176506583, guid: 0539266be01cc4c4397399552b7435bb, type: 3}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: 'spawnPrefabs.Array.data[2]'
       value: 
       objectReference: {fileID: 8257778097176506583, guid: b5d077cf85a50524b84b14291d304c68, type: 3}
     - target: {fileID: 7910117468737336998, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
@@ -5871,14 +5887,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 846816731}
     m_Modifications:
-    - target: {fileID: 1221201051093289969, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2931216894858610481, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
-      propertyPath: m_Name
-      value: StartTextArea
-      objectReference: {fileID: 0}
+    - target: {fileID: 5800196244662407212, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: fakeShip
+      value: 
+      objectReference: {fileID: 2040356217}
     - target: {fileID: 7079076088440065627, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5963,13 +5975,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartOverlay
       objectReference: {fileID: 0}
+    - target: {fileID: 8688640396397597231, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8688640396397597231, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8286694318970249534}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
 --- !u!1001 &5296474523025323562
 PrefabInstance:
@@ -6071,30 +6084,6 @@ PrefabInstance:
 --- !u!224 &6867201080508353644 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7079076088440065627, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
-  m_PrefabInstance: {fileID: 4682432953019717830}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8286694318970249533 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8688640396397597231, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
-  m_PrefabInstance: {fileID: 4682432953019717830}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8286694318970249534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8286694318970249533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4eba22f2b9a8a8498921fa3636bd0a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startOverlay: {fileID: 8748531175304697510}
-  fakeShip: {fileID: 2040356217}
---- !u!1 &8748531175304697510 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1221201051093289969, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
   m_PrefabInstance: {fileID: 4682432953019717830}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

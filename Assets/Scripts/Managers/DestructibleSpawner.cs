@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class DestructibleSpawner : MonoBehaviour
@@ -18,17 +15,30 @@ public class DestructibleSpawner : MonoBehaviour
 
     // Reference to main camera
     private Camera mainCamera;
-#endregion
+    [Header("Difficulty scaling")]
+    [SerializeField, Tooltip("Time in seconds between spawn amount increases, i.e. how many objects are spawned at each spawn")] private float timeToIncreaseSpawnAmount;
+    private float nextTimeToIncreaseSpawnAmount;
+    [SerializeField] private float timeToIncreaseSpawnRate;
+    [SerializeField] private float spawnRateDecreaseIncrement = 0.05f;
+    [SerializeField] private float minSpawnRate = 0.75f;
+    private float nextTimeToIncreaseSpawnRate;
+    #endregion
 
     // Called when the script instance is being loaded
+
+
+
+
     private void Start()
     {
         CenterPosMainCameraXY();
         
         // Invoke the Spawn method repeatedly based on the spawnRate
-        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
+        InvokeRepeating(nameof(Spawn), 0f, spawnRate);
 
         nextObjectToSpawn = spawnPrefabs[0];
+        nextTimeToIncreaseSpawnAmount = Time.time + timeToIncreaseSpawnAmount;
+        nextTimeToIncreaseSpawnRate = Time.time + timeToIncreaseSpawnRate;
     }
 
     private void CenterPosMainCameraXY(){
@@ -57,17 +67,41 @@ public class DestructibleSpawner : MonoBehaviour
             Instantiate(nextObjectToSpawn, spawnPoint, Quaternion.Euler(0,0,angle),transform);
 
             ChooseNextObjectToSpawn();
+            ScaleDifficulty();
         }
     }
 
     private void ChooseNextObjectToSpawn() {
 
         float spawnRoll = Random.Range(0,100);
-    
-            if (spawnRoll <= 90)
-            {
-                nextObjectToSpawn = spawnPrefabs[0];
-            } else nextObjectToSpawn = spawnPrefabs[1];
+     
+        if (spawnRoll <= 90) // Asteroid
+        {
+            nextObjectToSpawn = spawnPrefabs[0];
+        } else if (spawnRoll <= 99) // Meteorite
+        {
+            nextObjectToSpawn = spawnPrefabs[1];
+        } else nextObjectToSpawn = spawnPrefabs[2]; // MegaAsteroid
+    }
+
+    private void ScaleDifficulty(){
+        if (Time.time > nextTimeToIncreaseSpawnAmount)
+        {
+            spawnAmount++;
+            nextTimeToIncreaseSpawnAmount = Time.time + timeToIncreaseSpawnAmount;
+        }
+
+        if (spawnRate <= minSpawnRate)
+        {
+            spawnRate = minSpawnRate;
+            return;
+        } else {
+            if(Time.time > nextTimeToIncreaseSpawnRate) {
+                spawnRate = spawnRate - spawnRateDecreaseIncrement;
+                nextTimeToIncreaseSpawnRate = Time.time + timeToIncreaseSpawnRate;
+            
+            }
+        }
     }
 
 
