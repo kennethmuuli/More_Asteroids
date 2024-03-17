@@ -85,7 +85,8 @@ public abstract class BaseDestructibleObject : MonoBehaviour
        // Avoid taking damage before appearing on screen
        if (hasBeenInView)
        {
-         currentHealth -= damageAmount;
+        
+           currentHealth -= damageAmount;
        }
     }
 

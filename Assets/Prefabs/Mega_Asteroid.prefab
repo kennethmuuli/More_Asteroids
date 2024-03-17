@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2845071318084038692}
   - component: {fileID: 6296428236477176131}
   - component: {fileID: 366350136726778583}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Metal_Colliders
   m_TagString: Meteorite
   m_Icon: {fileID: 0}
@@ -521,6 +521,7 @@ MonoBehaviour:
   minSize: 1
   maxSize: 1
   speed: 20
+  speedIncrement: 5
   health: 10
   dropsPowerUps: 1
   powerUpsDropList:
@@ -530,5 +531,6 @@ MonoBehaviour:
   - {fileID: 2809434308649414481, guid: ee5d6bfe5d1dc8842a7e99c31a088320, type: 3}
   - {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
   dropChance: 80
+  difficultyCallStep: 0
   circleCollider2D: {fileID: 6255730386572829374}
   metalColliders: {fileID: 2135777578501319835}

@@ -22,7 +22,6 @@ public class MegaAsteroid : BaseDestructibleObject
     public override void TakeDamage(int damageAmount)
     {
         base.TakeDamage(damageAmount);
-        print(currentHealth);
 
         if(currentHealth <= 0 && !isDying) {
             isDying = true;

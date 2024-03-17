@@ -5725,7 +5725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: asteroidCallStep
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: asteroidSpawnInc
@@ -5737,11 +5737,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: mAsteroidCallStep
-      value: 6
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: meteoriteCallStep
-      value: 3
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: meteoriteSpawnInc
@@ -5757,11 +5757,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: mAsteroidStartDelay
-      value: 60
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: meteoriteStartDelay
-      value: 30
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: spawnAmountIncrement
