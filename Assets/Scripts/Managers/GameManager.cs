@@ -28,10 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Start() {
         UpdateGameState(GameState.Play);
-    }
-
-    private void Update() {
-        ScaleDifficulty();
+        InvokeRepeating(nameof(ScaleDifficulty),10,10);
     }
 
     // Update is called once per frame
@@ -46,13 +43,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void ScaleDifficulty(){
-        if (Time.time > timeToIncreaseDifficulty)
-        {
             difficultyCallNum++;
             IncreaseDifficulty?.Invoke(difficultyCallNum);
-            timeToIncreaseDifficulty = Time.time + 10f;
-            print(timeToIncreaseDifficulty);
-        }
     }
 
     public void UpdatePlayerCount() {

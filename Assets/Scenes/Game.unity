@@ -5700,12 +5700,68 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: asteroidRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: mAsteroidRate
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: meteoriteRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: asteroidAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: mAsteroidAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: meteoriteAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: asteroidCallStep
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: asteroidSpawnInc
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: destCircleRadius
-      value: 4.4
+      value: 6.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: mAsteroidCallStep
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: meteoriteCallStep
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: meteoriteSpawnInc
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: spawnCircleRadius
+      value: 32.4
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: difficultyCallStep
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: mAsteroidStartDelay
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: meteoriteStartDelay
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: spawnAmountIncrement

@@ -4964,6 +4964,50 @@ SortingGroup:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_SortAtRoot: 0
+--- !u!1 &1317656399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317656401}
+  - component: {fileID: 1317656400}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1317656400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317656399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd62e11b4ad5b1546884c5ec0a9638f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1317656401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317656399}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.8178253, y: 0.7193093, z: -0.066975616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706326868
 GameObject:
   m_ObjectHideFlags: 0
@@ -5154,13 +5198,77 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: asteroidRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: meteoriteRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: asteroidAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: mAsteroidAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: meteoriteAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: asteroidCallStep
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: asteroidSpawnInc
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: destCircleRadius
+      value: 4.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: mAsteroidCallStep
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: meteoriteCallStep
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: meteoriteSpawnInc
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: spawnCircleRadius
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: asteroidStartDelay
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: difficultyCallStep
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: spawnPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: 'spawnPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8257778097176506583, guid: b5d077cf85a50524b84b14291d304c68, type: 3}
     - target: {fileID: 7910117468737336998, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.0098672
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 7910117468737336998, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.287924
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7910117468737336998, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5207,3 +5315,4 @@ SceneRoots:
   - {fileID: 885909330}
   - {fileID: 1730330434}
   - {fileID: 3065067063386635774}
+  - {fileID: 1317656401}
