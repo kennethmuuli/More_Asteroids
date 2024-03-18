@@ -11,7 +11,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     [SerializeField, Range(0.5f, 1f)] protected float minSize = 0.5f;
     [SerializeField, Range(1f, 3f)] protected float maxSize = 1.5f;
     [SerializeField, Range(10f, 200f)] protected float speed = 50.0f;
-    [SerializeField] protected float speedIncrement = 5f;
+    [SerializeField, Tooltip("+- how much the objects speed may vary, with each instantation"),Range(0f,50f)] protected float speedVariance = 0f;
     [SerializeField] protected int health = 1;
     [Header("Object Drops")]
     [SerializeField] private bool dropsPowerUps = false;
@@ -59,8 +59,10 @@ public abstract class BaseDestructibleObject : MonoBehaviour
 
     protected void MoveAndSpin(Vector2 direction, float torque = 2f)
     {
+        // Randomize start speed
+        float speedToAdd = Random.Range(speed - speedVariance, speed + speedVariance);
         // Add a force to the Rigidbody2D to set the asteroid in motion
-        _rigidbody.AddForce(direction * speed);
+        _rigidbody.AddForce(direction * speedToAdd);
         // Add a spin force to the object, if not set then default value is used
         _rigidbody.AddTorque(torque);
     }

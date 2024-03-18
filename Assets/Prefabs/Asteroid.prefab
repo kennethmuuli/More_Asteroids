@@ -223,8 +223,8 @@ MonoBehaviour:
   randomizeSizeOn: 1
   minSize: 0.5
   maxSize: 1.5
-  speed: 50
-  speedIncrement: 5
+  speed: 60
+  speedVariance: 5
   health: 1
   dropsPowerUps: 1
   powerUpsDropList:
