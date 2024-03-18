@@ -521,8 +521,9 @@ MonoBehaviour:
   minSize: 1
   maxSize: 1
   speed: 20
-  speedIncrement: 5
-  health: 10
+  speedVariance: 0
+  health: 20
+  invulnerabilityTime: 0.2
   dropsPowerUps: 1
   powerUpsDropList:
   - {fileID: 2809434308649414481, guid: bf01d6e25429a3d4b823ee60de643acf, type: 3}
@@ -531,6 +532,5 @@ MonoBehaviour:
   - {fileID: 2809434308649414481, guid: ee5d6bfe5d1dc8842a7e99c31a088320, type: 3}
   - {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
   dropChance: 80
-  difficultyCallStep: 0
   circleCollider2D: {fileID: 6255730386572829374}
   metalColliders: {fileID: 2135777578501319835}

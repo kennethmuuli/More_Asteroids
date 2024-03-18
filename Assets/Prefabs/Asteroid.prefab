@@ -225,9 +225,9 @@ MonoBehaviour:
   maxSize: 1.5
   speed: 60
   speedVariance: 5
-  health: 1
+  health: 2
+  invulnerabilityTime: 0.1
   dropsPowerUps: 1
   powerUpsDropList:
   - {fileID: 2809434308649414481, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
   dropChance: 100
-  difficultyCallStep: 0

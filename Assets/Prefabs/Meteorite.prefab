@@ -5111,10 +5111,10 @@ MonoBehaviour:
   maxSize: 1
   speed: 100
   speedVariance: 20
-  health: 1
+  health: 4
+  invulnerabilityTime: 0.2
   dropsPowerUps: 1
   powerUpsDropList:
   - {fileID: 2809434308649414481, guid: ee5d6bfe5d1dc8842a7e99c31a088320, type: 3}
   - {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
   dropChance: 20
-  difficultyCallStep: 0

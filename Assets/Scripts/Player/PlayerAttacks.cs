@@ -46,6 +46,7 @@ public class PlayerAttacks : PowerUpComponent
     private bool IsFiring() => attackInput.IsFiring;
 
     // Fire one or multiple projectiles
+    int num = 10;
     void Fire()
     {
         if (Time.unscaledTime > nextTimeToFire)
@@ -73,7 +74,7 @@ public class PlayerAttacks : PowerUpComponent
 
         if(hit == true) {
             laserGFX.GetComponent<RayController>().SetUpLinePositions(transform.position, hit.point);      
-            hit.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(1);
+            hit.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(2);
         } else {
             laserGFX.GetComponent<RayController>().SetUpLinePositions(transform.position, transform.position + transform.up * rayLength);
         }
@@ -81,13 +82,13 @@ public class PlayerAttacks : PowerUpComponent
     }
 
 #if UNITY_EDITOR
-    // private void OnDrawGizmos() {
-    //     if (powerUpEngaged && showRaycast)
-    //     {
-    //         Gizmos.color = Color.cyan;
-    //         Gizmos.DrawRay(transform.position, transform.up * rayLength);
-    //     }
-    // }  
+    private void OnDrawGizmos() {
+        if (showRaycast)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawRay(transform.position, transform.up * rayLength);
+        }
+    }  
 #endif
 
 }

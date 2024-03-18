@@ -1,35 +1,37 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public abstract class BaseDestructibleObject : MonoBehaviour
 {
-    [Header("Object Stats")]
+    [Header("Score")]
     [SerializeField] protected int myScoreValue;
+    [Header("Size")]
     [SerializeField] protected bool randomizeSizeOn;
     [SerializeField, Range(0.5f, 1f)] protected float minSize = 0.5f;
     [SerializeField, Range(1f, 3f)] protected float maxSize = 1.5f;
-    [SerializeField, Range(10f, 200f)] protected float speed = 50.0f;
+    [Header("Speed")]
+    [SerializeField, Range(0f, 200f)] protected float speed = 50.0f;
     [SerializeField, Tooltip("+- how much the objects speed may vary, with each instantation"),Range(0f,50f)] protected float speedVariance = 0f;
+    [Header("Health")]
     [SerializeField] protected int health = 1;
-    [Header("Object Drops")]
+    protected int currentHealth;
+    [SerializeField, Tooltip("Time in seconds the object is invulnerable between each damage application."), Range(0f,0.2f)] protected float invulnerabilityTime = 0f;
+    protected bool isInvulnerable;
+    [Header("Pickup Drops")]
     [SerializeField] private bool dropsPowerUps = false;
     [SerializeField] protected GameObject[] powerUpsDropList;
     
     [Range(0,100)]
     [SerializeField] protected float dropChance;
     [Tooltip("How likely, in percentages the destruction of this object is will drop something from the power ups drop list.")]
-    protected int currentHealth;
     protected Rigidbody2D _rigidbody;
 
     protected Renderer objectRenderer;
     private bool hasBeenInView;
     public static event Action<int> objectDestroyed;
-    // Keep track of difficulty increase calls
-    [SerializeField, 
-    Tooltip("Respond to each X difficulty call, a difficulty call is made every 10 seconds.")] 
-    private int difficultyCallStep;
 
     protected virtual void Awake()
     {
@@ -85,11 +87,18 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     // This method serves as the external input for this class
     public virtual void TakeDamage(int damageAmount){
        // Avoid taking damage before appearing on screen
-       if (hasBeenInView)
+       if (hasBeenInView && !isInvulnerable)
        {
-        
            currentHealth -= damageAmount;
+           StartCoroutine(InvulnerableTime(invulnerabilityTime));
        }
+    }
+
+    private IEnumerator InvulnerableTime(float timeToKeepInvulnerable) {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(timeToKeepInvulnerable);
+        isInvulnerable = false;
+
     }
 
     protected void Die(float destroyDelay = 0)
