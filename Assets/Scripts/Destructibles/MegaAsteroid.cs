@@ -6,6 +6,8 @@ public class MegaAsteroid : BaseDestructibleObject
     private Animator asteroidAnimator;
     [SerializeField]private CircleCollider2D circleCollider2D;
     [SerializeField] private GameObject metalColliders;
+    [SerializeField] private List<Sprite> breakingStates;
+    private SpriteRenderer spriteRenderer;
     private float t;
     private bool isDying;
 
@@ -14,7 +16,7 @@ public class MegaAsteroid : BaseDestructibleObject
     {
         base.Start();
         asteroidAnimator = GetComponentInChildren<Animator>();
-        // circleCollider2D = GetComponent<CircleCollider2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         RandomizeSize();
         MoveAndSpin(transform.up);
     }
@@ -22,8 +24,8 @@ public class MegaAsteroid : BaseDestructibleObject
     public override void TakeDamage(int damageAmount)
     {
         base.TakeDamage(damageAmount);
-        print(currentHealth);
-
+        // print(currentHealth);
+        visualizeBreaking();
         if(currentHealth <= 0 && !isDying) {
             isDying = true;
             circleCollider2D.enabled = false;
@@ -32,6 +34,16 @@ public class MegaAsteroid : BaseDestructibleObject
             t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
             Die(t);
         } return;
+    }
+
+    private void visualizeBreaking(){
+        float remainingHealthPercentage = (float)currentHealth / (float)health;
+
+        if((remainingHealthPercentage <= 0.5) && remainingHealthPercentage > 0.25) {
+            spriteRenderer.sprite = breakingStates[0];
+        }else if(remainingHealthPercentage <= 0.25) {
+            spriteRenderer.sprite = breakingStates[1];
+        }
     }
 
     private void OnDrawGizmos() {

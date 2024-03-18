@@ -46,7 +46,6 @@ public class PlayerAttacks : PowerUpComponent
     private bool IsFiring() => attackInput.IsFiring;
 
     // Fire one or multiple projectiles
-    int num = 10;
     void Fire()
     {
         if (Time.unscaledTime > nextTimeToFire)

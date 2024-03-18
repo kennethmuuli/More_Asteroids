@@ -26,7 +26,7 @@ public class PlayerShield : PowerUpComponent
         if(shieldCollider.IsTouching(col)) {
             if (shieldCollider && (col.tag == "Asteroid" || col.tag == "Meteorite") && powerUpEngaged)
             {
-                    other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(10);
+                    other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(4);
             }
         } return;
 

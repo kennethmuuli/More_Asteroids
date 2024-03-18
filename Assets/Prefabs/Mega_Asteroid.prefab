@@ -540,3 +540,6 @@ MonoBehaviour:
   dropChance: 80
   circleCollider2D: {fileID: 6255730386572829374}
   metalColliders: {fileID: 2135777578501319835}
+  breakingStates:
+  - {fileID: 137364182, guid: 978ad767e954e7448bd50830aecb2bbc, type: 3}
+  - {fileID: 1128860409, guid: 978ad767e954e7448bd50830aecb2bbc, type: 3}
