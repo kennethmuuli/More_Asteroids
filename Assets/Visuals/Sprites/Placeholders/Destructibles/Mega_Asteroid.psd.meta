@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Asteroid 1_0
+      name: Mega_Asteroid_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 180
-        height: 180
+        width: 216
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +114,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7c048c4ff18a0540a046ce0e9aa4f49
-      internalID: 249317547
+      spriteID: 897dddd543e31444aa661c7e724301ef
+      internalID: -2059665127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroid 1_1
+      name: Mega_Asteroid_1
       rect:
         serializedVersion: 2
-        x: 180
+        x: 216
         y: 0
-        width: 180
-        height: 180
+        width: 216
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +135,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb4881443e6f5fe488c299b4a48797a8
-      internalID: 1235727730
+      spriteID: 13252355b8189ed4087914e70be6d9f8
+      internalID: 137364182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroid 1_2
+      name: Mega_Asteroid_2
       rect:
         serializedVersion: 2
-        x: 360
+        x: 432
         y: 0
-        width: 180
-        height: 180
+        width: 216
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1affcf3b1299e834498390266a3a6b7c
-      internalID: 647610190
+      spriteID: 174a5954e236ecb4893e33a0a52fdc26
+      internalID: 1128860409
       vertices: []
       indices: 
       edges: []
@@ -173,9 +173,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Asteroid 1_0: 249317547
-      Asteroid 1_1: 1235727730
-      Asteroid 1_2: 647610190
+      Mega_Asteroid_0: -2059665127
+      Mega_Asteroid_1: 137364182
+      Mega_Asteroid_2: 1128860409
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
