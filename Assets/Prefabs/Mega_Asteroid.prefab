@@ -531,18 +531,7 @@ MonoBehaviour:
   health: 20
   invulnerabilityTime: 0.2
   dropsPowerUps: 1
-  powerUpsDropList:
-  - {fileID: 2809434308649414481, guid: bf01d6e25429a3d4b823ee60de643acf, type: 3}
-  - {fileID: 2809434308649414481, guid: cca8b5f773d28a446910254c2e163236, type: 3}
-  - {fileID: 2809434308649414481, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
-  - {fileID: 2809434308649414481, guid: ee5d6bfe5d1dc8842a7e99c31a088320, type: 3}
-  - {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
-  e0dropChange: 0
-  e1dropChange: 0
-  e2dropChange: 40
-  e3dropChange: 30
-  e4dropChange: 30
-  dropChance: 80
+  lootTable: {fileID: 11400000, guid: b7bd6aa1a8846b04985f4b01ac98f9e7, type: 2}
   circleCollider2D: {fileID: 6255730386572829374}
   metalColliders: {fileID: 2135777578501319835}
   breakingStates:

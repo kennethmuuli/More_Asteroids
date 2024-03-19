@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,9 +23,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     protected bool isInvulnerable;
     [Header("Pickup Drops")]
     [SerializeField] private bool dropsPowerUps = false;
-    [SerializeField] protected GameObject[] powerUpsDropList;
-    [SerializeField, Tooltip("The likelyhood over a specific element from the power ups drop list to spawn."), Range(0,100)] protected float e0dropChange, e1dropChange, e2dropChange, e3dropChange, e4dropChange;
-    [SerializeField, Tooltip("How likely this object is to drop anything when destoryed."), Range(0,100)] protected float dropChance;
+    [SerializeField] protected LootTable lootTable;
     protected Rigidbody2D _rigidbody;
 
     protected Renderer objectRenderer;
@@ -104,46 +103,43 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         // Invoke objectDestroyed event sending in myScoreValue for all listeners
         objectDestroyed?.Invoke(myScoreValue);
 
-        DropPowerUp();
+        if (dropsPowerUps)
+        {
+            DropPowerUp();
+        }
 
         // Destroy this gameObject | should remain the last thing that's done, as the code won't run after this
         Destroy(gameObject, destroyDelay);
     }
 
     protected void DropPowerUp() {
-        if (dropsPowerUps)
+
+        float dropRoll = Random.Range(1,101);
+        
+        if (lootTable.dropEventChance >= dropRoll)
         {
-            float dropRoll = Random.Range(0,100);
+            float tableRoll = Random.Range(1,101);
+            GameObject itemToSpawn = null;
+            List<GameObject> listToCheck = new List<GameObject>();
 
-            if ((e0dropChange + e1dropChange + e2dropChange + e3dropChange + e4dropChange) != 100)
-            {
-                Debug.LogWarning("Total onDropPURoll chance not 100%, some items may not spawn or spawn chance is actually lower than drop chance.");
-            } 
-
-
-            if (dropChance > dropRoll)
-            {
-                float onDropPURoll = Random.Range(0,100);
-                GameObject itemToSpawn = null;
-
-                if (onDropPURoll < e0dropChange) { // Shield
-                    itemToSpawn = powerUpsDropList[0];
-                } else if (onDropPURoll < e1dropChange) { // Speed
-                    itemToSpawn = powerUpsDropList[1];
-                    
-                } else if (onDropPURoll < e2dropChange) { // Laser
-                    itemToSpawn = powerUpsDropList[2];
-                    
-                } else if (onDropPURoll < e3dropChange) { // Health
-                    itemToSpawn = powerUpsDropList[3];
-                    
-                } else if (onDropPURoll < e4dropChange) { // Revive
-                    itemToSpawn = powerUpsDropList[4];    
-                } else itemToSpawn = powerUpsDropList[1]; // Fallback
-
-                // int randomPUIndex = Random.Range(0,powerUpsDropList.Length);
-                Instantiate(itemToSpawn,transform.position,Quaternion.identity);
+            if(lootTable.rareDropChance >= tableRoll) {
+                listToCheck = lootTable.rarePowerUps;
+            } else if (lootTable.uncommonDropChance >= tableRoll) {
+                listToCheck = lootTable.uncommonPowerUps;
+            } else if (lootTable.commonDropChance >= tableRoll) {
+                listToCheck = lootTable.commonPowerUps;
             }
-        } else return;
+
+            if (listToCheck.Count > 0)
+            {
+                itemToSpawn = listToCheck[Random.Range(0,listToCheck.Count)];
+                
+            } else return;
+            
+            
+            Instantiate(itemToSpawn,transform.position,Quaternion.identity);
+        }
+        
+
     }
 }

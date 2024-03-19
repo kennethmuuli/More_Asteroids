@@ -188,10 +188,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2196169578716467239, guid: b5d077cf85a50524b84b14291d304c68, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4862097072001494396, guid: b5d077cf85a50524b84b14291d304c68, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.983091
@@ -455,12 +451,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6623637298308764491, guid: 94ae593b226beba49916236ec713a386, type: 3}
-      propertyPath: health
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6623637298308764491, guid: 94ae593b226beba49916236ec713a386, type: 3}
-      propertyPath: invulnerabilityTime
-      value: 0.1
+      propertyPath: speedVariance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8257778097176506583, guid: 94ae593b226beba49916236ec713a386, type: 3}
       propertyPath: m_Name
