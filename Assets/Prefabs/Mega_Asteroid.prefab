@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 6255730386572829374}
   - component: {fileID: 7555123824345577230}
   - component: {fileID: 5944913054841709252}
+  - component: {fileID: 8693034372472633177}
   m_Layer: 6
   m_Name: Mega_Asteroid
   m_TagString: Asteroid
@@ -530,10 +531,29 @@ MonoBehaviour:
   speedVariance: 0
   health: 20
   invulnerabilityTime: 0.2
-  dropsPowerUps: 1
-  lootTable: {fileID: 11400000, guid: b7bd6aa1a8846b04985f4b01ac98f9e7, type: 2}
   circleCollider2D: {fileID: 6255730386572829374}
   metalColliders: {fileID: 2135777578501319835}
   breakingStates:
   - {fileID: 137364182, guid: 978ad767e954e7448bd50830aecb2bbc, type: 3}
   - {fileID: 1128860409, guid: 978ad767e954e7448bd50830aecb2bbc, type: 3}
+--- !u!114 &8693034372472633177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257778097176506583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f65a67473876384abf3b37f407000ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropsPowerUps: 1
+  dropEventChance: 100
+  commonPowerUps: []
+  commonDropChance: 0
+  uncommonPowerUps: []
+  uncommonDropChance: 0
+  rarePowerUps:
+  - {fileID: 2809434308649414481, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
+  rareDropChance: 100

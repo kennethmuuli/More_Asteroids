@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(LootTable))]
 public abstract class BaseDestructibleObject : MonoBehaviour
 {
     [Header("Score")]
@@ -21,15 +20,11 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     protected int currentHealth;
     [SerializeField, Tooltip("Time in seconds the object is invulnerable between each damage application."), Range(0f,0.2f)] protected float invulnerabilityTime = 0f;
     protected bool isInvulnerable;
-    [Header("Pickup Drops")]
-    [SerializeField] private bool dropsPowerUps = false;
-    [SerializeField] protected LootTable lootTable;
     protected Rigidbody2D _rigidbody;
-
     protected Renderer objectRenderer;
     private bool hasBeenInView;
+    private LootTable lootTable;
     public static event Action<int> objectDestroyed;
-
     protected virtual void Awake()
     {
         // Get the Rigidbody2D component attached to this GameObject
@@ -38,6 +33,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     }
     protected virtual void Start() {
         currentHealth = health;
+        lootTable = GetComponent<LootTable>();
     }
     protected virtual void Update() {
         OffScreenBehaviour();
@@ -103,43 +99,11 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         // Invoke objectDestroyed event sending in myScoreValue for all listeners
         objectDestroyed?.Invoke(myScoreValue);
 
-        if (dropsPowerUps)
-        {
-            DropPowerUp();
-        }
+        lootTable.DropPowerUp();
 
         // Destroy this gameObject | should remain the last thing that's done, as the code won't run after this
         Destroy(gameObject, destroyDelay);
     }
 
-    protected void DropPowerUp() {
-
-        float dropRoll = Random.Range(1,101);
-        
-        if (lootTable.dropEventChance >= dropRoll)
-        {
-            float tableRoll = Random.Range(1,101);
-            GameObject itemToSpawn = null;
-            List<GameObject> listToCheck = new List<GameObject>();
-
-            if(lootTable.rareDropChance >= tableRoll) {
-                listToCheck = lootTable.rarePowerUps;
-            } else if (lootTable.uncommonDropChance >= tableRoll) {
-                listToCheck = lootTable.uncommonPowerUps;
-            } else if (lootTable.commonDropChance >= tableRoll) {
-                listToCheck = lootTable.commonPowerUps;
-            }
-
-            if (listToCheck.Count > 0)
-            {
-                itemToSpawn = listToCheck[Random.Range(0,listToCheck.Count)];
-                
-            } else return;
-            
-            
-            Instantiate(itemToSpawn,transform.position,Quaternion.identity);
-        }
-        
-
-    }
+    
 }

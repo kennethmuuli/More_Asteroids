@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerReviver : PowerUpComponent
 {
-    public static Action<int> playerRevived;
+    public static Action OnPlayerRevived;
     private Dictionary<int, GameObject> playerDict = new Dictionary<int, GameObject>();
     private int _joinedPlayerCount;
     private PlayerInputManager playerInputManager;
@@ -42,12 +42,12 @@ public class PlayerReviver : PowerUpComponent
         {
             powerUpEngaged = true;
             powerUpDuration = Time.time + duration;
-            OnPlayerRevived(instanceIDToCheck);
+            RevivePlayer(instanceIDToCheck);
         } return;
 
     }
 
-    private void OnPlayerRevived(int playerID) {
+    private void RevivePlayer(int playerID) {
         foreach (KeyValuePair<int, GameObject> entry in playerDict)
         {
             //return if id matches the id of triggering player, i.e. don't trigger revive on self
@@ -58,10 +58,9 @@ public class PlayerReviver : PowerUpComponent
             //check if isActive to avoid resetting an active player
             if(entry.Value.activeSelf == false) {
                 GameManager.instance.UpdatePlayerCount();
-                // entry.Value.transform.position = Vector2.zero;
-                // entry.Value.transform.rotation = Quaternion.identity;
                 entry.Value.SetActive(true);
                 PowerUp.PowerUpCollected?.Invoke(PowerUpType.Health, 0f, entry.Key);
+                OnPlayerRevived?.Invoke();
             }
 
         }

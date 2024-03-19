@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static Action<int, GameObject> OnPublishPlayer;
     public static Action<GameState> OnUpdateGameState;
+    public static Action OnPlayerDied;
     private static GameState currentGameState;
     private int _currentPlayerCount = 0;
     private bool isCoopGame;
@@ -57,6 +58,8 @@ public class GameManager : MonoBehaviour
         {
             UpdateGameState(GameState.GameOver);
         }
+
+        OnPlayerDied?.Invoke();
     }
 
     public void UpdateGameState (GameState newState) {

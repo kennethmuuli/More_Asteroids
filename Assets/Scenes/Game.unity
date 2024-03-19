@@ -5328,6 +5328,7 @@ GameObject:
   - component: {fileID: 1787111899}
   - component: {fileID: 1787111900}
   - component: {fileID: 1787111902}
+  - component: {fileID: 1787111903}
   m_Layer: 0
   m_Name: '- - - MANAGERS - - -'
   m_TagString: Untagged
@@ -5487,6 +5488,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPowerUpType: 4
+--- !u!114 &1787111903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787111896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48dc842fe2184424fba9da0c55c06054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  revivePowerUp: {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
+  minSpawnTime: 11
+  maxSpawnTime: 12
 --- !u!1 &1867564902
 GameObject:
   m_ObjectHideFlags: 0
