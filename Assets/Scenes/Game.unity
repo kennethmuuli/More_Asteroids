@@ -5501,8 +5501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   revivePowerUp: {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
-  minSpawnTime: 11
-  maxSpawnTime: 12
+  minSpawnTime: 15
+  maxSpawnTime: 30
 --- !u!1 &1867564902
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInputReader))]
@@ -29,7 +30,16 @@ public class PlayerEngine : PowerUpComponent
     private Rigidbody2D rb;
     private PlayerInputReader movementInput;
 
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        transform.SetPositionAndRotation(Vector2.zero, Quaternion.identity);
+
+    }
+
     // Start is called before the first frame update
+
     private void Start()
     {
         // Get the Rigidbody2D component only once during initialization
