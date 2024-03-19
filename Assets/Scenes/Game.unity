@@ -5501,8 +5501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   revivePowerUp: {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
-  minSpawnTime: 15
-  maxSpawnTime: 30
+  spawnTime: 15
+  spawnTimeIncrement: 5
 --- !u!1 &1867564902
 GameObject:
   m_ObjectHideFlags: 0
@@ -5720,6 +5720,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidRate
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: mAsteroidRate
       value: 120
       objectReference: {fileID: 0}
@@ -5730,6 +5734,10 @@ PrefabInstance:
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: asteroidAmount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: mAsteroidAmount
@@ -5752,12 +5760,20 @@ PrefabInstance:
       value: 6.38
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidCallStep
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidSpawnInc
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: mAsteroidCallStep
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: meteoriteCallStep
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: meteoriteSpawnInc
@@ -5772,12 +5788,20 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidStartDelay
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: mAsteroidStartDelay
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: meteoriteStartDelay
-      value: 120
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidLimitInScene
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: spawnAmountIncrement

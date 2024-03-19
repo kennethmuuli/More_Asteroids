@@ -22,12 +22,15 @@ public class DestructibleSpawner : MonoBehaviour
     [SerializeField, Tooltip("Rate at which objects are spawned (in seconds)")] private float meteoriteRate;
     [SerializeField, Tooltip("Set which x difficulty update call to respond to, a call is made every 10 seconds, e.g. 6 = 1 minute"), Range(1,600)] private int meteoriteCallStep = 1;
     [SerializeField, Tooltip("Amount of objects to add to relevant spawn wave when difficultyStep happens")] private int meteoriteSpawnInc;
-    [Header("Mega Asteroid spawning")]
-    [SerializeField, Tooltip("Amount in seconds before these objects start spawning")] private int mAsteroidStartDelay;
-    [SerializeField, Tooltip("Number of objects to spawn in with each spawn wave")] private int mAsteroidAmount;
-    [SerializeField, Tooltip("Rate at which objects are spawned (in seconds)")] private float mAsteroidRate;
-    [SerializeField, Tooltip("Set which x difficulty update call to respond to, a call is made every 10 seconds, e.g. 6 = 1 minute"), Range(1,600)] private int mAsteroidCallStep = 1;
-    [SerializeField, Tooltip("Amount of objects to add to relevant spawn wave when difficultyStep happens")] private int mAsteroidSpawnInc;
+    [Header("Megaroid spawning")]
+    [SerializeField, Tooltip("Amount in seconds before these objects start spawning")] private int megaroidStartDelay;
+    [SerializeField, Tooltip("Number of objects to spawn in with each spawn wave")] private int megaroidAmount;
+    [SerializeField, Tooltip("Rate at which objects are spawned (in seconds)")] private float megaroidRate;
+    [SerializeField, Tooltip("Set which x difficulty update call to respond to, a call is made every 10 seconds, e.g. 6 = 1 minute"), Range(1,600)] private int megaroidCallStep = 1;
+    [SerializeField, Tooltip("Amount of objects to add to relevant spawn wave when difficultyStep happens")] private int megaroidSpawnInc;
+    [SerializeField, Tooltip("How many of this object can be spawned in at any given time?")] private int megaroidLimitInScene;
+    private int currentMegaroidsInScene;
+    
 
     // Reference to main camera
     private Camera mainCamera;
@@ -35,16 +38,23 @@ public class DestructibleSpawner : MonoBehaviour
 
     private void OnEnable() {
         GameManager.IncreaseDifficulty += OnIncreaseDifficulty;
+        MegaAsteroid.MegaroidDestroyed += OnMegaroidDestroyed;
+    }
+    private void OnDisable() {
+        GameManager.IncreaseDifficulty -= OnIncreaseDifficulty;
+        MegaAsteroid.MegaroidDestroyed -= OnMegaroidDestroyed;
     }
 
     private void Start()
     {
         CenterPosMainCameraXY();
 
+        currentMegaroidsInScene = megaroidAmount;
+
         //StartCoroutineLoopsForEachObject
         StartCoroutine(Spawn(asteroidRate,asteroidAmount,spawnPrefabs[0], asteroidStartDelay));
         StartCoroutine(Spawn(meteoriteRate,meteoriteAmount,spawnPrefabs[1], meteoriteStartDelay));
-        StartCoroutine(Spawn(mAsteroidRate,mAsteroidAmount,spawnPrefabs[2], mAsteroidStartDelay));
+        StartCoroutine(Spawn(megaroidRate,megaroidAmount,spawnPrefabs[2], megaroidStartDelay));
     }
 
     private void CenterPosMainCameraXY(){
@@ -62,13 +72,16 @@ public class DestructibleSpawner : MonoBehaviour
         }
 
         yield return new WaitForSeconds(spawnRate);
-        for (int i = 0; i < amountOfObjectsToSpawn; i++)
+        if (amountOfObjectsToSpawn != 0)
         {
-            var values = CalculateSpawnPointAndDestAngle();
-
-            // Instantiate an asteroid at the calculated spawn point with the rotated trajectory
-            Instantiate(objectToSpawn, values.spawnPoint, Quaternion.Euler(0,0,values.angle),transform);
-
+            for (int i = 0; i < amountOfObjectsToSpawn; i++)
+            {
+                var values = CalculateSpawnPointAndDestAngle();
+    
+                // Instantiate an asteroid at the calculated spawn point with the rotated trajectory
+                Instantiate(objectToSpawn, values.spawnPoint, Quaternion.Euler(0,0,values.angle),transform);
+    
+            }
         }
 
         yield return null;
@@ -81,8 +94,16 @@ public class DestructibleSpawner : MonoBehaviour
             spawnRate = meteoriteRate;
             amountOfObjectsToSpawn = meteoriteAmount;
         }else if(objectToSpawn == spawnPrefabs[2]){
-            spawnRate = mAsteroidRate;
-            amountOfObjectsToSpawn = mAsteroidAmount;
+            
+            //The implementation is nasty, but it does the job and limits active megaroids that can be instantiated at any given time.
+            if ((currentMegaroidsInScene + megaroidAmount) > megaroidLimitInScene)
+            {
+                amountOfObjectsToSpawn = megaroidLimitInScene - currentMegaroidsInScene;
+                        
+            } else amountOfObjectsToSpawn = megaroidAmount;
+
+            spawnRate = megaroidRate;
+            currentMegaroidsInScene = currentMegaroidsInScene + amountOfObjectsToSpawn;
         }
 
         StartCoroutine(Spawn(spawnRate, amountOfObjectsToSpawn, objectToSpawn));
@@ -118,10 +139,14 @@ public class DestructibleSpawner : MonoBehaviour
         }
 
         //MegaAsteroids
-        if (RespondToCall.ShouldRespondToCall(mAsteroidCallStep, difficultyCallNum) && Time.time > mAsteroidStartDelay)
+        if (RespondToCall.ShouldRespondToCall(megaroidCallStep, difficultyCallNum) && Time.time > megaroidStartDelay)
         {
-            mAsteroidAmount += mAsteroidSpawnInc;
+            megaroidAmount += megaroidSpawnInc;
         }
+    }
+
+    private void OnMegaroidDestroyed(){
+        currentMegaroidsInScene--;
     }
 
 

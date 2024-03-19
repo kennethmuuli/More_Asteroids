@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class MegaAsteroid : BaseDestructibleObject
     private SpriteRenderer spriteRenderer;
     private float t;
     private bool isDying;
+    public static Action MegaroidDestroyed;
 
     // Called on the frame when a script is enabled
     override protected void Start()
@@ -32,6 +34,7 @@ public class MegaAsteroid : BaseDestructibleObject
             metalColliders.SetActive(false);
             asteroidAnimator.enabled = true;
             t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
+            MegaroidDestroyed?.Invoke();
             Die(t);
         } return;
     }

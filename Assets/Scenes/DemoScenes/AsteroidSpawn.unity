@@ -5203,11 +5203,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: meteoriteRate
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: asteroidAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidAmount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
@@ -5224,11 +5232,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: asteroidSpawnInc
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: destCircleRadius
       value: 4.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidCallStep
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidSpawnInc
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: mAsteroidCallStep
@@ -5248,11 +5264,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: asteroidStartDelay
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: difficultyCallStep
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
+      propertyPath: megaroidLimitInScene
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6408000114664256318, guid: 02518fc30af7d644b85c78114fed0264, type: 3}
       propertyPath: spawnPrefabs.Array.size
