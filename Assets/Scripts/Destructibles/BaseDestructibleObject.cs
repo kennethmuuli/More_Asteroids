@@ -23,10 +23,8 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     [Header("Pickup Drops")]
     [SerializeField] private bool dropsPowerUps = false;
     [SerializeField] protected GameObject[] powerUpsDropList;
-    
-    [Range(0,100)]
-    [SerializeField] protected float dropChance;
-    [Tooltip("How likely, in percentages the destruction of this object is will drop something from the power ups drop list.")]
+    [SerializeField, Tooltip("The likelyhood over a specific element from the power ups drop list to spawn."), Range(0,100)] protected float e0dropChange, e1dropChange, e2dropChange, e3dropChange, e4dropChange;
+    [SerializeField, Tooltip("How likely this object is to drop anything when destoryed."), Range(0,100)] protected float dropChance;
     protected Rigidbody2D _rigidbody;
 
     protected Renderer objectRenderer;
@@ -116,11 +114,35 @@ public abstract class BaseDestructibleObject : MonoBehaviour
         if (dropsPowerUps)
         {
             float dropRoll = Random.Range(0,100);
-    
+
+            if ((e0dropChange + e1dropChange + e2dropChange + e3dropChange + e4dropChange) != 100)
+            {
+                Debug.LogWarning("Total onDropPURoll chance not 100%, some items may not spawn or spawn chance is actually lower than drop chance.");
+            } 
+
+
             if (dropChance > dropRoll)
             {
-                int randomPUIndex = Random.Range(0,powerUpsDropList.Length);
-                Instantiate(powerUpsDropList[randomPUIndex],transform.position,Quaternion.identity);
+                float onDropPURoll = Random.Range(0,100);
+                GameObject itemToSpawn = null;
+
+                if (onDropPURoll < e0dropChange) { // Shield
+                    itemToSpawn = powerUpsDropList[0];
+                } else if (onDropPURoll < e1dropChange) { // Speed
+                    itemToSpawn = powerUpsDropList[1];
+                    
+                } else if (onDropPURoll < e2dropChange) { // Laser
+                    itemToSpawn = powerUpsDropList[2];
+                    
+                } else if (onDropPURoll < e3dropChange) { // Health
+                    itemToSpawn = powerUpsDropList[3];
+                    
+                } else if (onDropPURoll < e4dropChange) { // Revive
+                    itemToSpawn = powerUpsDropList[4];    
+                } else itemToSpawn = powerUpsDropList[1]; // Fallback
+
+                // int randomPUIndex = Random.Range(0,powerUpsDropList.Length);
+                Instantiate(itemToSpawn,transform.position,Quaternion.identity);
             }
         } else return;
     }

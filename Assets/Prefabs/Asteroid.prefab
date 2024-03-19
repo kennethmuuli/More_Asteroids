@@ -226,8 +226,17 @@ MonoBehaviour:
   speed: 60
   speedVariance: 5
   health: 2
-  invulnerabilityTime: 0.1
+  invulnerabilityTime: 0
   dropsPowerUps: 1
   powerUpsDropList:
+  - {fileID: 2809434308649414481, guid: bf01d6e25429a3d4b823ee60de643acf, type: 3}
+  - {fileID: 2809434308649414481, guid: cca8b5f773d28a446910254c2e163236, type: 3}
   - {fileID: 2809434308649414481, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
-  dropChance: 100
+  - {fileID: 2809434308649414481, guid: ee5d6bfe5d1dc8842a7e99c31a088320, type: 3}
+  - {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
+  e0dropChange: 10
+  e1dropChange: 70
+  e2dropChange: 5
+  e3dropChange: 10
+  e4dropChange: 5
+  dropChance: 7.5

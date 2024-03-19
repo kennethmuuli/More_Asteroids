@@ -537,6 +537,11 @@ MonoBehaviour:
   - {fileID: 2809434308649414481, guid: 344807e2a6abcce4d87187fe51a0b5f3, type: 3}
   - {fileID: 2809434308649414481, guid: ee5d6bfe5d1dc8842a7e99c31a088320, type: 3}
   - {fileID: 2809434308649414481, guid: 89ba1abea12e69244b567269440c9a7b, type: 3}
+  e0dropChange: 0
+  e1dropChange: 0
+  e2dropChange: 40
+  e3dropChange: 30
+  e4dropChange: 30
   dropChance: 80
   circleCollider2D: {fileID: 6255730386572829374}
   metalColliders: {fileID: 2135777578501319835}
