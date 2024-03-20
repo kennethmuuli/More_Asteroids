@@ -13,7 +13,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     [SerializeField, Range(0.5f, 1f)] protected float minSize = 0.5f;
     [SerializeField, Range(1f, 3f)] protected float maxSize = 1.5f;
     [Header("Speed")]
-    [SerializeField, Range(0f, 200f)] protected float speed = 50.0f;
+    [SerializeField, Range(0f, 10000f)] protected float speed = 50.0f;
     [SerializeField, Tooltip("+- how much the objects speed may vary, with each instantation"),Range(0f,50f)] protected float speedVariance = 0f;
     [Header("Health")]
     [SerializeField] protected int health = 1;

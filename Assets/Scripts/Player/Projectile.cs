@@ -31,6 +31,9 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         } else if (other.tag == "Meteorite") {
             Destroy(gameObject);
+        } else if (other.tag == "Megaroid") {
+            other.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(damageAmount);
+            Destroy(gameObject);
         }
     }
     

@@ -37,8 +37,11 @@ public class PlayerHull : PowerUpComponent
         if(hullCollider.IsTouching(col)) {
             if (col.tag == "Asteroid" || col.tag == "Meteorite")
             {
-                    other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(10);
-                    UpdatePlayerHealth(-1);
+                other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(10);
+                UpdatePlayerHealth(-1);
+            } else if (col.tag == "Megaroid") {
+                other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(10);
+                UpdatePlayerHealth(-3);
             }
         } return;
     }
