@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     private void Start() {
         // Read in last value from audioManager, otherwise every return to main menu resets volume
         musicVolumeSlider.value = AudioManager.instance.GetCurrentMusicVolume;
+        Time.timeScale = 1f;
     }
 
     public void SetMusicVolume()
