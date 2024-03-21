@@ -5135,7 +5135,7 @@ MonoBehaviour:
   engineTrails:
   - {fileID: 7279649784450638051}
   - {fileID: 2676097098800992524}
-  normalSpeedColor: {r: 0.010412939, g: 0.52817523, b: 0.735849, a: 1}
+  normalSpeedColor: {r: 0, g: 0.42352942, b: 0.59607846, a: 0.6313726}
   highSpeedColor: {r: 0.3726415, g: 0.8204033, b: 1, a: 1}
   maxSpeedColor: {r: 1, g: 0.73170865, b: 0, a: 1}
   currentTrailColor: {r: 0.22352941, g: 0.22352941, b: 0.22352941, a: 1}
@@ -5330,6 +5330,7 @@ GameObject:
   - component: {fileID: 4833372582010059902}
   - component: {fileID: 2668649697375780840}
   - component: {fileID: 418920971337503030}
+  - component: {fileID: 7703418789469592098}
   m_Layer: 3
   m_Name: Ship
   m_TagString: Player
@@ -5672,6 +5673,22 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.8
+--- !u!114 &7703418789469592098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280935935686920321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02cc0ae01827544b9ea595a610308ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 3343608255994546425}
+  animator: {fileID: 6835029184798381267}
+  player2Sprite: {fileID: -8820715720815460284, guid: b3d36c0de0a319940b426b47f71337ad, type: 3}
+  player2AnimatorController: {fileID: 9100000, guid: 91357fc8c9af104468f673b02e8f3ff1, type: 2}
 --- !u!1 &8326418388284979322
 GameObject:
   m_ObjectHideFlags: 0

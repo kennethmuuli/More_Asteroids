@@ -35,12 +35,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     public void PublishPlayerID (int playerInstanceID, GameObject player) {
         _currentPlayerCount++;
-        OnPublishPlayer?.Invoke(playerInstanceID, player);
 
         if(_currentPlayerCount > 1 && !isCoopGame) {
             isCoopGame = true;
             AnnounceCoopGame?.Invoke();
         }
+        
+        OnPublishPlayer?.Invoke(playerInstanceID, player);
     }
 
     public void ScaleDifficulty(){
