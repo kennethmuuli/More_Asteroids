@@ -5135,8 +5135,8 @@ MonoBehaviour:
   engineTrails:
   - {fileID: 7279649784450638051}
   - {fileID: 2676097098800992524}
-  normalSpeedColor: {r: 0, g: 0.7149544, b: 1, a: 1}
-  highSpeedColor: {r: 0.8083642, g: 0.14509803, b: 1, a: 1}
+  normalSpeedColor: {r: 0.010412939, g: 0.52817523, b: 0.735849, a: 1}
+  highSpeedColor: {r: 0.3726415, g: 0.8204033, b: 1, a: 1}
   maxSpeedColor: {r: 1, g: 0.73170865, b: 0, a: 1}
   currentTrailColor: {r: 0.22352941, g: 0.22352941, b: 0.22352941, a: 1}
   normalMagnitudeCap: 4
