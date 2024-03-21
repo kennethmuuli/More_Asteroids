@@ -60,12 +60,12 @@ public class InGameOverlayManager : MonoBehaviour
 
 
     private void ToggleInGameOverlay(GameState stateToCheck) {
-        if (stateToCheck == GameState.Pause)
+        if (stateToCheck == GameState.Pause || stateToCheck == GameState.GameOver)
         {
             inGameOverlay.GetComponent<Canvas>().enabled = false;
         } else if (stateToCheck == GameState.Play) {
             inGameOverlay.GetComponent<Canvas>().enabled = true;
-        }
+        } 
     }
 
     private void AssignOverlaySide(int playerIndex, GameObject player) {
