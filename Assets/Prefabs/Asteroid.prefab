@@ -241,11 +241,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropsPowerUps: 1
-  dropEventChance: 10
+  dropEventChance: 15
   commonPowerUps:
   - {fileID: 2809434308649414481, guid: cca8b5f773d28a446910254c2e163236, type: 3}
   - {fileID: 2809434308649414481, guid: bf01d6e25429a3d4b823ee60de643acf, type: 3}
-  commonDropChance: 65
+  commonDropChance: 70
   uncommonPowerUps:
   - {fileID: 2809434308649414481, guid: ee5d6bfe5d1dc8842a7e99c31a088320, type: 3}
   uncommonDropChance: 30

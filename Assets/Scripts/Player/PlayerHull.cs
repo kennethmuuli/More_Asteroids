@@ -39,7 +39,7 @@ public class PlayerHull : PowerUpComponent
             {
                 other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(10);
                 UpdatePlayerHealth(-1);
-            } else if (col.tag == "Megaroid") {
+            } else if (col.tag == "Megaroid" || col.tag == "MegaroidShield") {
                 other.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(10);
                 UpdatePlayerHealth(-3);
             }

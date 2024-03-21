@@ -5127,7 +5127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropsPowerUps: 1
-  dropEventChance: 30
+  dropEventChance: 40
   commonPowerUps:
   - {fileID: 2809434308649414481, guid: bf01d6e25429a3d4b823ee60de643acf, type: 3}
   commonDropChance: 50

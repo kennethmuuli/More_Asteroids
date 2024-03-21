@@ -27,12 +27,11 @@ public class Projectile : MonoBehaviour
         if(other.tag == "Asteroid")
         {
             other.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(damageAmount);
-
-            Destroy(gameObject);
-        } else if (other.tag == "Meteorite") {
             Destroy(gameObject);
         } else if (other.tag == "Megaroid") {
-            other.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(damageAmount);
+            other.transform.gameObject.GetComponentInParent<MegaAsteroid>().TakeDamage(damageAmount);
+            Destroy(gameObject);
+        } else if (other.tag == "Meteorite" || other.tag == "MegaroidShield") {
             Destroy(gameObject);
         }
     }

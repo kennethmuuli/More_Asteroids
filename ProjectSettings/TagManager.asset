@@ -8,6 +8,7 @@ TagManager:
   - Asteroid
   - Meteorite
   - Megaroid
+  - MegaroidShield
   layers:
   - Default
   - TransparentFX
