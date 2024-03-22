@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private int difficultyCallNum;
     private float timeToIncreaseDifficulty;
     public static Action<int> IncreaseDifficulty;
+    private bool maxPlayerCountReached;
+    private PlayerInputManager playerInputManager;
 
     private void Awake() {
         if (instance == null)
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
+        playerInputManager = GetComponent<PlayerInputManager>();
         UpdateGameState(GameState.Play);
         InvokeRepeating(nameof(ScaleDifficulty),10,10);
     }
@@ -39,6 +42,11 @@ public class GameManager : MonoBehaviour
         if(_currentPlayerCount > 1 && !isCoopGame) {
             isCoopGame = true;
             AnnounceCoopGame?.Invoke();
+
+            if (_currentPlayerCount == 2 && !maxPlayerCountReached)
+            {
+                maxPlayerCountReached = true;
+            }
         }
         
         OnPublishPlayer?.Invoke(playerInstanceID, player);
@@ -70,15 +78,25 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Keybind:
                 Time.timeScale = 0f;
+                if (!maxPlayerCountReached)
+                {
+                    playerInputManager.EnableJoining();
+                }
             break;
             case GameState.Play:
                 Time.timeScale = 1f;
+                if (!maxPlayerCountReached)
+                {
+                    playerInputManager.EnableJoining();
+                }
             break;
             case GameState.Pause:
                 Time.timeScale = 0f;
+                playerInputManager.DisableJoining();
             break;
             case GameState.GameOver:
                 Time.timeScale = 0f;
+                playerInputManager.DisableJoining();
             break;
             default:
             break;

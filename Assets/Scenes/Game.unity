@@ -5381,7 +5381,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 1
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5440,7 +5440,7 @@ MonoBehaviour:
     - original: 60
       remapped: 60
     - original: 80
-      remapped: 80
+      remapped: 24
     - original: 2
       remapped: 2
   - name: Player_2
@@ -5460,7 +5460,7 @@ MonoBehaviour:
     - original: 60
       remapped: 0
     - original: 80
-      remapped: 0
+      remapped: 80
     - original: 2
       remapped: 0
 --- !u!114 &1787111901
