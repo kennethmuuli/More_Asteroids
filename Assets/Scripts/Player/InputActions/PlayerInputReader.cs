@@ -7,10 +7,19 @@ public class PlayerInputReader : MonoBehaviour
     private Vector2 _movementVector;
     private bool _isBoosting, _isFiring, _isAskedToJoin;
     private PlayerInput playerInput;
+    private string savedControlSchemeName;
+    private InputDevice inputDevice;
+    private bool notInitialEnable;
     private bool readInput = true;
 
     private void OnEnable() {
         GameManager.OnUpdateGameState += ToggleInputMap;
+        
+        // Reset initial controlscheme and device
+        if (notInitialEnable)
+        {
+            playerInput.SwitchCurrentControlScheme(savedControlSchemeName, inputDevice);
+        }
     }
     private void OnDisable() {
         GameManager.OnUpdateGameState -= ToggleInputMap;
@@ -18,6 +27,15 @@ public class PlayerInputReader : MonoBehaviour
     private void Start(){
         GameManager.instance.PublishPlayerID(transform.GetInstanceID(), gameObject);
         playerInput = GetComponent<PlayerInput>();
+
+        // save initial controlscheme and device to reattach when enabled, otherwise it conflicts with the keyboardSplitter and reset controller to keyboard
+        if (!notInitialEnable)
+        {
+            savedControlSchemeName = playerInput.currentControlScheme;
+            inputDevice = playerInput.devices[0];
+            notInitialEnable = true;
+        }
+
     }
 
     public void OnMovementUpdated(InputAction.CallbackContext context) {
