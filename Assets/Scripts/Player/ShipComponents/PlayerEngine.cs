@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInputReader))]
@@ -154,6 +153,7 @@ public class PlayerEngine : PowerUpComponent
             Gizmos.DrawWireCube(new Vector2(0,0),new Vector2(gameAreaWidth*2,gameAreaHeight*2)); 
         }   
     }
-}
 
 # endif
+}
+
