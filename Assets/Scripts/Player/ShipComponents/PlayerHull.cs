@@ -14,6 +14,8 @@ public class PlayerHull : PowerUpComponent
     private void Start() {
         currentHullHealth = maxHullHealth;
         SetStartPosition();
+        // Calling it so that player health would not fall into negative numbers, playerReviver will take care of adding the one respawn health;
+        UpdatePlayerHealth(0);
     }
 
     protected override void Update()
@@ -57,8 +59,8 @@ public class PlayerHull : PowerUpComponent
         if (currentHullHealth <= 0)
         {
             GameManager.instance.PlayerDied();
-            gameObject.SetActive(false);
             currentHullHealth = 0;
+            gameObject.SetActive(false);
         }
     }
 }
