@@ -18,7 +18,7 @@ public class PlayerInputReader : MonoBehaviour
         // Reset initial controlscheme and device
         if (notInitialEnable)
         {
-            playerInput.SwitchCurrentControlScheme(savedControlSchemeName, inputDevice);
+            LoadDeviceAndControlScheme();
         }
     }
     private void OnDisable() {
@@ -31,9 +31,7 @@ public class PlayerInputReader : MonoBehaviour
         // save initial controlscheme and device to reattach when enabled, otherwise it conflicts with the keyboardSplitter and reset controller to keyboard
         if (!notInitialEnable)
         {
-            savedControlSchemeName = playerInput.currentControlScheme;
-            inputDevice = playerInput.devices[0];
-            notInitialEnable = true;
+            SaveDeviceAndControlScheme();
         }
 
     }
@@ -69,10 +67,27 @@ public class PlayerInputReader : MonoBehaviour
     private void ToggleInputMap(GameState gameState) {
         if(gameState == GameState.Play) {
             readInput = true;
+            if (notInitialEnable)
+            {
+                LoadDeviceAndControlScheme();
+            }
         } else if (gameState == GameState.Pause) {
-
+            /* Switch input on/off to disable all callback and ensure infinity callbacks don't happen, 
+            e.g. pausing while shoot pressed down (keeps creating projectiles indefinitely, until unpaused and shoot again) */
+            playerInput.enabled = false;
+            playerInput.enabled = true;
             readInput = false;
         }
+    }
+
+    private void SaveDeviceAndControlScheme() {
+        savedControlSchemeName = playerInput.currentControlScheme;
+        inputDevice = playerInput.devices[0];
+        notInitialEnable = true;
+    }
+
+    private void LoadDeviceAndControlScheme() {
+        playerInput.SwitchCurrentControlScheme(savedControlSchemeName, inputDevice);
     }
 
     public Vector2 MovementVector{

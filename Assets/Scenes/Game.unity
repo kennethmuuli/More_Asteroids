@@ -5381,7 +5381,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
-  m_JoinBehavior: 1
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5458,11 +5458,11 @@ MonoBehaviour:
     - original: 29
       remapped: 93
     - original: 60
-      remapped: 0
+      remapped: 60
     - original: 80
       remapped: 80
     - original: 2
-      remapped: 0
+      remapped: 2
 --- !u!114 &1787111901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5552,11 +5552,11 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 3280a9bf9c123a642aa52a47776eb319, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: d0bc6549dcdc0214395cec8917fadf74, type: 3}
   m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 8966923572308438017, guid: 3280a9bf9c123a642aa52a47776eb319, type: 3}
-  m_SubmitAction: {fileID: -5932233622581131726, guid: 3280a9bf9c123a642aa52a47776eb319, type: 3}
-  m_CancelAction: {fileID: -8837423052893086173, guid: 3280a9bf9c123a642aa52a47776eb319, type: 3}
+  m_MoveAction: {fileID: -7590775475343407645, guid: d0bc6549dcdc0214395cec8917fadf74, type: 3}
+  m_SubmitAction: {fileID: -881775899779494351, guid: d0bc6549dcdc0214395cec8917fadf74, type: 3}
+  m_CancelAction: {fileID: 2044621930600210850, guid: d0bc6549dcdc0214395cec8917fadf74, type: 3}
   m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
@@ -5629,7 +5629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2040356218
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6081,7 +6081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8688640396397597231, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
