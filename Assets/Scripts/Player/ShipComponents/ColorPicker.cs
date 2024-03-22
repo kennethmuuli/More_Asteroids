@@ -1,4 +1,3 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class ColorPicker : MonoBehaviour
@@ -7,7 +6,7 @@ public class ColorPicker : MonoBehaviour
     [SerializeField] private Animator animator;
     [Header("Player 2 Assets")]
     [SerializeField] private Sprite player2Sprite;
-    [SerializeField] private AnimatorController player2AnimatorController;
+    [SerializeField] private RuntimeAnimatorController player2AnimatorController;
     private int instanceID;
     private bool isCoopGame;
     
