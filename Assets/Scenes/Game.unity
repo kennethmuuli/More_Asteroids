@@ -525,11 +525,11 @@ MonoBehaviour:
     - original: 29
       remapped: 93
     - original: 60
-      remapped: 60
+      remapped: 0
     - original: 80
-      remapped: 80
+      remapped: 0
     - original: 2
-      remapped: 2
+      remapped: 0
 --- !u!114 &1787111901
 MonoBehaviour:
   m_ObjectHideFlags: 0

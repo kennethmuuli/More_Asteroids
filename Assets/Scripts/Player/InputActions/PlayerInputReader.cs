@@ -60,10 +60,6 @@ public class PlayerInputReader : MonoBehaviour
             GameManager.instance.UpdateGameState(GameState.Pause);
         }
     }
-    public void OnConfirmUpdated(InputAction.CallbackContext context) {
-
-    }
-
     private void ToggleInputMap(GameState gameState) {
         if(gameState == GameState.Play) {
             readInput = true;
