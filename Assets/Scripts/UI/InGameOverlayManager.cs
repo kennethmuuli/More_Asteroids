@@ -33,7 +33,7 @@ public class InGameOverlayManager : MonoBehaviour
     private Dictionary<int, Dictionary<PowerUpType, Coroutine>> activeCoroutines = new Dictionary<int, Dictionary<PowerUpType, Coroutine>>();
     
     private void OnEnable() {
-        Scoretracker.scoreUpdated += OnScoreUpdated;
+        Scoretracker.ScoreUpdated += OnScoreUpdated;
         PowerUp.PowerUpCollected += OnPowerUpCollected;
         GameManager.OnPublishPlayer += AssignOverlaySide;
         GameManager.OnUpdateGameState += ToggleInGameOverlay;
@@ -41,7 +41,7 @@ public class InGameOverlayManager : MonoBehaviour
     }
 
     private void OnDisable() {
-        Scoretracker.scoreUpdated -= OnScoreUpdated;
+        Scoretracker.ScoreUpdated -= OnScoreUpdated;
         PowerUp.PowerUpCollected -= OnPowerUpCollected;
         GameManager.OnPublishPlayer -= AssignOverlaySide;
         GameManager.OnUpdateGameState -= ToggleInGameOverlay;
