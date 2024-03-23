@@ -16,10 +16,14 @@ public class AudioManager : MonoBehaviour
 
     private AudioClip _SFXToPlay;
     public static Action<SFXName> playSFX;
-    [Header("In-game Audio Clips")]
-    [SerializeField] private AudioClip _projectileSound;
-    [SerializeField] private AudioClip _laserSound;
-    [SerializeField] private AudioClip _asteroidDestructionSound;
+    [Header("Ship sounds")]
+    [SerializeField] private AudioClip[] _projectileShootSound;
+    private int _projectileShootSoundIterator;
+    [SerializeField] private AudioClip _laserSound, _accelerateSound, _boostSound;
+    [Header("Destructibles sounds")]
+    [SerializeField] private AudioClip _asteroidDestructionSound, _hitSuccessSound, _hitFailSound;
+    [Header("UI sounds")]
+    [SerializeField] private AudioClip _uiMove, _uiSelect;
 
 
 
@@ -74,7 +78,7 @@ public class AudioManager : MonoBehaviour
         switch (SFXName)
         {
             case SFXName.ShootProjectile:
-                _SFXToPlay = _projectileSound;
+                _SFXToPlay = loopClipsArray(_projectileShootSound, _projectileShootSoundIterator);
                 break;
             case SFXName.ShootLaser:
                 _SFXToPlay = _laserSound;
@@ -88,6 +92,19 @@ public class AudioManager : MonoBehaviour
 
         SFXSource.clip = _SFXToPlay;
         SFXSource.Play();
+    }
+
+    private AudioClip loopClipsArray(AudioClip[] audioClips, int arrayIterator) {
+        
+        if (audioClips.Length < arrayIterator)
+        {
+            arrayIterator = 0;
+        }
+        AudioClip clipToReturn = audioClips[arrayIterator];
+
+        arrayIterator++;
+        
+        return clipToReturn;
     }
 }
 
