@@ -158,6 +158,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 846816731}
     m_Modifications:
+    - target: {fileID: 1850233484106153336, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613325449174742695, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3123305946011751680, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -201,6 +209,22 @@ PrefabInstance:
     - target: {fileID: 3990169207414200925, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
       propertyPath: m_Name
       value: InGameOverlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056766929482740063, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193911811519961556, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452077925781659853, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099225290082214839, guid: a0fe74fcbb8ee3d439e8df2d16d112f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
