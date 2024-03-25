@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     public static Action<SFXName, int> PlaySFX;
     public static Action<SFXName, int> StopSFX;
-    private AudioMixer audioMixer;
     public Sound[] SFXs;
 
     private void OnEnable() {
