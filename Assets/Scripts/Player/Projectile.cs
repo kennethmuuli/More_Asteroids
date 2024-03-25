@@ -28,11 +28,14 @@ public class Projectile : MonoBehaviour
         {
             other.transform.gameObject.GetComponent<BaseDestructibleObject>().TakeDamage(damageAmount);
             Destroy(gameObject);
+            AudioManager.PlaySFX?.Invoke(SFXName.ProjectileHitSuccess,gameObject.GetInstanceID());
         } else if (other.tag == "Megaroid") {
             other.transform.gameObject.GetComponentInParent<MegaAsteroid>().TakeDamage(damageAmount);
             Destroy(gameObject);
+            AudioManager.PlaySFX?.Invoke(SFXName.ProjectileHitSuccess,gameObject.GetInstanceID());
         } else if (other.tag == "Meteorite" || other.tag == "MegaroidShield") {
             Destroy(gameObject);
+            AudioManager.PlaySFX?.Invoke(SFXName.ProjectileHitFail,gameObject.GetInstanceID());
         }
     }
     

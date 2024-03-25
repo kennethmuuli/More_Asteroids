@@ -28,6 +28,7 @@ public class PlayerEngine : PowerUpComponent
     private Animator shipAnimator;
     private Rigidbody2D rb;
     private PlayerInputReader movementInput;
+    private bool hasMoved;
 
     protected override void OnDisable()
     {
@@ -69,12 +70,17 @@ public class PlayerEngine : PowerUpComponent
     private void MoveShip(float movementSpeed, float maxSpeed, float rotationSpeed, float turnSpeed)
     {
         float verticalInput = movementInput.MovementVector.y;
+        if(verticalInput == 0) {
+            AudioManager.StopSFX?.Invoke(SFXName.ShipAccelerate,instanceID);
+        }
         float horizontalInput = movementInput.MovementVector.x;
         
         // Move forward
         if (verticalInput != 0)
         {
             rb.AddForce(verticalInput * transform.up * movementSpeed * Time.fixedDeltaTime);
+            AudioManager.PlaySFX?.Invoke(SFXName.ShipAccelerate, instanceID);
+            hasMoved = true;
         }
 
         // Rotate left
@@ -113,6 +119,7 @@ public class PlayerEngine : PowerUpComponent
         {
             rb.AddForce(transform.up * boostForce, ForceMode2D.Impulse);
             nextBoostTime = Time.time + boostCooldown;
+            AudioManager.PlaySFX?.Invoke(SFXName.ShipBoost,instanceID);
         }
     }
 

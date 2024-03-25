@@ -33,6 +33,7 @@ public abstract class PowerUpComponent : MonoBehaviour
         {
             powerUpEngaged = true;
             powerUpDuration = Time.time + duration;
+            AudioManager.PlaySFX?.Invoke(SFXName.PowerUpEngage,instanceID);
         } return;
     }
 }

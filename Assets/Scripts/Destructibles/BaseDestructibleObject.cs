@@ -98,6 +98,7 @@ public abstract class BaseDestructibleObject : MonoBehaviour
     {
         // Invoke objectDestroyed event sending in myScoreValue for all listeners
         objectDestroyed?.Invoke(myScoreValue);
+        AudioManager.PlaySFX?.Invoke(SFXName.AstroidDestroy,GetInstanceID());
 
         lootTable.DropPowerUp();
 

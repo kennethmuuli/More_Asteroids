@@ -168,7 +168,7 @@ public class InGameOverlayManager : MonoBehaviour
         }
 
         powerupSlider.value = 0;
-
+        AudioManager.PlaySFX?.Invoke(SFXName.PowerUpDisengage,gameObject.GetInstanceID());
         powerupDisplay.SetActive(false); 
     }
 
