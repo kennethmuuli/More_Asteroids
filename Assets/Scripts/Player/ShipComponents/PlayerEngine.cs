@@ -113,7 +113,6 @@ public class PlayerEngine : PowerUpComponent
         {
             rb.AddForce(transform.up * boostForce, ForceMode2D.Impulse);
             nextBoostTime = Time.time + boostCooldown;
-
         }
     }
 

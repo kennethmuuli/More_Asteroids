@@ -5526,22 +5526,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0b5612e1-ba48-4fef-afaa-825f7deeded0
     m_ActionName: 'Player/Quit[/Keyboard/escape]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0cebb26e-113d-49db-83b5-2a6553f36363
-    m_ActionName: 'Player/Join[/Keyboard/numpadPlus]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3ee35d56-f7a8-4c8a-956f-ad5604606422
-    m_ActionName: 'UI/MenuMovement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2c2c2a31-cd97-4def-8ebe-fec10fafb7bd
-    m_ActionName: 'UI/Confirm[/Keyboard/enter]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2cef77c3-571f-4c39-b20c-da5ec69b2042
-    m_ActionName: 'UI/Back/Cancel[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -19,14 +19,14 @@ public class MainMenu : MonoBehaviour
 
     private void Start() {
         // Read in last value from audioManager, otherwise every return to main menu resets volume
-        musicVolumeSlider.value = AudioManager.instance.GetCurrentMusicVolume;
+        // musicVolumeSlider.value = AudioManager.instance.GetCurrentVolume(SFXName.BackgroundMusic);
         Time.timeScale = 1f;
     }
 
     public void SetMusicVolume()
     {
         float volume = musicVolumeSlider.value;
-        AudioManager.instance.UpdateMusicVolume(volume);
+        // AudioManager.instance.UpdateVolume(SFXName.BackgroundMusic, volume);
     }
     public void PlayGame()
     {

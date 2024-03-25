@@ -17,6 +17,9 @@ public class PlayerAttacks : PowerUpComponent
     [SerializeField] private GameObject[] cannonPositions;
     [SerializeField] private bool showRaycast;
     private PlayerInputReader attackInput;
+    private bool hasShotLaser;
+
+    
     
     private void Start() {
         attackInput = GetComponent<PlayerInputReader>();
@@ -27,10 +30,15 @@ public class PlayerAttacks : PowerUpComponent
     {
         if (IsFiring() && powerUpEngaged)
         {
+            AudioManager.PlaySFX?.Invoke(SFXName.ShootLaser, instanceID);
+            hasShotLaser = true;
             FireRayWeapon();
         } else if (IsFiring()) {
-            Fire();  
-        } 
+            Fire();
+        } else if (!IsFiring() && hasShotLaser) {
+            AudioManager.StopSFX?.Invoke(SFXName.ShootLaser, instanceID);
+            hasShotLaser = false;
+        }
 
         laserGFX.SetActive(IsFiring() && powerUpEngaged);
 
@@ -56,6 +64,8 @@ public class PlayerAttacks : PowerUpComponent
             
             // Instantiate new projectile
             Instantiate(projectilePrefab, nextFirePos, transform.rotation);
+            //Play SFX
+            AudioManager.PlaySFX(SFXName.ShootProjectile, instanceID);
 
             nextTimeToFire = Time.unscaledTime + fireCooldown;
         }  

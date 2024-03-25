@@ -1,36 +1,25 @@
-using UnityEngine.Audio;
 using UnityEngine;
 using System;
-using Unity.VisualScripting;
+using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    private float _currentMusicVolume = 0.5f;
-    [Header("Audio Source")]
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource SFXSource;
+    public static Action<SFXName, int> PlaySFX;
+    public static Action<SFXName, int> StopSFX;
+    private AudioMixer audioMixer;
+    public Sound[] SFXs;
 
-    [Header("Background Music")]
-    [SerializeField] private AudioClip _backgroundMusic;
-
-    private AudioClip _SFXToPlay;
-    public static Action<SFXName> playSFX;
-    [Header("Ship sounds")]
-    [SerializeField] private AudioClip[] _projectileShootSound;
-    private int _projectileShootSoundIterator;
-    [SerializeField] private AudioClip _laserSound, _accelerateSound, _boostSound;
-    [Header("Destructibles sounds")]
-    [SerializeField] private AudioClip _asteroidDestructionSound, _hitSuccessSound, _hitFailSound;
-    [Header("UI sounds")]
-    [SerializeField] private AudioClip _uiMove, _uiSelect;
-
-
-
-
-    public float GetCurrentMusicVolume {
-        get {return _currentMusicVolume;}
+    private void OnEnable() {
+        PlaySFX += OnPlaySFX;
+        StopSFX += OnStopSFX;
     }
+    private void OnDisable() {
+        PlaySFX -= OnPlaySFX;
+        StopSFX -= OnStopSFX;
+    }
+
     private void Awake() {
         //Make a static instance of the audioManager, to avoid more than one of them in any given scene
         if (instance == null)
@@ -39,22 +28,95 @@ public class AudioManager : MonoBehaviour
         } else {
             Destroy(gameObject);
         } 
+
+        CreateAudioSources();
     }
 
-    private void OnEnable() {
-        playSFX += OnPlaySoundEffect;
-    }
-    private void OnDisable() {
-        playSFX -= OnPlaySoundEffect;
-    }
 
     private void Start()
     {
         //Add the don't destory on load property so that the audioManager does not get destoryed between scenes
         DontDestroyOnLoad(gameObject);
-        PlayBackgroundMusic();
+
+        // PlayBackgroundMusic
+        // OnPlaySFX(SFXName.BackgroundMusic, gameObject.GetInstanceID());
     }
-    public void UpdateMusicVolume (float newVolume) {
+
+
+    private void CreateAudioSources() {
+        foreach (Sound sound in SFXs)
+        {
+            // Use x to loop over audioClips with a separate iterator
+            int x = 0;
+
+            for (int i = 0; i < sound.audioClips.Length * sound.poolSize; i++)
+            {
+                if(x == sound.audioClips.Length) {x = 0;}
+
+                sound.sources.Add(gameObject.AddComponent<AudioSource>());
+                sound.sources[i].outputAudioMixerGroup = sound.audioMixerGroup;
+                sound.sources[i].clip = sound.audioClips[x];
+                sound.sources[i].volume = sound.volume;
+                sound.sources[i].pitch = sound.pitch;
+                sound.sources[i].loop = sound.loop;
+                sound.sources[i].playOnAwake = sound.playOnAwake;
+                
+                x++;
+            } 
+        }
+    }
+
+    private void OnPlaySFX(SFXName name, int requestorID) {
+        Sound foundSound = null;
+
+        foreach (Sound s in SFXs)
+        {
+            if (s.name == name)
+            {
+                foundSound = s;
+                break;
+            }
+        }
+
+        var sourceToPlay = foundSound.GetSource(requestorID);
+
+        if (foundSound != null)
+        {
+            if (foundSound.continuous && !sourceToPlay.isPlaying)
+            {
+                sourceToPlay.Play();
+            } else if (!foundSound.continuous) {
+                sourceToPlay.Play();
+            }
+        }
+        else 
+        {
+            if (foundSound == null)
+            {
+                Debug.LogWarning("Could not play SFX. No audio source matching name: " + name.ToString() + " was found.");
+            }
+
+            if (sourceToPlay.isPlaying) {
+                Debug.LogWarning("Could not play SFX, since: " + name.ToString() + " is already playing.");
+            }
+        }
+    }
+
+    private void OnStopSFX(SFXName name, int requestorID)
+    {
+        Sound foundSound = Array.Find(SFXs, sound => sound.name == name);
+        
+        if (foundSound != null && foundSound.continuous)
+        {
+            foundSound.GetSource(requestorID,true).Stop();
+        }
+        else
+        {
+            Debug.LogWarning("Could not stop SFX. No audio source matching name: " + name.ToString() + " was found.");
+        }
+    }
+
+    public void UpdateVolume (SFXName name, float newVolume) {
         if(newVolume < 0) {
             newVolume = 0;
             Debug.LogWarning("Sent in music volume below 0.0, min value 0, set value to 0");
@@ -63,54 +125,53 @@ public class AudioManager : MonoBehaviour
             newVolume = 1;
             Debug.LogWarning("Sent in music volume above 1.0, max value 1, set value to 1");
         }
-        _currentMusicVolume = newVolume;
-        musicSource.volume = newVolume;
-    }
 
-    private void PlayBackgroundMusic() {
-        musicSource.clip = _backgroundMusic;
-        musicSource.Play();
-    }
-
-    // Create a new case for each audio clip and then simply invoke the event from the right place with 'AudioManager.playSFX?.Invoke(<SFXName here>);
-    private void OnPlaySoundEffect (SFXName SFXName) {
-
-        switch (SFXName)
+        // Set background music volume
+        if (name == SFXName.BackgroundMusic)
         {
-            case SFXName.ShootProjectile:
-                _SFXToPlay = loopClipsArray(_projectileShootSound, _projectileShootSoundIterator);
-                break;
-            case SFXName.ShootLaser:
-                _SFXToPlay = _laserSound;
-                break;
-            case SFXName.AstroidDestruction:
-                _SFXToPlay = _asteroidDestructionSound;
-                break;
-            default:
-                break;
+            foreach (Sound s in SFXs)
+            {
+                if (s.name == name)
+                {
+                    for (int i = 0; i < s.audioClips.Length; i++)
+                    {
+                        s.volume = newVolume;
+                        s.sources[i].volume = newVolume;
+                    }
+                    return;
+                }
+            }
+        // Set SFXs volume
+        } else {
+            foreach (Sound s in SFXs)
+            {
+                if (s.name == SFXName.BackgroundMusic)
+                {
+                    continue;
+                } else {
+                    for (int i = 0; i < s.audioClips.Length; i++)
+                    {
+                        s.volume = newVolume;
+                        s.sources[i].volume = newVolume;
+                    }
+                }
+            }
         }
-
-        SFXSource.clip = _SFXToPlay;
-        SFXSource.Play();
     }
 
-    private AudioClip loopClipsArray(AudioClip[] audioClips, int arrayIterator) {
+    public float GetCurrentVolume(SFXName name){
+        float currentVolume = 0f;
         
-        if (audioClips.Length < arrayIterator)
+        foreach (Sound s in SFXs)
         {
-            arrayIterator = 0;
+            if (s.name == name)
+            {
+                currentVolume =  s.volume;
+            }
         }
-        AudioClip clipToReturn = audioClips[arrayIterator];
-
-        arrayIterator++;
         
-        return clipToReturn;
+        return currentVolume;
     }
+
 }
 
-//If you want to add a new SFX name, simply add it here, this is used for referencing audio clips, which are all added to this script
-public enum SFXName {
-    ShootProjectile,
-    ShootLaser,
-    AstroidDestruction
-}
