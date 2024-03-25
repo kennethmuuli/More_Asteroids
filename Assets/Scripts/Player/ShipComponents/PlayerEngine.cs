@@ -70,10 +70,11 @@ public class PlayerEngine : PowerUpComponent
     private void MoveShip(float movementSpeed, float maxSpeed, float rotationSpeed, float turnSpeed)
     {
         float verticalInput = movementInput.MovementVector.y;
-        if(verticalInput == 0) {
+        float horizontalInput = movementInput.MovementVector.x;
+        
+        if(verticalInput == 0 && hasMoved) {
             AudioManager.StopSFX?.Invoke(SFXName.ShipAccelerate,instanceID);
         }
-        float horizontalInput = movementInput.MovementVector.x;
         
         // Move forward
         if (verticalInput != 0)

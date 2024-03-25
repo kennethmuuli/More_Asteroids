@@ -15,19 +15,40 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private Button optionsMenuInitial;
     [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider musicVolumeSlider, SFXVolumeSlider;
 
     private void Start() {
-        // Read in last value from audioManager, otherwise every return to main menu resets volume
-        // musicVolumeSlider.value = AudioManager.instance.GetCurrentVolume(SFXName.BackgroundMusic);
-        AudioManager.PlaySFX?.Invoke(SFXName.BackgroundMusic,gameObject.GetInstanceID());
+        LoadSettingsPrefs();
         Time.timeScale = 1f;
     }
 
+    private void LoadSettingsPrefs() {
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            var loadedValue = PlayerPrefs.GetFloat("musicVolume",musicVolumeSlider.value);
+            audioMixer.SetFloat("Music", Mathf.Log10(loadedValue) * 20); 
+            musicVolumeSlider.value = loadedValue;
+        }
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            var loadedValue = PlayerPrefs.GetFloat("SFXVolume",SFXVolumeSlider.value);
+            audioMixer.SetFloat("SFX", Mathf.Log10(loadedValue) * 20);
+            SFXVolumeSlider.value = loadedValue;
+        }
+    }
+ 
     public void SetMusicVolume()
     {
         float volume = musicVolumeSlider.value;
-        // AudioManager.instance.UpdateVolume(SFXName.BackgroundMusic, volume);
+        audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("musicVolume", volume);
+
+    }
+    public void SetSFXVolume()
+    {
+        float volume = SFXVolumeSlider.value;
+        audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("SFXVolume", volume);
     }
     public void PlayGame()
     {
@@ -44,7 +65,6 @@ public class MainMenu : MonoBehaviour
         DeactivateMenus();
         optionsMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(optionsMenuInitial.gameObject);
-        SetMusicVolume();   
     }
 
     private void DeactivateMenus () {

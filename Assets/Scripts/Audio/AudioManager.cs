@@ -36,9 +36,8 @@ public class AudioManager : MonoBehaviour
     {
         //Add the don't destory on load property so that the audioManager does not get destoryed between scenes
         DontDestroyOnLoad(gameObject);
-
         // PlayBackgroundMusic
-        // OnPlaySFX(SFXName.BackgroundMusic, gameObject.GetInstanceID());
+        PlaySFX?.Invoke(SFXName.BackgroundMusic,gameObject.GetInstanceID());
     }
 
 
