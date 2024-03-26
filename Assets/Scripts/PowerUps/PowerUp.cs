@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework.Constraints;
 using UnityEngine;
+using UnityEngine.TextCore;
 
 public class PowerUp : MonoBehaviour
 {
@@ -10,13 +12,15 @@ public class PowerUp : MonoBehaviour
     [Tooltip("Time in seconds the powerup lasts a player picks it up.")]
     [SerializeField] private float lifetimeDuration;
     [Tooltip("Time in seconds before the powerup despawns if not picked up.")]
-    [SerializeField] private SpriteRenderer iconRenderer;
+    [SerializeField] private SpriteRenderer iconRenderer, GFXRenderer;
     public static Action<PowerUpType, float, int> PowerUpCollected;
     private Animator pickUpAnimator;
 
     private void Start() {
         pickUpAnimator = GetComponentInChildren<Animator>();
         Destroy(gameObject, lifetimeDuration);
+
+        StartCoroutine(FadeOut());
     }
 
     private void OnTriggerEnter2D(Collider2D other) { 
@@ -54,6 +58,24 @@ public class PowerUp : MonoBehaviour
                 break;
         }
     }
+
+    private IEnumerator FadeOut () {
+        float delay = lifetimeDuration - 3f;
+        
+        yield return new WaitForSeconds(delay);
+
+        float timeElapsed = 0;
+
+        while (timeElapsed < 3f){
+            float t = timeElapsed / 3f;
+            iconRenderer.material.color = new Color(iconRenderer.color.r, iconRenderer.color.g, iconRenderer.color.b, Mathf.Lerp(1,0,t));
+            GFXRenderer.material.color = new Color(GFXRenderer.color.r, GFXRenderer.color.g, GFXRenderer.color.b, Mathf.Lerp(1,0,t));
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+    }
+    
 }
 
 public enum PowerUpType {

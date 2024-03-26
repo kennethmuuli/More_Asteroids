@@ -160,7 +160,7 @@ MonoBehaviour:
   duration: 0
   lifetimeDuration: 10
   iconRenderer: {fileID: 8296384201647164127}
-  dropChance: 20
+  GFXRenderer: {fileID: 8573319225523999648}
 --- !u!61 &3329609173485385944
 BoxCollider2D:
   m_ObjectHideFlags: 0
