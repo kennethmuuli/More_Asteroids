@@ -325,12 +325,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 2593745499732237540}
   gameOverMenuInitial: {fileID: 3961394325745977004}
-  scoreValue: {fileID: 0}
+  scoreValue: {fileID: 211904813074052940}
 --- !u!1 &3500227248905617474
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +846,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5545912902675386452}
         m_TargetAssemblyTypeName: GameOverMenu, Assembly-CSharp
         m_MethodName: ContinueToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2847289240529051201, guid: 1fbc358589e0ebf41a8a5956b3bb0a30, type: 3}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayOnClickSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

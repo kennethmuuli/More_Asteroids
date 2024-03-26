@@ -37,12 +37,9 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        //Add the don't destory on load property so that the audioManager does not get destoryed between scenes
         DontDestroyOnLoad(gameObject);
-        // PlayBackgroundMusic
         PlaySFX?.Invoke(SFXName.BackgroundMusic,gameObject.GetInstanceID());
     }
-
 
     private void CreateAudioSources() {
         foreach (Sound sound in SFXs)
@@ -146,6 +143,13 @@ public class AudioManager : MonoBehaviour
 
         source.Stop();
         source.volume = originalVolumes[source];
+    }
+
+    public void PlayOnClickSFX(){
+        PlaySFX(SFXName.ButtonConfirm, gameObject.GetInstanceID());
+    }
+    public void PlayOnSelectedSFX(){
+        PlaySFX(SFXName.ButtonMove, gameObject.GetInstanceID());
     }
 
 }

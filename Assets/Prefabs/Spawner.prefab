@@ -47,7 +47,22 @@ MonoBehaviour:
   spawnPrefabs:
   - {fileID: 8257778097176506583, guid: 94ae593b226beba49916236ec713a386, type: 3}
   - {fileID: 8257778097176506583, guid: 0539266be01cc4c4397399552b7435bb, type: 3}
-  spawnAmount: 1
-  spawnRate: 1
-  spawnCircleRadius: 22.2
-  destCircleRadius: 18
+  - {fileID: 8257778097176506583, guid: b5d077cf85a50524b84b14291d304c68, type: 3}
+  spawnCircleRadius: 32.4
+  destCircleRadius: 6.38
+  asteroidStartDelay: 0
+  asteroidAmount: 2
+  asteroidRate: 3
+  asteroidCallStep: 10
+  asteroidSpawnInc: 1
+  meteoriteStartDelay: 60
+  meteoriteAmount: 1
+  meteoriteRate: 20
+  meteoriteCallStep: 18
+  meteoriteSpawnInc: 1
+  megaroidStartDelay: 120
+  megaroidAmount: 1
+  megaroidRate: 60
+  megaroidCallStep: 30
+  megaroidSpawnInc: 1
+  megaroidLimitInScene: 3

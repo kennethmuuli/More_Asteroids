@@ -53,9 +53,13 @@ MonoBehaviour:
     iterator: 0
     volume: 0.5
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 0
     loop: 1
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 1
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
@@ -65,9 +69,13 @@ MonoBehaviour:
     iterator: 0
     volume: 0.5
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 0
     loop: 0
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 2
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
@@ -77,9 +85,13 @@ MonoBehaviour:
     iterator: 0
     volume: 0.5
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 0
     loop: 0
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 3
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
@@ -87,23 +99,31 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: 96624ee84d3c1c84d85dd4b7e27e2aad, type: 3}
     iterator: 0
-    volume: 0.5
+    volume: 0.7
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 1
     loop: 1
     playOnAwake: 0
+    fadeOutOnStop: 1
+    fadeOutDuration: 0.2
     sources: []
   - name: 4
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
     poolSize: 2
     audioClips:
-    - {fileID: 8300000, guid: 4a184063efde5a24cb0a4c79638187cf, type: 3}
+    - {fileID: 8300000, guid: aba2fc2ef6ad7d24e96e6262aaf4f529, type: 3}
     iterator: 0
     volume: 0.5
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 0
     loop: 0
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 7
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
@@ -113,9 +133,13 @@ MonoBehaviour:
     iterator: 0
     volume: 0.5
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 0
     loop: 0
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 8
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
@@ -125,9 +149,13 @@ MonoBehaviour:
     iterator: 0
     volume: 0.5
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 0
     loop: 0
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 9
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
@@ -143,33 +171,46 @@ MonoBehaviour:
     iterator: 0
     volume: 0.5
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 0
     loop: 0
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 10
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
     poolSize: 12
     audioClips:
     - {fileID: 8300000, guid: abd4d71eecfc0e54d850ab85f6969bda, type: 3}
+    - {fileID: 8300000, guid: aaefc1e7ca58ff74195d81055c97b3e2, type: 3}
     iterator: 0
-    volume: 0.5
+    volume: 0.7
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 0
     loop: 0
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 11
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
     poolSize: 12
     audioClips:
-    - {fileID: 8300000, guid: aaefc1e7ca58ff74195d81055c97b3e2, type: 3}
+    - {fileID: 8300000, guid: c7e639fa80e0049418f24c8ec1a4939b, type: 3}
     iterator: 0
-    volume: 0.5
+    volume: 0.7
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 0
     loop: 0
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 12
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
@@ -177,11 +218,15 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: db2ce50c83e518b45b88a850dee075fa, type: 3}
     iterator: 0
-    volume: 0.5
+    volume: 0.6
     pitch: 1
+    varyPitch: 0
+    pitchVariance: 0
     continuous: 1
     loop: 1
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
   - name: 14
     audioMixerGroup: {fileID: -3294169165037928735, guid: 3dc72639c3f7b8046b58b7d3a2c7a5a5, type: 2}
@@ -189,9 +234,13 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: 808fc0703d9a17346b0aef3c36dbfca5, type: 3}
     iterator: 0
-    volume: 0.5
+    volume: 1
     pitch: 1
+    varyPitch: 1
+    pitchVariance: 0.35
     continuous: 0
     loop: 0
     playOnAwake: 0
+    fadeOutOnStop: 0
+    fadeOutDuration: 0
     sources: []
