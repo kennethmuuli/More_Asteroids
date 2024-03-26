@@ -58,7 +58,10 @@ public class AudioManager : MonoBehaviour
                 sound.sources[i].outputAudioMixerGroup = sound.audioMixerGroup;
                 sound.sources[i].clip = sound.audioClips[x];
                 sound.sources[i].volume = sound.volume;
-                sound.sources[i].pitch = sound.pitch;
+                if (sound.varyPitch)
+                {
+                    sound.sources[i].pitch = sound.pitch + UnityEngine.Random.Range(-sound.pitchVariance, +sound.pitchVariance);
+                } else {sound.sources[i].pitch = sound.pitch;}
                 sound.sources[i].loop = sound.loop;
                 sound.sources[i].playOnAwake = sound.playOnAwake;
                 

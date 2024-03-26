@@ -1101,8 +1101,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2847289240529051201, guid: 1fbc358589e0ebf41a8a5956b3bb0a30, type: 3}
+      propertyPath: SFXs.Array.data[11].varyPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847289240529051201, guid: 1fbc358589e0ebf41a8a5956b3bb0a30, type: 3}
       propertyPath: SFXs.Array.data[3].fadeOutOnStop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847289240529051201, guid: 1fbc358589e0ebf41a8a5956b3bb0a30, type: 3}
+      propertyPath: SFXs.Array.data[11].pitchVariance
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 2847289240529051201, guid: 1fbc358589e0ebf41a8a5956b3bb0a30, type: 3}
       propertyPath: SFXs.Array.data[3].fadeOutDuration

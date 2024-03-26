@@ -16,6 +16,8 @@ public class Sound
     public float volume;
     [Range(.1f,3f)]
     public float pitch;
+    public bool varyPitch;
+    public float pitchVariance;
     [Tooltip("Check if this sound needs the ability to be stopped after being started.")] public bool continuous;
     public bool loop;
     public bool playOnAwake;
