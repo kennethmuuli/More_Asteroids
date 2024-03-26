@@ -2,16 +2,20 @@ using UnityEngine;
 
 public class Asteroid : BaseDestructibleObject
 {
-    private Animator asteroidAnimator;
+    private ParticleSystem debrisParticles;
+    private SpriteRenderer spriteRenderer;
+    // private Animator asteroidAnimator;
     private CircleCollider2D circleCollider2D;
-    private float t;
+    private float t = 2;
     private bool isDying;
 
     // Called on the frame when a script is enabled
     override protected void Start()
     {
         base.Start();
-        asteroidAnimator = GetComponentInChildren<Animator>();
+        // asteroidAnimator = GetComponentInChildren<Animator>();
+        debrisParticles = GetComponentInChildren<ParticleSystem>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         RandomizeSize();
         MoveAndSpin(transform.up);
@@ -23,9 +27,11 @@ public class Asteroid : BaseDestructibleObject
 
         if(currentHealth <= 0 && !isDying) {
             isDying = true;
+            debrisParticles.Play();
             circleCollider2D.enabled = false;
-            asteroidAnimator.enabled = true;
-            t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
+            spriteRenderer.sprite = null;
+            // asteroidAnimator.enabled = true;
+            // t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
             Die(t);
         } return;
     }

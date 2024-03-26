@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MegaAsteroid : BaseDestructibleObject
 {
-    private Animator asteroidAnimator;
+    // private Animator asteroidAnimator;
+    [SerializeField] private ParticleSystem[] debrisParticles;
     [SerializeField]private CircleCollider2D circleCollider2D;
     [SerializeField] private GameObject metalColliders;
     [SerializeField] private List<Sprite> breakingStates;
     private SpriteRenderer spriteRenderer;
-    private float t;
+    private float t = 2;
     private bool isDying;
     public static Action MegaroidDestroyed;
 
@@ -17,7 +18,7 @@ public class MegaAsteroid : BaseDestructibleObject
     override protected void Start()
     {
         base.Start();
-        asteroidAnimator = GetComponentInChildren<Animator>();
+        // asteroidAnimator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         RandomizeSize();
         MoveAndSpin(transform.up);
@@ -32,8 +33,14 @@ public class MegaAsteroid : BaseDestructibleObject
             isDying = true;
             circleCollider2D.enabled = false;
             metalColliders.SetActive(false);
-            asteroidAnimator.enabled = true;
-            t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
+            spriteRenderer.sprite = null;
+
+            foreach (ParticleSystem particleSystem in debrisParticles)
+            {
+                particleSystem.Play();
+            }
+            // asteroidAnimator.enabled = true;
+            // t = asteroidAnimator.GetCurrentAnimatorStateInfo(0).length;
             MegaroidDestroyed?.Invoke();
             Die(t);
         } return;
