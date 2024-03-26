@@ -1101,6 +1101,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2847289240529051201, guid: 1fbc358589e0ebf41a8a5956b3bb0a30, type: 3}
+      propertyPath: SFXs.Array.data[3].fadeOutOnStop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847289240529051201, guid: 1fbc358589e0ebf41a8a5956b3bb0a30, type: 3}
+      propertyPath: SFXs.Array.data[3].fadeOutDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847289240529051201, guid: 1fbc358589e0ebf41a8a5956b3bb0a30, type: 3}
       propertyPath: SFXs.Array.data[8].audioClips.Array.size
       value: 2
       objectReference: {fileID: 0}

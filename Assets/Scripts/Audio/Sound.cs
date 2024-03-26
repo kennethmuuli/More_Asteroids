@@ -19,6 +19,8 @@ public class Sound
     [Tooltip("Check if this sound needs the ability to be stopped after being started.")] public bool continuous;
     public bool loop;
     public bool playOnAwake;
+    public bool fadeOutOnStop;
+    [Range(0.1f, 2f)]public float fadeOutDuration;
 
     [HideInInspector]
     public List<AudioSource> sources = new List<AudioSource>();

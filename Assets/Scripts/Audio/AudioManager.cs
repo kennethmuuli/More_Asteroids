@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using UnityEngine.Audio;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class AudioManager : MonoBehaviour
     public static Action<SFXName, int> PlaySFX;
     public static Action<SFXName, int> StopSFX;
     public Sound[] SFXs;
+
+    private Dictionary<AudioSource, float> originalVolumes = new Dictionary<AudioSource, float>();
 
     private void OnEnable() {
         PlaySFX += OnPlaySFX;
@@ -103,15 +106,43 @@ public class AudioManager : MonoBehaviour
     private void OnStopSFX(SFXName name, int requestorID)
     {
         Sound foundSound = Array.Find(SFXs, sound => sound.name == name);
+
+        AudioSource sourceToStop = foundSound.GetSource(requestorID,true);
         
         if (foundSound != null && foundSound.continuous)
         {
-            foundSound.GetSource(requestorID,true).Stop();
+            if (foundSound.fadeOutOnStop)
+            {
+                StartCoroutine(FadeOut(sourceToStop, foundSound.fadeOutDuration));
+            } else {sourceToStop.Stop();}
         }
         else
         {
             Debug.LogWarning("Could not stop SFX. No audio source matching name: " + name.ToString() + " was found.");
         }
+    }
+
+    private IEnumerator FadeOut(AudioSource source, float duration)
+    {
+        if (!originalVolumes.ContainsKey(source))
+        {
+            originalVolumes.Add(source, source.volume);
+        }
+        
+        float startVolume = source.volume;
+
+        float timeElapsed = 0;
+
+        while (timeElapsed < duration){
+            float t = timeElapsed / duration;
+            source.volume = Mathf.Lerp(source.volume,0,t);
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        source.Stop();
+        source.volume = originalVolumes[source];
     }
 
 }
