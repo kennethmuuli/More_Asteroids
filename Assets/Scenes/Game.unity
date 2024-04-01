@@ -962,6 +962,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 846816731}
     m_Modifications:
+    - target: {fileID: 5095655077628079869, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: m_text
+      value: "Press any ship control \nkey to start"
+      objectReference: {fileID: 0}
     - target: {fileID: 5800196244662407212, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
       propertyPath: fakeShip
       value: 
