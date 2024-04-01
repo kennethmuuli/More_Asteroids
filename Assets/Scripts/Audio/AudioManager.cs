@@ -129,7 +129,7 @@ public class AudioManager : MonoBehaviour
             originalVolumes.Add(source, source.volume);
         }
         
-        float startVolume = source.volume;
+        // float startVolume = source.volume;
 
         float timeElapsed = 0;
 
