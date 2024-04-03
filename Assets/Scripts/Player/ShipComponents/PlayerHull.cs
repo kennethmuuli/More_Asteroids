@@ -56,6 +56,11 @@ public class PlayerHull : PowerUpComponent
         if (currentHullHealth <= 0)
         {
             GameManager.instance.PlayerDied();
+
+            //Stop any potential continuous sounds
+            AudioManager.StopSFX(SFXName.ShipAccelerate,instanceID);
+            AudioManager.StopSFX(SFXName.ShootLaser,instanceID);
+            
             currentHullHealth = 0;
             gameObject.SetActive(false);
         }

@@ -109,7 +109,7 @@ public class AudioManager : MonoBehaviour
 
         AudioSource sourceToStop = foundSound.GetSource(requestorID,true);
         
-        if (foundSound != null && foundSound.continuous)
+        if (sourceToStop != null && foundSound.continuous)
         {
             if (foundSound.fadeOutOnStop)
             {
