@@ -865,9 +865,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 846816731}
     m_Modifications:
+    - target: {fileID: 2593745499732237540, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090658174678298423, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_text
+      value: Continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 3261951613119640819, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 52.9849
+      objectReference: {fileID: 0}
+    - target: {fileID: 3261951613119640819, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -113
+      objectReference: {fileID: 0}
     - target: {fileID: 3373503796487717074, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
       propertyPath: m_Name
       value: GameOverMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373503796487717074, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940278445867839609, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 169.0926
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940278445867839609, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5332444566491871091, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 45.8112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5332444566491871091, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 48.50761
       objectReference: {fileID: 0}
     - target: {fileID: 5535096403289566234, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
       propertyPath: m_Pivot.x
@@ -949,6 +985,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8248345111487049014, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60.2819
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248345111487049014, guid: 2a0cd355840f44a458e998c76c1eb055, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 78.13435
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -962,9 +1006,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 846816731}
     m_Modifications:
+    - target: {fileID: 1221201051093289969, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837772783562312402, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5095655077628079869, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
       propertyPath: m_text
-      value: "Press any ship control \nkey to start"
+      value: Press any ship control key to start
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095655077628079869, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095655077628079869, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: m_fontStyle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095655077628079869, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095655077628079869, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5800196244662407212, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
       propertyPath: fakeShip
@@ -1054,6 +1122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartOverlay
       objectReference: {fileID: 0}
+    - target: {fileID: 8688640396397597231, guid: ea0d4e1bba23448479b9c23d6f4d7a4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1067,6 +1139,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 846816731}
     m_Modifications:
+    - target: {fileID: 1732918702065030023, guid: c0c24c2b35d5f4c48bf9cd5c2ae18c83, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 63.6992
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732918702065030023, guid: c0c24c2b35d5f4c48bf9cd5c2ae18c83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 96.63076
+      objectReference: {fileID: 0}
     - target: {fileID: 6073525802023253708, guid: c0c24c2b35d5f4c48bf9cd5c2ae18c83, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1145,6 +1225,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6073525802023253708, guid: c0c24c2b35d5f4c48bf9cd5c2ae18c83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245329740078345222, guid: c0c24c2b35d5f4c48bf9cd5c2ae18c83, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8648052449230904221, guid: c0c24c2b35d5f4c48bf9cd5c2ae18c83, type: 3}
