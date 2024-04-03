@@ -16,6 +16,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button optionsMenuInitial;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider musicVolumeSlider, SFXVolumeSlider;
+    [Header("Controls Menu")]
+    [SerializeField] private GameObject controlsMenu;
+    [SerializeField] private Button controlsMenuInitial;
 
     private void Start() {
         LoadSettingsPrefs();
@@ -66,10 +69,16 @@ public class MainMenu : MonoBehaviour
         optionsMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(optionsMenuInitial.gameObject);
     }
+    public void ActivateControlsMenu () {
+        DeactivateMenus();
+        controlsMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(controlsMenuInitial.gameObject);
+    }
 
     private void DeactivateMenus () {
         mainMenu.SetActive(false);
         optionsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
     public void QuitGame()
