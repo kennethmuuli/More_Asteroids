@@ -48,6 +48,10 @@ ExportedObj/
 *.VC.db
 *.vsconfig
 
+# localSaveFiles for testing
+highscore.txt
+highscore.txt.meta
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
