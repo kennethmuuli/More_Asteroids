@@ -64,17 +64,17 @@ public class SaveLoadSystem : MonoBehaviour
 
     private string GetDataPath(bool getCoop = false) {
         //testing
-        if (getCoop)
-        {
-            return Path.Combine(Application.dataPath, "coop_highscore.txt");
-        }
-        return Path.Combine(Application.dataPath, "solo_highscore.txt");
-        //actual
         // if (getCoop)
         // {
-        //     return Path.Combine(Application.persistentDataPath, "coop_highscore.txt");
+        //     return Path.Combine(Application.dataPath, "coop_highscore.txt");
         // }
-        // return Path.Combine(Application.persistentDataPath, "highscore.txt");
+        // return Path.Combine(Application.dataPath, "solo_highscore.txt");
+        //actual
+        if (getCoop)
+        {
+            return Path.Combine(Application.persistentDataPath, "coop_highscore.txt");
+        }
+        return Path.Combine(Application.persistentDataPath, "solo_highscore.txt");
     }
 
     public void SaveHighscores(bool saveCoop = false){
