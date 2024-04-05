@@ -37,7 +37,7 @@ public class InGameOverlayManager : MonoBehaviour
         PowerUp.PowerUpCollected += OnPowerUpCollected;
         GameManager.OnPublishPlayer += AssignOverlaySide;
         GameManager.OnUpdateGameState += ToggleInGameOverlay;
-        PlayerHull.OnPlayerHealthUpdated += OnPlayerHealthUpdated;
+        PlayerHull.PlayerHealthUpdated += OnPlayerHealthUpdated;
     }
 
     private void OnDisable() {
@@ -45,7 +45,7 @@ public class InGameOverlayManager : MonoBehaviour
         PowerUp.PowerUpCollected -= OnPowerUpCollected;
         GameManager.OnPublishPlayer -= AssignOverlaySide;
         GameManager.OnUpdateGameState -= ToggleInGameOverlay;
-        PlayerHull.OnPlayerHealthUpdated -= OnPlayerHealthUpdated;
+        PlayerHull.PlayerHealthUpdated -= OnPlayerHealthUpdated;
     }
 
     private void OnPlayerHealthUpdated(int instanceIDToCheck, int newHealth)

@@ -5,7 +5,7 @@ public class PlayerHull : PowerUpComponent
 {
     [SerializeField] private PolygonCollider2D hullCollider;
     [SerializeField] private int maxHullHealth = 3;
-    public static Action<int, int> OnPlayerHealthUpdated;
+    public static Action<int, int> PlayerHealthUpdated;
     private int currentHullHealth;
 
     private void Start() {
@@ -51,8 +51,6 @@ public class PlayerHull : PowerUpComponent
             currentHullHealth = maxHullHealth;
         } else currentHullHealth = currentHullHealth + changeAmount;
 
-        OnPlayerHealthUpdated?.Invoke(instanceID, currentHullHealth);
-
         if (currentHullHealth <= 0)
         {
             GameManager.instance.PlayerDied();
@@ -64,5 +62,7 @@ public class PlayerHull : PowerUpComponent
             currentHullHealth = 0;
             gameObject.SetActive(false);
         }
+        
+        PlayerHealthUpdated?.Invoke(instanceID, currentHullHealth);
     }
 }
