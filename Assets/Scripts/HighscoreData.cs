@@ -65,7 +65,7 @@ namespace MoreAsteroids.Score {
         public Highscore(string newScoreName, int newScore) {
             this.name = newScoreName;
             this.score = newScore;
-            this.dateTime = DateTime.Now.ToString();
+            this.dateTime = DateTime.Now.ToString("d");
         }
     }
 
