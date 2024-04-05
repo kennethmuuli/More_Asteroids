@@ -22,6 +22,9 @@ public class MainMenu : MonoBehaviour
     [Header("Highscores Menu")]
     [SerializeField] private GameObject highscoresMenu;
     [SerializeField] private Button highscoresMenuInitial;
+    [Header("Credits Menu")]
+    [SerializeField] private GameObject creditsMenu;
+    [SerializeField] private Button creditsMenuInitial;
 
     private void Start() {
         LoadSettingsPrefs();
@@ -82,12 +85,18 @@ public class MainMenu : MonoBehaviour
         highscoresMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(highscoresMenuInitial.gameObject);
     }
+    public void ActivateCreditsMenu () {
+        DeactivateMenus();
+        creditsMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(creditsMenuInitial.gameObject);
+    }
 
     private void DeactivateMenus () {
         mainMenu.SetActive(false);
         optionsMenu.SetActive(false);
         controlsMenu.SetActive(false);
         highscoresMenu.SetActive(false);
+        creditsMenu.SetActive(false);
     }
 
     public void QuitGame()
