@@ -45,7 +45,7 @@ public class InGameOverlayManager : MonoBehaviour
         PowerUp.PowerUpCollected -= OnPowerUpCollected;
         GameManager.OnPublishPlayer -= AssignOverlaySide;
         GameManager.OnUpdateGameState -= ToggleInGameOverlay;
-        PlayerHull.OnPlayerHealthUpdated += OnPlayerHealthUpdated;
+        PlayerHull.OnPlayerHealthUpdated -= OnPlayerHealthUpdated;
     }
 
     private void OnPlayerHealthUpdated(int instanceIDToCheck, int newHealth)
@@ -109,8 +109,8 @@ public class InGameOverlayManager : MonoBehaviour
     }
 
     private (Slider slider, GameObject display) SelectOverlayComponents(PowerUpType type, int instanceIDToCheck) {
-    Slider selectedSlider;
-    GameObject selectedGameObject;
+    Slider selectedSlider = null;
+    GameObject selectedGameObject = null;
         
         switch (type)
         {
@@ -123,7 +123,7 @@ public class InGameOverlayManager : MonoBehaviour
                     selectedSlider = laserPUSlider2;
                     selectedGameObject = laserPUDisplay2;
                 }
-                return (selectedSlider, selectedGameObject);
+                break;
             case PowerUpType.Shield:
                 if (instanceIDToCheck == playerOneID)
                 {
@@ -133,7 +133,7 @@ public class InGameOverlayManager : MonoBehaviour
                     selectedSlider = shieldPUSlider2;
                     selectedGameObject = shieldPUDisplay2;
                 }
-                return (selectedSlider, selectedGameObject);
+                break;
             case PowerUpType.Speed:
                 if (instanceIDToCheck == playerOneID)
                 {
@@ -143,15 +143,12 @@ public class InGameOverlayManager : MonoBehaviour
                     selectedSlider = speedPUSlider2;
                     selectedGameObject = speedPUDisplay2;
                 }
-                return (selectedSlider, selectedGameObject);
-            case PowerUpType.Health:
-                return (selectedSlider = null, selectedGameObject = null);
-            case PowerUpType.Revive:
-                return (selectedSlider = null, selectedGameObject = null);
+                break;
             default:
-            Debug.LogError("No matching overlay components found.");
-            return (selectedSlider = null, selectedGameObject = null);
+            Debug.LogWarning("No matching overlay components found.");
+            break;
         }
+        return (selectedSlider, selectedGameObject);
     }
 
     IEnumerator UpdatePowerUpBar (float powerupDuration, Slider powerupSlider, GameObject powerupDisplay) {

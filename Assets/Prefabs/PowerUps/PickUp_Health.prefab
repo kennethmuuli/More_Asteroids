@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a2a05da11a21b49802adb68aea59b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpType: 0
+  powerUpType: 3
   duration: 0
   lifetimeDuration: 10
   iconRenderer: {fileID: 8296384201647164127}
