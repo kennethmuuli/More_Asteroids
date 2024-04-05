@@ -9,13 +9,17 @@ public class GameOverMenu : MonoBehaviour
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private Button gameOverMenuInitial;
     [SerializeField] private TextMeshProUGUI scoreValue;
+    [SerializeField] private GameObject inputWindow;
+    private bool isCoopGame;
     // Start is called before the first frame update
     private void OnEnable() {
+        GameManager.AnnounceCoopGame += OnAnnounceCoopGame;
         GameManager.OnUpdateGameState += ToggleGameOverMenu;
         Scoretracker.PublishScore += ShowFinalScore;
     }
 
     private void OnDisable() {
+        GameManager.AnnounceCoopGame -= OnAnnounceCoopGame;
         GameManager.OnUpdateGameState -= ToggleGameOverMenu;
         Scoretracker.PublishScore -= ShowFinalScore;
     }
@@ -31,8 +35,23 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    private void OnAnnounceCoopGame() {
+        isCoopGame = true;
+    }
+
     private void ShowFinalScore(int finalScore) {
         scoreValue.text = finalScore.ToString();
+        if (SaveLoadSystem.instance.CheckIfHighScore(finalScore))
+        {
+            HighscoreAchieved(finalScore);
+        }
+    }
+
+    private void HighscoreAchieved(int finalScore) {
+        inputWindow.SetActive(true);
+        inputWindow.GetComponent<InputWindow>().highscoreToSubmit = finalScore;
+        inputWindow.GetComponent<InputWindow>().isCoopGame = isCoopGame;
+
     }
 
 }

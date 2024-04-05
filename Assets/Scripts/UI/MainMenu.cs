@@ -19,6 +19,9 @@ public class MainMenu : MonoBehaviour
     [Header("Controls Menu")]
     [SerializeField] private GameObject controlsMenu;
     [SerializeField] private Button controlsMenuInitial;
+    [Header("Highscores Menu")]
+    [SerializeField] private GameObject highscoresMenu;
+    [SerializeField] private Button highscoresMenuInitial;
 
     private void Start() {
         LoadSettingsPrefs();
@@ -74,11 +77,17 @@ public class MainMenu : MonoBehaviour
         controlsMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(controlsMenuInitial.gameObject);
     }
+    public void ActivateHighscoresMenu () {
+        DeactivateMenus();
+        highscoresMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(highscoresMenuInitial.gameObject);
+    }
 
     private void DeactivateMenus () {
         mainMenu.SetActive(false);
         optionsMenu.SetActive(false);
         controlsMenu.SetActive(false);
+        highscoresMenu.SetActive(false);
     }
 
     public void QuitGame()

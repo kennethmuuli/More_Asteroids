@@ -48,9 +48,15 @@ ExportedObj/
 *.VC.db
 *.vsconfig
 
+# local testing preseeded SaveFile backups
+/[Tt]estingFiles/
+[Tt]estingFiles.meta
+
 # localSaveFiles for testing
-highscore.txt
-highscore.txt.meta
+solo_highscore.txt
+solo_highscore.txt.meta
+coop_highscore.txt
+coop_highscore.txt.meta
 
 # Unity3D generated meta files
 *.pidb.meta
