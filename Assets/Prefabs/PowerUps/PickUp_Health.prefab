@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 3033732149177562149}
   - component: {fileID: 3329609173485385944}
   m_Layer: 0
-  m_Name: PickUp_Revive
+  m_Name: PickUp_Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a2a05da11a21b49802adb68aea59b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpType: 4
+  powerUpType: 0
   duration: 0
   lifetimeDuration: 10
   iconRenderer: {fileID: 8296384201647164127}
@@ -282,7 +282,7 @@ SpriteRenderer:
   m_SortingLayerID: -1305198455
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8bbe377acafbf974982de14e75d327c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 246e023b215255d49b92854a6fadd759, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
