@@ -55,7 +55,7 @@ public class InputWindow : MonoBehaviour
         if (string.IsNullOrEmpty(highscoreOwnerName.Trim()))
         {
             Debug.LogWarning("No name for highscore set, please enter a name");
-            inputField.ActivateInputField();
+            // inputField.ActivateInputField();
             return;
         }
 
